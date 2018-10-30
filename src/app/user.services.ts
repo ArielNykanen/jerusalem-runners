@@ -1,4 +1,6 @@
-export class UserServices {
+import { OnInit } from "@angular/core";
+
+export class UserServices implements OnInit {
   currentPauch = 0;
   tipStatusStyles = ['red', 'orange', 'green'];
 
@@ -15,7 +17,12 @@ export class UserServices {
   }
 
   getCurrentPauch() {
-    return this.currentPauch;
+    if (localStorage.getItem('pauch')) {
+      const pauch = localStorage.getItem('pauch');
+     return this.currentPauch = Number(pauch);
+    } else {
+      return this.currentPauch = Number(0);
+    }
   }
 
   getTipStatusStyles() {
@@ -24,6 +31,11 @@ export class UserServices {
 
   onAddIncome(income: number) {
     this.currentPauch += income;
+    localStorage.setItem('pauch', this.currentPauch.toString());
   }
+
+  ngOnInit() {
+  }
+
 
 }
