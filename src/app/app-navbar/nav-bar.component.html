@@ -1,0 +1,25 @@
+ <!-- nav-bar -->
+ <nav class="navbar navbar-default">
+    <div class="container">
+      <!-- navbar header -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myNavbar" aria-expanded="false">
+          <!-- the hamburger -->
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" routerLinkActive="/">Jerusalem Runners</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse " id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li [routerLinkActiveOptions]="{exact: 'full'}" routerLinkActive="active"><a routerLink="/">ראשי</a></li>
+          <li routerLinkActive="active"><a routerLink="add-tip">הוסף טיפים</a></li>
+          <li routerLinkActive="active"><a routerLink="customer-search">פרטי לקוחות</a></li>
+          <li routerLinkActive="active"><a routerLink="profile-edit">עריכת פרופיל</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  

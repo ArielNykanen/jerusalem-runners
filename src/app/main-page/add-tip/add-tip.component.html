@@ -1,0 +1,34 @@
+
+<div class="form-group">
+  <p align=right [ngStyle]="{'color': userServices.getCurrentPauchStyle()}">({{ currentUserPauch }}) - בפאוץ כרגע</p>
+  <span class="help-block" align=right *ngIf="currentUserPauch >= 100 && currentUserPauch < 200">מברוק הגעת ל100 אולי עוד תגיע ל200</span>
+  <span class="help-block" align=right *ngIf="currentUserPauch >= 200  && currentUserPauch < 220">!עשית את זה הגעת ל200 אלוף אתה</span>
+  <span class="help-block" align=right *ngIf="currentUserPauch >= 220">!!!ממשיך לעלות??  מטורף אתה תשלח לי מייל איך אתה עושה את זה בבקשה</span>
+</div>
+<div class="form-group">
+  <h1 align=center>הוספת טיפים</h1>
+</div>
+<div class="row">
+  <h2 align=center>?כמה</h2>
+  <div class="col-xs-12 form-group" align=right>
+  <button type="button" class="btn btn-success form-control" (click)="onAddTwenty()">20</button>
+</div>
+  <div class="col-xs-12 form-group" align=right>
+  <button type="button" class="btn btn-primary form-control" (click)="onAddTen()">10</button>
+</div>
+  <div class="col-xs-12 form-group" align=right>
+  <button type="button" class="btn btn-warning form-control" (click)="onAddFive()">5</button>
+</div>
+  <div class="col-xs-12 form-group" align=right>
+    <h2 align=center>אחר</h2>
+  <input type="number" class="text-center form-control" [(ngModel)]="tipSelected">
+</div>
+<div class="col-xs-12 form-group" align=center>
+  <p>הבחירה שלך</p>
+  <p>({{ tipSelected }})</p>
+  </div>
+</div>
+<div class="col-xs-12 form-group" align=center>
+    <button type="button" class="btn btn-success form-control" [disabled]="tipSelected <= 0" (click)="onAddIncome(tipSelected)">הוסף</button>
+  </div>
+<hr>

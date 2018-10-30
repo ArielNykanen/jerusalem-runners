@@ -1,0 +1,28 @@
+<div align=center class="form-group">
+  <h1>הרמה שלך</h1>
+  <p>({{ userCurrentLevel }})</p>
+</div>
+<hr>
+<div align=center class="form-group">
+  <h2>בפאוץ שלך כרגע</h2>
+ <p [ngStyle]="{'color':userServices.getCurrentPauchStyle()}">({{ userCurrentPauch }})</p>
+</div>
+<hr>
+  <div align=center class="form-group">
+    <h2>בדוק כמה יוצא לך לשעה</h2>
+    <div class="form-group">
+      <div class="form-group">
+        <span>?כמה אתה עושה לשעה</span>
+      </div>
+      <div class="form-group">
+      <input align=center  type="number" class="form-control text-center" [(ngModel)]="userHourPayed">
+      </div>
+      <div class="form-group">
+        <span>?כמה שעות אתה עובד</span>
+      </div>
+      <input align=center  type="number" class="form-control text-center" [(ngModel)]="userWorkHours">
+    </div>
+    <p>אתה עושה לשעה</p>
+    <p *ngIf="userHourPayed && userWorkHours">({{ getCurrentHourlyPayed() }})</p>
+  </div>
+  <hr>

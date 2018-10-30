@@ -1,0 +1,40 @@
+-----------------------
+Users (future update)
+-----------------------
+register, login, change settings.
+
+=======================
+
+-----------------
+Customers#######################
+-----------------
+
+Customer will get rating names if tipped 100% then hes king 
+	make array with rating names ['king', 'any',etc...];
+
+name, street, house#, apartment#, tipped, notTipped
+
+================
+
+
+-----------------
+Tips tracker####################
+-----------------
+
+total tips, total tips+hourly payed for hour,.
+
+=================
+
+--------------------
+expenses tracker################
+--------------------
+
+add expenses by name and amount and auto date added.
+
+====================
+
+---------
+extras##########################
+---------
+page with total expenses and incomes and final  hourly payed and total income table.
+=================================
