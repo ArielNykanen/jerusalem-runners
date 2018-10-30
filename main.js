@@ -616,7 +616,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\n    <div class=\"col-xs-12 form-group\">\n            <button class=\"btn btn-primary\" type=\"button\" (click)=\"navigationService.onNavigateForward('add-customer')\">\n              הוסף לקוח חדש\n            </button>\n      <h1 align=\"right\">חיפוש במאגר הלקוחות</h1>\n      <hr>\n    </div>\n    <div class=\"col-xs-3 form-group\">\n      <label>דירה\n        <input type=\"number\" id=\"\" class=\"form-control\">\n      </label>\n    </div>\n    <div class=\"col-xs-3 form-group\">\n        <label>בית\n          <input type=\"number\" id=\"\" class=\"form-control\">\n        </label>\n      </div>\n    <div class=\"col-xs-3 form-group\">\n        <label>רחוב\n          <input type=\"text\" id=\"\" class=\"form-control\" [(ngModel)]=\"customerStreetSearch\">\n        </label>\n      </div>\n    <div class=\"col-xs-3 form-group\">\n        <label>שם\n          <input type=\"text\" id=\"\" class=\"form-control\" [(ngModel)]=\"customerNameSearch\">\n        </label>\n      </div>\n    </div>\n    \n    <div>\n        <table class=\"table table-dark\">\n            <thead>\n              <tr>\n                <th scope=\"col\">לא הביא</th>\n                <th scope=\"col\">הביא טיפ</th>\n                <th scope=\"col\">דירוג</th>\n                <th scope=\"col\">דירה</th>\n                <th scope=\"col\">בית</th>\n                <th scope=\"col\">רחוב</th>\n                <th scope=\"col\">שם</th>\n              </tr>\n            </thead>\n            <tbody *ngFor=\"let customer of customers\">\n              <tr *ngIf=\"\n              customer.name.match(customerNameSearch)  \n              && customer.street.match(customerStreetSearch)\n               && customerNameSearch != ''\">\n                <td>{{ customer.notTipped }}</td>\n                <td>{{ customer.tipped }}</td>\n                <td>{{ customer.rating }}</td>\n                <td>{{ customer.apartment }}</td>\n                <td>{{ customer.house }}</td>\n                <td>{{ customer.street }}</td>\n                <td >{{ customer.name }}</td>\n              </tr>\n            </tbody>\n          </table>\n    \n    \n    \n      <!-- <div class=\"col-xs-4\" *ngIf=\"customer.name.match(customerSearch) && !customerSearch == '' \">\n          <h2>Good Customers</h2>\n          <p >\n              {{ customer.name }}\n          </p>\n        </div> -->\n      </div>"
+module.exports = "<div class=\"row\">\n    <div class=\"col-xs-12 form-group\">\n            <button class=\"btn btn-primary\" type=\"button\" (click)=\"navigationService.onNavigateForward('add-customer')\">\n              הוסף לקוח חדש\n            </button>\n      <h1 align=\"right\">חיפוש במאגר הלקוחות</h1>\n      <hr>\n    </div>\n    <div align=right class=\"form-group\">\n        <label>שם\n          <input type=\"text\" id=\"\" class=\"form-control\" [(ngModel)]=\"customerNameSearch\">\n        </label>\n      </div>\n    </div>\n    <div align=right class=\"form-group\">\n      <label>רחוב\n        <input  type=\"text\" id=\"\" class=\"form-control\" [(ngModel)]=\"customerStreetSearch\">\n      </label>\n    </div>\n    <hr>\n    <div>\n        <table class=\"table table-dark\">\n            <thead>\n              <tr>\n                <th scope=\"col\">לא הביא</th>\n                <th scope=\"col\">הביא טיפ</th>\n                <th scope=\"col\">דירוג</th>\n                <th scope=\"col\">דירה</th>\n                <th scope=\"col\">בית</th>\n                <th scope=\"col\">רחוב</th>\n                <th scope=\"col\">שם</th>\n              </tr>\n            </thead>\n            <tbody *ngFor=\"let customer of customers\">\n              <tr *ngIf=\"\n              customer.name.match(customerNameSearch)  \n              && customer.street.match(customerStreetSearch)\n               && customerNameSearch != ''\">\n                <td>{{ customer.notTipped }}</td>\n                <td>{{ customer.tipped }}</td>\n                <td>{{ customer.rating }}</td>\n                <td>{{ customer.apartment }}</td>\n                <td>{{ customer.house }}</td>\n                <td>{{ customer.street }}</td>\n                <td >{{ customer.name }}</td>\n              </tr>\n            </tbody>\n          </table>\n    \n    \n    \n      <!-- <div class=\"col-xs-4\" *ngIf=\"customer.name.match(customerSearch) && !customerSearch == '' \">\n          <h2>Good Customers</h2>\n          <p >\n              {{ customer.name }}\n          </p>\n        </div> -->\n      </div>"
 
 /***/ }),
 
@@ -938,16 +938,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CustomerServices", function() { return CustomerServices; });
 var CustomerServices = /** @class */ (function () {
     function CustomerServices() {
-        this.goodCustomers = [
-            { name: 'ירוחם', street: 'הרב ברלין',
-                house: '12', apartment: '4', tipped: '3', notTipped: '0', rating: 'לא דורג' }
-        ];
+        this.goodCustomers = [];
     }
     CustomerServices.prototype.getAllCustomers = function () {
+        if (localStorage.getItem('customers')) {
+            return JSON.parse(localStorage.getItem('customers'));
+        }
         return this.goodCustomers;
     };
     CustomerServices.prototype.addCustomer = function (customer) {
         this.goodCustomers.push(customer);
+        var allCustomers = JSON.stringify(this.goodCustomers);
+        localStorage.setItem('customers', allCustomers);
     };
     return CustomerServices;
 }());
@@ -1241,13 +1243,22 @@ var UserServices = /** @class */ (function () {
         }
     };
     UserServices.prototype.getCurrentPauch = function () {
-        return this.currentPauch;
+        if (localStorage.getItem('pauch')) {
+            var pauch = localStorage.getItem('pauch');
+            return this.currentPauch = Number(pauch);
+        }
+        else {
+            return this.currentPauch = Number(0);
+        }
     };
     UserServices.prototype.getTipStatusStyles = function () {
         return this.tipStatusStyles;
     };
     UserServices.prototype.onAddIncome = function (income) {
         this.currentPauch += income;
+        localStorage.setItem('pauch', this.currentPauch.toString());
+    };
+    UserServices.prototype.ngOnInit = function () {
     };
     return UserServices;
 }());
