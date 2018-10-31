@@ -41,7 +41,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = " <!-- nav-bar -->\r\n <nav class=\"navbar navbar-default\">\r\n    <div class=\"container\">\r\n      <!-- navbar header -->\r\n      <div class=\"navbar-header\">\r\n        <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#myNavbar\" aria-expanded=\"false\">\r\n          <!-- the hamburger -->\r\n          <span class=\"icon-bar\"></span>\r\n          <span class=\"icon-bar\"></span>\r\n          <span class=\"icon-bar\"></span>\r\n        </button>\r\n        <a class=\"navbar-brand\" routerLinkActive=\"/\">Jerusalem Runners</a>\r\n      </div>\r\n      <!-- Collect the nav links, forms, and other content for toggling -->\r\n      <div class=\"collapse navbar-collapse \" id=\"myNavbar\">\r\n        <ul class=\"nav navbar-nav\">\r\n          <li [routerLinkActiveOptions]=\"{exact: 'full'}\" routerLinkActive=\"active\"><a routerLink=\"/\">ראשי</a></li>\r\n          <li routerLinkActive=\"active\"><a routerLink=\"add-tip\">הוסף טיפים</a></li>\r\n          <li routerLinkActive=\"active\"><a routerLink=\"customer-search\">פרטי לקוחות</a></li>\r\n          <li routerLinkActive=\"active\"><a routerLink=\"profile-edit\">עריכת פרופיל</a></li>\r\n        </ul>\r\n      </div>\r\n    </div>\r\n  </nav>\r\n  "
+module.exports = " <!-- nav-bar -->\r\n <nav class=\"navbar navbar-default\">\r\n    <div class=\"container\">\r\n      <!-- navbar header -->\r\n      <div class=\"navbar-header\">\r\n        <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#myNavbar\" aria-expanded=\"false\">\r\n          <!-- the hamburger -->\r\n          <span class=\"icon-bar\"></span>\r\n          <span class=\"icon-bar\"></span>\r\n          <span class=\"icon-bar\"></span>\r\n        </button>\r\n        <a class=\"navbar-brand\" routerLinkActive=\"/\">Jerusalem Runners</a>\r\n      </div>\r\n      <!-- Collect the nav links, forms, and other content for toggling -->\r\n      <div class=\"collapse navbar-collapse \" id=\"myNavbar\">\r\n        <ul class=\"nav navbar-nav\">\r\n          <li [routerLinkActiveOptions]=\"{exact: 'full'}\" routerLinkActive=\"active\"><a routerLink=\"/\">ראשי</a></li>\r\n          <li routerLinkActive=\"active\"><a routerLink=\"add-tip\">הוסף טיפים</a></li>\r\n          <li routerLinkActive=\"active\"><a routerLink=\"customer-search\">פרטי לקוחות</a></li>\r\n          <li routerLinkActive=\"active\"><a routerLink=\"pauch-history\">היסטורית פאוצ'ים</a></li>\r\n          <li routerLinkActive=\"active\"><a routerLink=\"profile-edit\">עריכת פרופיל</a></li>\r\n        </ul>\r\n      </div>\r\n    </div>\r\n  </nav>\r\n  "
 
 /***/ }),
 
@@ -99,12 +99,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _main_page_customer_search_all_customers_all_customers_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./main-page/customer-search/all-customers/all-customers.component */ "./src/app/main-page/customer-search/all-customers/all-customers.component.ts");
 /* harmony import */ var _not_found_page_not_found_page_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./not-found-page/not-found-page.component */ "./src/app/not-found-page/not-found-page.component.ts");
 /* harmony import */ var _main_page_current_status_current_status_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./main-page/current-status/current-status.component */ "./src/app/main-page/current-status/current-status.component.ts");
+/* harmony import */ var _main_page_pauch_history_pauch_history_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./main-page/pauch-history/pauch-history.component */ "./src/app/main-page/pauch-history/pauch-history.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -127,6 +129,9 @@ var AppRoutes = [
             { path: 'add-customer', component: _main_page_customer_search_add_customer_add_customer_component__WEBPACK_IMPORTED_MODULE_5__["AddCustomerComponent"] },
             { path: '**', component: _not_found_page_not_found_page_component__WEBPACK_IMPORTED_MODULE_7__["NotFoundPageComponent"] },
         ]
+    },
+    {
+        path: 'pauch-history', component: _main_page_pauch_history_pauch_history_component__WEBPACK_IMPORTED_MODULE_9__["PauchHistoryComponent"]
     },
     {
         path: 'profile-edit', component: _main_page_profile_edit_profile_edit_component__WEBPACK_IMPORTED_MODULE_4__["ProfileEditComponent"]
@@ -236,12 +241,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _navigation_services__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./navigation.services */ "./src/app/navigation.services.ts");
 /* harmony import */ var _user_services__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./user.services */ "./src/app/user.services.ts");
 /* harmony import */ var _main_page_current_status_current_status_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./main-page/current-status/current-status.component */ "./src/app/main-page/current-status/current-status.component.ts");
+/* harmony import */ var _main_page_pauch_history_pauch_history_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./main-page/pauch-history/pauch-history.component */ "./src/app/main-page/pauch-history/pauch-history.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -281,6 +288,7 @@ var AppModule = /** @class */ (function () {
                 _main_page_customer_search_all_customers_all_customers_component__WEBPACK_IMPORTED_MODULE_15__["AllCustomersComponent"],
                 _not_found_page_not_found_page_component__WEBPACK_IMPORTED_MODULE_16__["NotFoundPageComponent"],
                 _main_page_current_status_current_status_component__WEBPACK_IMPORTED_MODULE_19__["CurrentStatusComponent"],
+                _main_page_pauch_history_pauch_history_component__WEBPACK_IMPORTED_MODULE_20__["PauchHistoryComponent"],
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -406,7 +414,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div align=center class=\"form-group\">\n  <h1>הרמה שלך</h1>\n  <p>({{ userCurrentLevel }})</p>\n</div>\n<hr>\n<div align=center class=\"form-group\">\n  <h2>בפאוץ שלך כרגע</h2>\n <p [ngStyle]=\"{'color':userServices.getCurrentPauchStyle()}\">({{ userCurrentPauch }})</p>\n</div>\n<hr>\n  <div align=center class=\"form-group\">\n    <h2>בדוק כמה יוצא לך לשעה עם הטיפים</h2>\n    <div class=\"form-group\">\n      <div class=\"form-group\">\n        <span>?כמה אתה עושה לשעה</span>\n      </div>\n      <div class=\"form-group\">\n      <input align=center  type=\"number\" class=\"form-control text-center\" [(ngModel)]=\"userHourPayed\">\n      </div>\n      <div class=\"form-group\">\n        <span>?כמה שעות אתה עובד</span>\n      </div>\n      <input align=center  type=\"number\" class=\"form-control text-center\" [(ngModel)]=\"userWorkHours\">\n    </div>\n    <p>אתה עושה לשעה</p>\n    <p *ngIf=\"userHourPayed && userWorkHours\">({{ getCurrentHourlyPayed() }})</p>\n  </div>\n  <hr>"
+module.exports = "<div align=center class=\"form-group\">\n  <h1>הרמה היומית שלך</h1>\n  <p>({{ userServices.userCurrentLevel }})</p>\n</div>\n<hr>\n<div align=center class=\"form-group\">\n  <h2>בפאוץ שלך כרגע</h2>\n <p [ngStyle]=\"{'color':userServices.getCurrentPauchStyle()}\">({{ userCurrentPauch }})</p>\n</div>\n<hr>\n  <div align=center class=\"form-group\">\n    <h2>בדוק כמה יוצא לך לשעה עם הטיפים</h2>\n    <div class=\"form-group\">\n      <div class=\"form-group\">\n        <span>?כמה אתה עושה לשעה</span>\n      </div>\n      <div class=\"form-group\">\n      <input align=center  type=\"number\" class=\"form-control text-center\" [(ngModel)]=\"userHourPayed\">\n      </div>\n      <div class=\"form-group\">\n        <span>?כמה שעות אתה עובד</span>\n      </div>\n      <input align=center  type=\"number\" class=\"form-control text-center\" [(ngModel)]=\"userWorkHours\">\n    </div>\n    <p>אתה עושה לשעה</p>\n    <p *ngIf=\"userHourPayed && userWorkHours\">({{ getCurrentHourlyPayed() }})</p>\n    <p *ngIf=\"!userHourPayed || !userWorkHours\">(0)</p>\n    <div class=\"col-xs-12 form-group\" align=right>\n      <button type=\"button\" class=\"btn btn-primary form-control\" (click)=\"onResetPauch()\" [disabled]=\"userCurrentPauch == 0\">שמור פאוץ והתחל יום חדש</button>\n    </div>\n  </div>\n  <hr>"
 
 /***/ }),
 
@@ -439,21 +447,11 @@ var CurrentStatusComponent = /** @class */ (function () {
     }
     CurrentStatusComponent.prototype.ngOnInit = function () {
         this.userCurrentPauch = this.userServices.getCurrentPauch();
-        this.getUserLevel();
+        this.userServices.getUserLevel();
     };
-    CurrentStatusComponent.prototype.getUserLevel = function () {
-        if (this.userCurrentPauch < 20) {
-            this.userCurrentLevel = 'חור בפאוץ';
-        }
-        if (this.userCurrentPauch > 40) {
-            this.userCurrentLevel = 'מתחיל את היום';
-        }
-        if (this.userCurrentPauch > 60) {
-            this.userCurrentLevel = 'מתקדם';
-        }
-        if (this.userCurrentPauch > 100) {
-            this.userCurrentLevel = 'תותח';
-        }
+    CurrentStatusComponent.prototype.onResetPauch = function () {
+        this.userServices.onStartNewPauch();
+        this.userCurrentPauch = this.userServices.getCurrentPauch();
     };
     CurrentStatusComponent.prototype.getCurrentHourlyPayed = function () {
         var totalDayHourlyPayed = this.userWorkHours * this.userHourPayed;
@@ -1032,7 +1030,6 @@ var MainPageComponent = /** @class */ (function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Customer", function() { return Customer; });
 var Customer = /** @class */ (function () {
-    // {name: 'ירוחם', street: 'הרב ברלין', house: 12, apartment: 4, tipped: 3, notTipped: 0},
     function Customer(name, street, house, apartment, tipped, notTipped, rating) {
         this.name = name;
         this.street = street;
@@ -1043,6 +1040,118 @@ var Customer = /** @class */ (function () {
         this.rating = rating;
     }
     return Customer;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/main-page/models/pauch.model.ts":
+/*!*************************************************!*\
+  !*** ./src/app/main-page/models/pauch.model.ts ***!
+  \*************************************************/
+/*! exports provided: Pauch */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Pauch", function() { return Pauch; });
+var Pauch = /** @class */ (function () {
+    function Pauch(amount, level, date) {
+        this.amount = amount;
+        this.level = level;
+        this.date = date;
+    }
+    return Pauch;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/main-page/pauch-history/pauch-history.component.css":
+/*!*********************************************************************!*\
+  !*** ./src/app/main-page/pauch-history/pauch-history.component.css ***!
+  \*********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "#total-income-table p {\r\n  color: green;\r\n}"
+
+/***/ }),
+
+/***/ "./src/app/main-page/pauch-history/pauch-history.component.html":
+/*!**********************************************************************!*\
+  !*** ./src/app/main-page/pauch-history/pauch-history.component.html ***!
+  \**********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"form-group\">\n  <h1 align=center>היסטורית הפאוצ'ים</h1>\n</div>\n<hr>\n<table class=\"table\">\n  <thead>\n    <tr>\n      <th>כסף שהיה לך בפאוץ</th>\n      <th>הרמה היומית שהייתה</th>\n      <th>תאריך שמירה</th>\n    </tr>\n  </thead>\n  <tbody *ngFor=\"let pauch of pauchHistory;let i = index\">  \n    <tr class=\"success\">\n      <td>{{ pauch.amount }}</td>\n      <td>{{ pauch.level }}</td>\n      <td>{{ pauch.date }}</td>\n      <td><button class=\"btn btn-danger\" (click)=\"onRemove(i)\">מחק</button></td>\n    </tr>\n  </tbody>\n</table>\n<div id=\"total-income-table\">\n  <p align=right>{{ totalTips }}:סהכ\"ל הכנסה מהטיפים</p>\n  <p align=right>{{ avrgTipsInDay }}:ממוצע טיפים ליום לפי מספר הפאוצ'ים</p>\n</div>"
+
+/***/ }),
+
+/***/ "./src/app/main-page/pauch-history/pauch-history.component.ts":
+/*!********************************************************************!*\
+  !*** ./src/app/main-page/pauch-history/pauch-history.component.ts ***!
+  \********************************************************************/
+/*! exports provided: PauchHistoryComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PauchHistoryComponent", function() { return PauchHistoryComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var src_app_user_services__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/app/user.services */ "./src/app/user.services.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var PauchHistoryComponent = /** @class */ (function () {
+    function PauchHistoryComponent(userServices) {
+        this.userServices = userServices;
+        this.totalTips = 0;
+        this.avrgTipsInDay = 0;
+    }
+    PauchHistoryComponent.prototype.ngOnInit = function () {
+        this.pauchHistory = this.userServices.getPauchHistory();
+        this.getTotalInfo();
+    };
+    PauchHistoryComponent.prototype.getTotalInfo = function () {
+        for (var i = 0; i < this.pauchHistory.length; i++) {
+            this.totalTips += Number(this.pauchHistory[i].amount);
+        }
+        if (this.pauchHistory.length > 0) {
+            this.avrgTipsInDay = this.totalTips / this.pauchHistory.length;
+            // todo make it work
+            // this.avrgTipsInDay = this.avrgTipsInDay.toFixed(2);
+        }
+        else {
+            this.totalTips = this.userServices.getCurrentPauch();
+            this.avrgTipsInDay = 0;
+        }
+    };
+    PauchHistoryComponent.prototype.onRemove = function (pauchIndex) {
+        this.userServices.onRemoveFromPauchHistory(pauchIndex);
+        this.pauchHistory = this.userServices.getPauchHistory();
+        this.getTotalInfo();
+    };
+    PauchHistoryComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-pauch-history',
+            template: __webpack_require__(/*! ./pauch-history.component.html */ "./src/app/main-page/pauch-history/pauch-history.component.html"),
+            styles: [__webpack_require__(/*! ./pauch-history.component.css */ "./src/app/main-page/pauch-history/pauch-history.component.css")]
+        }),
+        __metadata("design:paramtypes", [src_app_user_services__WEBPACK_IMPORTED_MODULE_1__["UserServices"]])
+    ], PauchHistoryComponent);
+    return PauchHistoryComponent;
 }());
 
 
@@ -1226,11 +1335,28 @@ var NotFoundPageComponent = /** @class */ (function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UserServices", function() { return UserServices; });
+/* harmony import */ var _main_page_models_pauch_model__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./main-page/models/pauch.model */ "./src/app/main-page/models/pauch.model.ts");
+
 var UserServices = /** @class */ (function () {
     function UserServices() {
         this.currentPauch = 0;
+        this.pauchHistory = [];
         this.tipStatusStyles = ['red', 'orange', 'green'];
     }
+    UserServices.prototype.getUserLevel = function () {
+        if (this.currentPauch < 20) {
+            this.userCurrentLevel = 'חור בפאוץ';
+        }
+        if (this.currentPauch > 40) {
+            this.userCurrentLevel = 'מתחיל את היום';
+        }
+        if (this.currentPauch > 60) {
+            this.userCurrentLevel = 'מתקדם';
+        }
+        if (this.currentPauch > 100) {
+            this.userCurrentLevel = 'תותח';
+        }
+    };
     UserServices.prototype.getCurrentPauchStyle = function () {
         if (this.currentPauch < 40) {
             return this.tipStatusStyles[0];
@@ -1257,6 +1383,48 @@ var UserServices = /** @class */ (function () {
     UserServices.prototype.onAddIncome = function (income) {
         this.currentPauch += income;
         localStorage.setItem('pauch', this.currentPauch.toString());
+    };
+    UserServices.prototype.getIfMatch = function (date) {
+        var currentDate = date;
+        var match = this.pauchHistory.map(function (e) {
+            if (e.date.match(currentDate)) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        });
+        return match;
+    };
+    UserServices.prototype.onStartNewPauch = function () {
+        var date = new Date();
+        var currentDate = date.getDate() + "." + (date.getMonth() + 1) + "." + date.getFullYear();
+        this.pauchHistory = this.getPauchHistory();
+        var match = this.getIfMatch(currentDate);
+        // todo make it work
+        // if (match.map((e) => e === true ? true : false )) {
+        this.pauchHistory.push(new _main_page_models_pauch_model__WEBPACK_IMPORTED_MODULE_0__["Pauch"](this.currentPauch, this.userCurrentLevel, currentDate));
+        console.log(this.pauchHistory);
+        localStorage.setItem('pauchHistory', JSON.stringify(this.pauchHistory));
+        localStorage.setItem('pauch', '0');
+        alert('!הפאוץ נשמר בהצלחה');
+        // } else {
+        //   alert('כבר שמרת פאוץ להיום מחק פאוץ קיים כדי להוסיף פאוץ להיום');
+        // }
+    };
+    UserServices.prototype.getPauchHistory = function () {
+        // return this.pauchHistory;
+        if (localStorage.getItem('pauchHistory')) {
+            var pauchHistory = localStorage.getItem('pauchHistory');
+            return JSON.parse(pauchHistory);
+        }
+        else {
+            return this.pauchHistory;
+        }
+    };
+    UserServices.prototype.onRemoveFromPauchHistory = function (pauchIndex) {
+        this.pauchHistory.splice(pauchIndex, 1);
+        localStorage.setItem('pauchHistory', JSON.stringify(this.pauchHistory));
     };
     UserServices.prototype.ngOnInit = function () {
     };
