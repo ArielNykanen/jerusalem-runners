@@ -3,12 +3,9 @@ import { UserServices } from 'src/app/user.services';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CustomerServices } from '../customers.services';
 import { Customer } from '../models/customer.model';
-import { resource } from 'selenium-webdriver/http';
-import { NavigationServices } from 'src/app/navigation.services';
-import { RouterModule, Routes, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { DataStoreServices } from 'src/app/shared/data-storage.services';
 import { Response } from '@angular/http';
-import { stringify } from 'querystring';
 
 @Component({
   selector: 'app-add-tip',
@@ -65,7 +62,6 @@ export class AddTipComponent implements OnInit, OnDestroy {
     this.tipped = !this.tipped;
   }
 
-  
 
   onAddExistingCustomer(index: number) {
     this.selectedCustomerId = index;
@@ -92,7 +88,12 @@ export class AddTipComponent implements OnInit, OnDestroy {
            this.router.navigate(['../']);
          }, 1500);
          // todo make the response create success message!
-         }
+        }
+        //  },
+        //  (error: Error) => {
+        //    this.error = 'משהו השתבש אנא נסה שנית';
+        //  },
+        //  (compl) => {},
         );
     } else {
     this.loading = false;

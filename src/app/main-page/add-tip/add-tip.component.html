@@ -93,6 +93,7 @@
         <table class="table">
           <thead class="thead-dark">
             <tr>
+              <th scope="col"></th>
               <th scope="col">הוסף</th>
               <th scope="col">ממוצע טיפ</th>
               <th scope="col">לא הביא</th>
@@ -106,12 +107,14 @@
               <ng-container *ngIf="customer.phone.match(searchInput) && searchInput > 100">
                 <tr>
                   <!-- <td><input name="checkbox" type='radio' class="btn btn-primary" (click)="onAddExistingCustomer(customer)"></td> -->
+                  <td><a class="btn btn-success" href="tel:{{customer.phone}}">התקשר</a></td>
                   <td><button type="button" class="btn btn-primary" (click)="onAddExistingCustomer(i)" [disabled]='!currentNetStatus'>בחר</button></td>
                   <td>{{ onGetCustomerAvrg(customer) }}</td>
                   <td>{{ customer.notTipped }}</td>
                   <td>{{ customer.tipped }}</td>
                   <td>{{ customer.name }}</td>
                   <td>{{ customer.phone }}</td>
+                  
                 </tr>
               </ng-container>
             </ng-container>
