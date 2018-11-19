@@ -32,11 +32,7 @@
           </label>
           <span *ngIf="!addCustomerForm.get('customerHouse').valid && addCustomerForm.get('customerHouse').touched" class="help-block">שדה מספר בית חובה</span>
         </div>
-        <div class="btn-group btn-toggle" style="float:right; clear:both;"> 
-            <h2>הביא טיפ</h2>
-            <button type="button" class="btn "  [ngClass]="!tipped ? 'btn-success':'btn-disabled'" (click)="onTipped()">כן</button>
-            <button type="button" class="btn " [ngClass]="tipped ? 'btn-success':'btn-disabled'" (click)="onTipped()">לא</button>
-          </div>
+      
           
           <div *ngIf="tipped" class="btn-group btn-toggle" style="float:right; clear:both;"> 
             <h2>חרא לקוח</h2>

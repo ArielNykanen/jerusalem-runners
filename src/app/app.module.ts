@@ -19,6 +19,8 @@ import { NotFoundPageComponent } from './not-found-page/not-found-page.component
 import { NavigationServices } from './navigation.services';
 import { UserServices } from './user.services';
 import { CurrentStatusComponent } from './main-page/current-status/current-status.component';
+import { HttpModule } from '@angular/http';
+import { DataStoreServices } from './shared/data-storage.services';
 
 
 
@@ -43,13 +45,15 @@ import { CurrentStatusComponent } from './main-page/current-status/current-statu
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpModule
   ],
   providers: [
     CustomerServices,
     UserServices,
-    NavigationServices
+    NavigationServices,
+    DataStoreServices
   ],
-  
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

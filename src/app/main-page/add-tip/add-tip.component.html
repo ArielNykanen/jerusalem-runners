@@ -1,34 +1,159 @@
-
+<div *ngIf='successMessage' class="alert alert-success alert-dismissible">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <h1 align=center>{{ successMessage }}</h1>
+  </div>
+<div *ngIf='error' class="alert alert-danger alert-dismissible">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <h1 align=center>{{ error }}</h1>
+  </div>
 <div class="form-group">
   <p align=right [ngStyle]="{'color': userServices.getCurrentPauchStyle()}">({{ currentUserPauch }}) - בפאוץ כרגע</p>
-  <span class="help-block" align=right *ngIf="currentUserPauch >= 100 && currentUserPauch < 200">מברוק הגעת ל100 אולי עוד תגיע ל200</span>
-  <span class="help-block" align=right *ngIf="currentUserPauch >= 200  && currentUserPauch < 220">!עשית את זה הגעת ל200 אלוף אתה</span>
-  <span class="help-block" align=right *ngIf="currentUserPauch >= 220">!!!ממשיך לעלות??  מטורף אתה תשלח לי מייל איך אתה עושה את זה בבקשה</span>
+  <span class="help-block" align=right *ngIf="currentUserPauch >= 100 && currentUserPauch < 200">מברוק הגעת ל100 אולי
+    עוד תגיע ל200</span>
+  <span class="help-block" align=right *ngIf="currentUserPauch >= 200  && currentUserPauch < 220">!עשית את זה הגעת ל200
+    אלוף אתה</span>
+  <span class="help-block" align=right *ngIf="currentUserPauch >= 220">!!!ממשיך לעלות?? מטורף אתה תשלח לי מייל איך אתה
+    עושה את זה בבקשה</span>
 </div>
+
 <div class="form-group">
   <h1 align=center>הוספת טיפים</h1>
 </div>
 <div class="row">
-  <h2 align=center>?כמה</h2>
-  <div class="col-xs-12 form-group" align=right>
-  <button type="button" class="btn btn-success form-control" (click)="onAddTwenty()">20</button>
-</div>
-  <div class="col-xs-12 form-group" align=right>
-  <button type="button" class="btn btn-primary form-control" (click)="onAddTen()">10</button>
-</div>
-  <div class="col-xs-12 form-group" align=right>
-  <button type="button" class="btn btn-warning form-control" (click)="onAddFive()">5</button>
-</div>
-  <div class="col-xs-12 form-group" align=right>
-    <h2 align=center>אחר</h2>
-  <input type="number" class="text-center form-control" [(ngModel)]="tipSelected">
-</div>
-<div class="col-xs-12 form-group" align=center>
-  <p>הבחירה שלך</p>
-  <p>({{ tipSelected }})</p>
+  <div class="col-md-12" align=center>
+    <h1>פרטי לקוח</h1>
   </div>
+  <hr>
+  <form [formGroup]="addCustomerTipForm" (ngSubmit)="onCustomerAdded()">
+    <div class="row">
+      <div class="col-xs-3 form-group">
+
+
+      </div>
+      <div *ngIf='!customerSelected' class="col-xs-3 form-group">
+        <label>שם
+          <input formControlName="customerName" type="text" id="" class="form-control">
+        </label>
+        <span *ngIf="addCustomerTipForm.get('customerName').errors && addCustomerTipForm.get('customerName').touched"
+          class="help-block">!שדה חובה</span>
+      </div>
+
+      <div *ngIf='!customerSelected' class="col-xs-6 form-group">
+        <label>פלאפון/טלפון
+          <input formControlName="customerPhone" type="text" id="" class="form-control" [(ngModel)]="searchInput">
+        </label>
+        <span *ngIf="!addCustomerTipForm.get('customerPhone').valid && addCustomerTipForm.get('customerPhone').touched"
+          class="help-block">!שדה חובה</span>
+      </div>
+      <div *ngIf='customerSelected' class="col-xs-6 form-group" align=center>
+          
+          <ng-container *ngIf='!loading'>
+              <h1>({{ selectedCustomer.name }})</h1>
+            </ng-container>
+      
+      </div>
+      <ng-container *ngIf="!customerSelected">
+       
+        <div *ngIf='currentNetStatus' class="col-xs-12 form-group" align=center>
+            <button data-toggle="collapse" data-target="#customerDetails" type="button" class="btn btn-primary form-control" [disabled]="addCustomerTipForm.get('customerPhone').value.length < 9 || addCustomerTipForm.get('customerPhone').value.length > 10">הוסף חדש</button>
+          <div id="customerDetails" class="collapse">
+              <ng-container *ngIf="addCustomerTipForm.get('customerPhone').value.length > 8 && addCustomerTipForm.get('customerPhone').value.length < 11">
+            <div class="form-group btn-group btn-toggle" style="float:right; clear:both;">
+            <h2>הביא טיפ</h2>
+            <button type="button" class="btn " [ngClass]="!tipped ? 'btn-success':'btn-disabled'" (click)="onTipped()">כן</button>
+            <button type="button" class="btn " [ngClass]="tipped ? 'btn-success':'btn-disabled'" (click)="onTipped()">לא</button>
+          </div>
+        
+          <ng-container *ngIf='!tipped'>
+              <div class="col-xs-12 form-group" align=right>
+                <h2 align=center>?כמה הביא</h2>
+                <input type="number" formControlName="customerTip" class="text-center form-control" [(ngModel)]="tipSelected">
+              </div>
+            
+            </ng-container>
+            <div class="col-xs-12 form-group" align=center>
+              <button class='btn btn-success'>הוסף לקוח למערכת</button>
+             </div>
+          </ng-container>
+
+          </div>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="customerSelected">
+          <button type="button" style="max-width: 100px;" class="btn btn-warning form-control" (click)="onUnSelect()">חזרה</button>
+        </ng-container>
+      <div *ngIf='!customerSelected' class="col-xs-12 form-group">
+         
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">הוסף</th>
+              <th scope="col">ממוצע טיפ</th>
+              <th scope="col">לא הביא</th>
+              <th scope="col">הביא</th>
+              <th scope="col">שם</th>
+              <th scope="col">פלאפון/טלפון</th>
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container *ngFor="let customer of allCustomers; let i = index">
+              <ng-container *ngIf="customer.phone.match(searchInput) && searchInput.length > 4">
+                <tr>
+                  <!-- <td><input name="checkbox" type='radio' class="btn btn-primary" (click)="onAddExistingCustomer(customer)"></td> -->
+                  <td><button type="button" class="btn btn-primary" (click)="onAddExistingCustomer(i)" [disabled]='!currentNetStatus'>בחר</button></td>
+                  <td>{{ onGetCustomerAvrg(customer) }}</td>
+                  <td>{{ customer.notTipped }}</td>
+                  <td>{{ customer.tipped }}</td>
+                  <td>{{ customer.name }}</td>
+                  <td>{{ customer.phone }}</td>
+                </tr>
+              </ng-container>
+            </ng-container>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-xs-12" *ngIf='customerSelected'>
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">עדכן</th>
+              <th scope="col">?כמה הביא</th>
+              <th scope="col">?הביא טיפ</th>
+              <th scope="col">שם</th>
+              <th scope="col">פלאפון/טלפון</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <ng-container *ngIf='loading'>
+                <p>...מעדכן</p>
+              </ng-container>
+              <ng-container *ngIf='!loading'>
+                <td><button type="button" class="btn btn-primary" (click)="onCustomerUpdated(updateCustomerTip)">עדכן</button></td>
+              </ng-container>
+              <td><input type="number" class="form-control" style="max-width: 100px;" [disabled]='tipped' #updateCustomerTip></td>
+              <td><button type="button" class="btn " [ngClass]="!tipped ? 'btn-success':'btn-disabled'" (click)="onTipped()">כן</button></td>
+              <td>{{ selectedCustomer.name }}</td>
+              <td>{{ selectedCustomer.phone }}</td>
+            </tr>
+          </tbody>
+        </table>
+    
+        <p style="color:red;">{{ tipNotSellected }}</p>
+      </div>
+      <ng-container *ngIf='!currentNetStatus'>
+          <div  align=center>
+            <div class="loader">
+            </div>
+          </div>
+          </ng-container>
+    </div>
+    <div *ngIf='!currentNetStatus' class="form-group">
+        <p class="bg-danger text-danger">אתה לא מחובר לאינטרנט אינך יכול להוסיף או לעדכן לקוחות במאגר </p>
+      </div>
+  </form>
+  
 </div>
-<div class="col-xs-12 form-group" align=center>
-    <button type="button" class="btn btn-success form-control" [disabled]="tipSelected <= 0" (click)="onAddIncome(tipSelected)">הוסף</button>
-  </div>
+
+
 <hr>

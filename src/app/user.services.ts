@@ -1,4 +1,4 @@
-import { OnInit } from "@angular/core";
+import { OnInit } from '@angular/core';
 
 export class UserServices implements OnInit {
   currentPauch = 0;
@@ -30,8 +30,10 @@ export class UserServices implements OnInit {
   }
 
   onAddIncome(income: number) {
-    this.currentPauch += income;
-    localStorage.setItem('pauch', this.currentPauch.toString());
+    if (income > 0) {
+      this.currentPauch += income;
+      localStorage.setItem('pauch', this.currentPauch.toString());
+    }
   }
 
   ngOnInit() {

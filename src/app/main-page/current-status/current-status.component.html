@@ -8,21 +8,39 @@
  <p [ngStyle]="{'color':userServices.getCurrentPauchStyle()}">({{ userCurrentPauch }})</p>
 </div>
 <hr>
+
+<div class="form-group" align=center>
+  <button class="btn btn-success" routerLink="/add-tip">הוסף טיפ ועדכן לקוח</button>
+</div>
+
+<hr>
+
   <div align=center class="form-group">
     <h2>בדוק כמה יוצא לך לשעה</h2>
-    <div class="form-group">
-      <div class="form-group">
-        <span>?כמה אתה עושה לשעה</span>
+    <div class="dropdown" align=center>
+        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown
+        </button>
+        <div class="dropdown-menu" align=center>
+            <div class="form-group" align=center>
+                <div class="form-group">
+                  <span>?כמה אתה עושה לשעה</span>
+                </div>
+                <div class="form-group">
+                <input align=center  type="number" class="form-control text-center" [(ngModel)]="userHourPayed">
+                </div>
+                <div class="form-group">
+                  <span>?כמה שעות אתה עובד</span>
+                </div>
+                <input align=center  type="number" class="form-control text-center" [(ngModel)]="userWorkHours">
+              </div>
+             
+            </div>
+        </div>
+      </div> 
+      <div class="form-group" align=center>
+        <p>אתה עושה לשעה</p>
+        <p *ngIf="userHourPayed && userWorkHours">({{ getCurrentHourlyPayed() }})</p>
       </div>
-      <div class="form-group">
-      <input align=center  type="number" class="form-control text-center" [(ngModel)]="userHourPayed">
-      </div>
-      <div class="form-group">
-        <span>?כמה שעות אתה עובד</span>
-      </div>
-      <input align=center  type="number" class="form-control text-center" [(ngModel)]="userWorkHours">
-    </div>
-    <p>אתה עושה לשעה</p>
-    <p *ngIf="userHourPayed && userWorkHours">({{ getCurrentHourlyPayed() }})</p>
-  </div>
+    
   <hr>

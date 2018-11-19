@@ -25,7 +25,7 @@ export class CurrentStatusComponent implements OnInit {
       this.userCurrentLevel = 'חור בפאוץ';
     }
 
-    if (this.userCurrentPauch > 40) {
+    if (this.userCurrentPauch < 40) {
       this.userCurrentLevel = 'מתחיל את היום';
     }
     if (this.userCurrentPauch > 60) {

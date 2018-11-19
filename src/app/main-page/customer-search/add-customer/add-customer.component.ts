@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { NavigationServices } from 'src/app/navigation.services';
 import { FormControl, FormGroup, FormControlName, Validators } from '@angular/forms';
 import { Customer } from '../../models/customer.model';
 import { CustomerServices } from '../../customers.services';
+import { DataStoreServices } from 'src/app/shared/data-storage.services';
+import { Response } from '@angular/http';
 
 @Component({
   selector: 'app-add-customer',
@@ -15,7 +16,7 @@ export class AddCustomerComponent implements OnInit {
   addCustomerForm: FormGroup;
   allReadyExist = this.customerServices.getAllCustomers();
 
-  constructor(private navigationService: NavigationServices,
+  constructor(private dataSotrageServices: DataStoreServices,
     private customerServices: CustomerServices) { }
 
   onBadCustomer() {
@@ -45,10 +46,11 @@ export class AddCustomerComponent implements OnInit {
       this.addCustomerForm.get('customerStreet').value,
       this.addCustomerForm.get('customerHouse').value,
       this.addCustomerForm.get('customerApartment').value,
-      !this.tipped ? '1' : '0', this.tipped ? '1' : '0',
-      !this.badCustomer ? 'חרא לקוח' : 'לא דורג'));
-      alert('customer was added successfuly!');
-      this.addCustomerForm.reset();
+      !this.tipped ? '1' : '0', this.tipped ? '1' : '0',));
+      // alert('customer was added successfuly!');
+      console.log('customer was added!');
+      
+     
   }
 
   onCheckExist() {
@@ -70,13 +72,5 @@ export class AddCustomerComponent implements OnInit {
       return null;
   }
 
-  allReadyExistCustomerStreet(control: FormControl): {[s: string]: boolean} {
-    if (this.allReadyExist.map(function(e) {
-      return  e.street;
-    }).indexOf(control.value) !== -1) {
-      return {'customerExists2': true};
-    }
-      return null;
-  }
 
 }
