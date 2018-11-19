@@ -48,7 +48,7 @@ module.exports = "/*!\n * Bootstrap v3.3.7 (http://getbootstrap.com)\n * Copyrig
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/* You can add global styles to this file, and also import other style files */\nlabel {\n  direction:RTL;\n}"
+module.exports = "/* You can add global styles to this file, and also import other style files */\r\nlabel {\r\n  direction:RTL;\r\n}"
 
 /***/ }),
 

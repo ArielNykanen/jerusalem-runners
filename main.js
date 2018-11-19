@@ -41,7 +41,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = " <!-- nav-bar -->\r\n <nav class=\"navbar navbar-default\">\r\n    <div class=\"container\">\r\n      <!-- navbar header -->\r\n      <div class=\"navbar-header\">\r\n        <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#myNavbar\" aria-expanded=\"false\">\r\n          <!-- the hamburger -->\r\n          <span class=\"icon-bar\"></span>\r\n          <span class=\"icon-bar\"></span>\r\n          <span class=\"icon-bar\"></span>\r\n        </button>\r\n        <a class=\"navbar-brand\" routerLinkActive=\"/\">Jerusalem Runners</a>\r\n      </div>\r\n      <!-- Collect the nav links, forms, and other content for toggling -->\r\n      <div class=\"collapse navbar-collapse \" id=\"myNavbar\">\r\n        <ul class=\"nav navbar-nav\">\r\n          <li [routerLinkActiveOptions]=\"{exact: 'full'}\" routerLinkActive=\"active\"><a routerLink=\"/\">ראשי</a></li>\r\n          <li routerLinkActive=\"active\"><a routerLink=\"add-tip\">הוסף טיפים</a></li>\r\n          <li routerLinkActive=\"active\"><a routerLink=\"customer-search\">פרטי לקוחות</a></li>\r\n          <li routerLinkActive=\"active\"><a routerLink=\"pauch-history\">היסטורית פאוצ'ים</a></li>\r\n          <li routerLinkActive=\"active\"><a routerLink=\"profile-edit\">עריכת פרופיל</a></li>\r\n        </ul>\r\n      </div>\r\n    </div>\r\n  </nav>\r\n  "
+module.exports = " <!-- nav-bar -->\r\n <nav class=\"navbar navbar-default\">\r\n    <div class=\"container\">\r\n      <!-- navbar header -->\r\n      <div class=\"navbar-header\">\r\n        <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#myNavbar\" aria-expanded=\"false\">\r\n          <!-- the hamburger -->\r\n          <span class=\"icon-bar\"></span>\r\n          <span class=\"icon-bar\"></span>\r\n          <span class=\"icon-bar\"></span>\r\n        </button>\r\n        <a class=\"navbar-brand\" routerLink=\"\">Jerusalem Runners</a>\r\n      </div>\r\n      <!-- Collect the nav links, forms, and other content for toggling -->\r\n      <div class=\"collapse navbar-collapse \" id=\"myNavbar\">\r\n        <ul class=\"nav navbar-nav\">\r\n          <li [routerLinkActiveOptions]=\"{exact: 'full'}\" routerLinkActive=\"active\"><a routerLink=\"/\">ראשי</a></li>\r\n          <li routerLinkActive=\"active\"><a routerLink=\"add-tip\">הוסף טיפ ועדכן לקוח</a></li>\r\n          <li routerLinkActive=\"active\"><a routerLink=\"profile-edit\">עריכת פרופיל</a></li>\r\n        </ul>\r\n      </div>\r\n    </div>\r\n  </nav>\r\n  "
 
 /***/ }),
 
@@ -92,14 +92,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppRoutingModule", function() { return AppRoutingModule; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _main_page_customer_search_customer_search_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./main-page/customer-search/customer-search.component */ "./src/app/main-page/customer-search/customer-search.component.ts");
-/* harmony import */ var _main_page_add_tip_add_tip_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./main-page/add-tip/add-tip.component */ "./src/app/main-page/add-tip/add-tip.component.ts");
-/* harmony import */ var _main_page_profile_edit_profile_edit_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./main-page/profile-edit/profile-edit.component */ "./src/app/main-page/profile-edit/profile-edit.component.ts");
-/* harmony import */ var _main_page_customer_search_add_customer_add_customer_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./main-page/customer-search/add-customer/add-customer.component */ "./src/app/main-page/customer-search/add-customer/add-customer.component.ts");
-/* harmony import */ var _main_page_customer_search_all_customers_all_customers_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./main-page/customer-search/all-customers/all-customers.component */ "./src/app/main-page/customer-search/all-customers/all-customers.component.ts");
-/* harmony import */ var _not_found_page_not_found_page_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./not-found-page/not-found-page.component */ "./src/app/not-found-page/not-found-page.component.ts");
-/* harmony import */ var _main_page_current_status_current_status_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./main-page/current-status/current-status.component */ "./src/app/main-page/current-status/current-status.component.ts");
-/* harmony import */ var _main_page_pauch_history_pauch_history_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./main-page/pauch-history/pauch-history.component */ "./src/app/main-page/pauch-history/pauch-history.component.ts");
+/* harmony import */ var _main_page_add_tip_add_tip_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./main-page/add-tip/add-tip.component */ "./src/app/main-page/add-tip/add-tip.component.ts");
+/* harmony import */ var _main_page_profile_edit_profile_edit_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./main-page/profile-edit/profile-edit.component */ "./src/app/main-page/profile-edit/profile-edit.component.ts");
+/* harmony import */ var _main_page_current_status_current_status_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./main-page/current-status/current-status.component */ "./src/app/main-page/current-status/current-status.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -111,30 +106,15 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
-
-
-
-
-
 var AppRoutes = [
     {
-        path: '', component: _main_page_current_status_current_status_component__WEBPACK_IMPORTED_MODULE_8__["CurrentStatusComponent"]
+        path: '', component: _main_page_current_status_current_status_component__WEBPACK_IMPORTED_MODULE_4__["CurrentStatusComponent"]
     },
     {
-        path: 'add-tip', component: _main_page_add_tip_add_tip_component__WEBPACK_IMPORTED_MODULE_3__["AddTipComponent"]
+        path: 'add-tip', component: _main_page_add_tip_add_tip_component__WEBPACK_IMPORTED_MODULE_2__["AddTipComponent"]
     },
     {
-        path: 'customer-search', component: _main_page_customer_search_customer_search_component__WEBPACK_IMPORTED_MODULE_2__["CustomerSearchComponent"], children: [
-            { path: '', component: _main_page_customer_search_all_customers_all_customers_component__WEBPACK_IMPORTED_MODULE_6__["AllCustomersComponent"] },
-            { path: 'add-customer', component: _main_page_customer_search_add_customer_add_customer_component__WEBPACK_IMPORTED_MODULE_5__["AddCustomerComponent"] },
-            { path: '**', component: _not_found_page_not_found_page_component__WEBPACK_IMPORTED_MODULE_7__["NotFoundPageComponent"] },
-        ]
-    },
-    {
-        path: 'pauch-history', component: _main_page_pauch_history_pauch_history_component__WEBPACK_IMPORTED_MODULE_9__["PauchHistoryComponent"]
-    },
-    {
-        path: 'profile-edit', component: _main_page_profile_edit_profile_edit_component__WEBPACK_IMPORTED_MODULE_4__["ProfileEditComponent"]
+        path: 'profile-edit', component: _main_page_profile_edit_profile_edit_component__WEBPACK_IMPORTED_MODULE_3__["ProfileEditComponent"]
     },
 ];
 var AppRoutingModule = /** @class */ (function () {
@@ -171,7 +151,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <div class=\"row\">\n    <div class=\"col-xs-12\">\n      <app-navbar></app-navbar>\n    </div>\n    \n    <div class=\"col-xs-12\">\n    <app-main-page></app-main-page>\n    </div>\n\n  </div>\n</div>"
+module.exports = "<div class=\"container\">\r\n  <div class=\"row\">\r\n    <div class=\"col-xs-12\">\r\n      <app-navbar></app-navbar>\r\n    </div>\r\n    \r\n    <div class=\"col-xs-12\">\r\n    <app-main-page></app-main-page>\r\n    </div>\r\n\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -228,31 +208,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _app_navbar_nav_bar_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./app-navbar/nav-bar.component */ "./src/app/app-navbar/nav-bar.component.ts");
 /* harmony import */ var _main_page_main_page_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./main-page/main-page.component */ "./src/app/main-page/main-page.component.ts");
 /* harmony import */ var _main_page_add_tip_add_tip_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./main-page/add-tip/add-tip.component */ "./src/app/main-page/add-tip/add-tip.component.ts");
-/* harmony import */ var _main_page_customer_search_customer_search_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./main-page/customer-search/customer-search.component */ "./src/app/main-page/customer-search/customer-search.component.ts");
-/* harmony import */ var _app_routes_routing__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./app-routes.routing */ "./src/app/app-routes.routing.ts");
-/* harmony import */ var _main_page_customers_services__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./main-page/customers.services */ "./src/app/main-page/customers.services.ts");
-/* harmony import */ var _main_page_customer_search_bad_customers_bad_customers_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./main-page/customer-search/bad-customers/bad-customers.component */ "./src/app/main-page/customer-search/bad-customers/bad-customers.component.ts");
-/* harmony import */ var _main_page_customer_search_good_customers_good_customers_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./main-page/customer-search/good-customers/good-customers.component */ "./src/app/main-page/customer-search/good-customers/good-customers.component.ts");
-/* harmony import */ var _main_page_customer_search_unknown_customers_unknown_customers_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./main-page/customer-search/unknown-customers/unknown-customers.component */ "./src/app/main-page/customer-search/unknown-customers/unknown-customers.component.ts");
-/* harmony import */ var _main_page_profile_edit_profile_edit_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./main-page/profile-edit/profile-edit.component */ "./src/app/main-page/profile-edit/profile-edit.component.ts");
-/* harmony import */ var _main_page_customer_search_add_customer_add_customer_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./main-page/customer-search/add-customer/add-customer.component */ "./src/app/main-page/customer-search/add-customer/add-customer.component.ts");
-/* harmony import */ var _main_page_customer_search_all_customers_all_customers_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./main-page/customer-search/all-customers/all-customers.component */ "./src/app/main-page/customer-search/all-customers/all-customers.component.ts");
-/* harmony import */ var _not_found_page_not_found_page_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./not-found-page/not-found-page.component */ "./src/app/not-found-page/not-found-page.component.ts");
-/* harmony import */ var _navigation_services__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./navigation.services */ "./src/app/navigation.services.ts");
-/* harmony import */ var _user_services__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./user.services */ "./src/app/user.services.ts");
-/* harmony import */ var _main_page_current_status_current_status_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./main-page/current-status/current-status.component */ "./src/app/main-page/current-status/current-status.component.ts");
-/* harmony import */ var _main_page_pauch_history_pauch_history_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./main-page/pauch-history/pauch-history.component */ "./src/app/main-page/pauch-history/pauch-history.component.ts");
+/* harmony import */ var _app_routes_routing__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./app-routes.routing */ "./src/app/app-routes.routing.ts");
+/* harmony import */ var _main_page_customers_services__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./main-page/customers.services */ "./src/app/main-page/customers.services.ts");
+/* harmony import */ var _main_page_profile_edit_profile_edit_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./main-page/profile-edit/profile-edit.component */ "./src/app/main-page/profile-edit/profile-edit.component.ts");
+/* harmony import */ var _not_found_page_not_found_page_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./not-found-page/not-found-page.component */ "./src/app/not-found-page/not-found-page.component.ts");
+/* harmony import */ var _navigation_services__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./navigation.services */ "./src/app/navigation.services.ts");
+/* harmony import */ var _user_services__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./user.services */ "./src/app/user.services.ts");
+/* harmony import */ var _main_page_current_status_current_status_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./main-page/current-status/current-status.component */ "./src/app/main-page/current-status/current-status.component.ts");
+/* harmony import */ var _angular_http__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @angular/http */ "./node_modules/@angular/http/fesm5/http.js");
+/* harmony import */ var _shared_data_storage_services__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./shared/data-storage.services */ "./src/app/shared/data-storage.services.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-
-
-
-
-
 
 
 
@@ -278,28 +248,23 @@ var AppModule = /** @class */ (function () {
                 _app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"],
                 _app_navbar_nav_bar_component__WEBPACK_IMPORTED_MODULE_4__["NavBarComponent"],
                 _main_page_main_page_component__WEBPACK_IMPORTED_MODULE_5__["MainPageComponent"],
-                _main_page_customer_search_add_customer_add_customer_component__WEBPACK_IMPORTED_MODULE_14__["AddCustomerComponent"],
                 _main_page_add_tip_add_tip_component__WEBPACK_IMPORTED_MODULE_6__["AddTipComponent"],
-                _main_page_customer_search_customer_search_component__WEBPACK_IMPORTED_MODULE_7__["CustomerSearchComponent"],
-                _main_page_customer_search_bad_customers_bad_customers_component__WEBPACK_IMPORTED_MODULE_10__["BadCustomersComponent"],
-                _main_page_customer_search_good_customers_good_customers_component__WEBPACK_IMPORTED_MODULE_11__["GoodCustomersComponent"],
-                _main_page_customer_search_unknown_customers_unknown_customers_component__WEBPACK_IMPORTED_MODULE_12__["UnknownCustomersComponent"],
-                _main_page_profile_edit_profile_edit_component__WEBPACK_IMPORTED_MODULE_13__["ProfileEditComponent"],
-                _main_page_customer_search_all_customers_all_customers_component__WEBPACK_IMPORTED_MODULE_15__["AllCustomersComponent"],
-                _not_found_page_not_found_page_component__WEBPACK_IMPORTED_MODULE_16__["NotFoundPageComponent"],
-                _main_page_current_status_current_status_component__WEBPACK_IMPORTED_MODULE_19__["CurrentStatusComponent"],
-                _main_page_pauch_history_pauch_history_component__WEBPACK_IMPORTED_MODULE_20__["PauchHistoryComponent"],
+                _main_page_profile_edit_profile_edit_component__WEBPACK_IMPORTED_MODULE_9__["ProfileEditComponent"],
+                _not_found_page_not_found_page_component__WEBPACK_IMPORTED_MODULE_10__["NotFoundPageComponent"],
+                _main_page_current_status_current_status_component__WEBPACK_IMPORTED_MODULE_13__["CurrentStatusComponent"],
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
-                _app_routes_routing__WEBPACK_IMPORTED_MODULE_8__["AppRoutingModule"],
+                _app_routes_routing__WEBPACK_IMPORTED_MODULE_7__["AppRoutingModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_2__["ReactiveFormsModule"],
+                _angular_http__WEBPACK_IMPORTED_MODULE_14__["HttpModule"]
             ],
             providers: [
-                _main_page_customers_services__WEBPACK_IMPORTED_MODULE_9__["CustomerServices"],
-                _user_services__WEBPACK_IMPORTED_MODULE_18__["UserServices"],
-                _navigation_services__WEBPACK_IMPORTED_MODULE_17__["NavigationServices"]
+                _main_page_customers_services__WEBPACK_IMPORTED_MODULE_8__["CustomerServices"],
+                _user_services__WEBPACK_IMPORTED_MODULE_12__["UserServices"],
+                _navigation_services__WEBPACK_IMPORTED_MODULE_11__["NavigationServices"],
+                _shared_data_storage_services__WEBPACK_IMPORTED_MODULE_15__["DataStoreServices"]
             ],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"]]
         })
@@ -318,7 +283,7 @@ var AppModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "input.ng-invalid.ng-touched {\r\n  border: 1px solid red;\r\n}\r\n\r\n.loader {\r\n  border: 16px solid #f3f3f3; /* Light grey */\r\n  border-top: 16px solid #3498db; /* Blue */\r\n  border-radius: 50%;\r\n  width: 120px;\r\n  height: 120px;\r\n  -webkit-animation: spin 2s linear infinite;\r\n          animation: spin 2s linear infinite;\r\n}\r\n\r\n@-webkit-keyframes spin {\r\n  0% { -webkit-transform: rotate(0deg); transform: rotate(0deg); }\r\n  100% { -webkit-transform: rotate(360deg); transform: rotate(360deg); }\r\n}\r\n\r\n@keyframes spin {\r\n  0% { -webkit-transform: rotate(0deg); transform: rotate(0deg); }\r\n  100% { -webkit-transform: rotate(360deg); transform: rotate(360deg); }\r\n}"
 
 /***/ }),
 
@@ -329,7 +294,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n<div class=\"form-group\">\n  <p align=right [ngStyle]=\"{'color': userServices.getCurrentPauchStyle()}\">({{ currentUserPauch }}) - בפאוץ כרגע</p>\n  <span class=\"help-block\" align=right *ngIf=\"currentUserPauch >= 100 && currentUserPauch < 200\">מברוק הגעת ל100 אולי עוד תגיע ל200</span>\n  <span class=\"help-block\" align=right *ngIf=\"currentUserPauch >= 200  && currentUserPauch < 220\">!עשית את זה הגעת ל200 אלוף אתה</span>\n  <span class=\"help-block\" align=right *ngIf=\"currentUserPauch >= 220\">!!!ממשיך לעלות??  מטורף אתה תשלח לי מייל איך אתה עושה את זה בבקשה</span>\n</div>\n<div class=\"form-group\">\n  <h1 align=center>הוספת טיפים</h1>\n</div>\n<div class=\"row\">\n  <h2 align=center>?כמה</h2>\n  <div class=\"col-xs-12 form-group\" align=right>\n  <button type=\"button\" class=\"btn btn-success form-control\" (click)=\"onAddTwenty()\">20</button>\n</div>\n  <div class=\"col-xs-12 form-group\" align=right>\n  <button type=\"button\" class=\"btn btn-primary form-control\" (click)=\"onAddTen()\">10</button>\n</div>\n  <div class=\"col-xs-12 form-group\" align=right>\n  <button type=\"button\" class=\"btn btn-warning form-control\" (click)=\"onAddFive()\">5</button>\n</div>\n  <div class=\"col-xs-12 form-group\" align=right>\n    <h2 align=center>אחר</h2>\n  <input type=\"number\" class=\"text-center form-control\" [(ngModel)]=\"tipSelected\">\n</div>\n<div class=\"col-xs-12 form-group\" align=center>\n  <p>הבחירה שלך</p>\n  <p>({{ tipSelected }})</p>\n  </div>\n</div>\n<div class=\"col-xs-12 form-group\" align=center>\n    <button type=\"button\" class=\"btn btn-success form-control\" [disabled]=\"tipSelected <= 0\" (click)=\"onAddIncome(tipSelected)\">הוסף</button>\n  </div>\n<hr>"
+module.exports = "<div *ngIf='successMessage' class=\"alert alert-success alert-dismissible\">\r\n    <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>\r\n    <h1 align=center>{{ successMessage }}</h1>\r\n  </div>\r\n<div *ngIf='error' class=\"alert alert-danger alert-dismissible\">\r\n    <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>\r\n    <h1 align=center>{{ error }}</h1>\r\n  </div>\r\n<div class=\"form-group\">\r\n  <p align=right [ngStyle]=\"{'color': userServices.getCurrentPauchStyle()}\">({{ currentUserPauch }}) - בפאוץ כרגע</p>\r\n  <span class=\"help-block\" align=right *ngIf=\"currentUserPauch >= 100 && currentUserPauch < 200\">מברוק הגעת ל100 אולי\r\n    עוד תגיע ל200</span>\r\n  <span class=\"help-block\" align=right *ngIf=\"currentUserPauch >= 200  && currentUserPauch < 220\">!עשית את זה הגעת ל200\r\n    אלוף אתה</span>\r\n  <span class=\"help-block\" align=right *ngIf=\"currentUserPauch >= 220\">!!!ממשיך לעלות?? מטורף אתה תשלח לי מייל איך אתה\r\n    עושה את זה בבקשה</span>\r\n</div>\r\n\r\n<div class=\"form-group\">\r\n  <h1 align=center>הוספת טיפים</h1>\r\n</div>\r\n<div class=\"row\">\r\n  <div class=\"col-md-12\" align=center>\r\n    <h1>פרטי לקוח</h1>\r\n  </div>\r\n  <hr>\r\n  <form [formGroup]=\"addCustomerTipForm\" (ngSubmit)=\"onCustomerAdded()\">\r\n    <div class=\"row\">\r\n      <div class=\"col-xs-3 form-group\">\r\n\r\n\r\n      </div>\r\n      <div *ngIf='!customerSelected' class=\"col-xs-3 form-group\">\r\n        <label>שם\r\n          <input formControlName=\"customerName\" type=\"text\" id=\"\" class=\"form-control\">\r\n        </label>\r\n        <span *ngIf=\"addCustomerTipForm.get('customerName').errors && addCustomerTipForm.get('customerName').touched\"\r\n          class=\"help-block\">!שדה חובה</span>\r\n      </div>\r\n\r\n      <div *ngIf='!customerSelected' class=\"col-xs-6 form-group\">\r\n        <label>פלאפון/טלפון\r\n          <input formControlName=\"customerPhone\" type=\"text\" id=\"\" class=\"form-control\" [(ngModel)]=\"searchInput\">\r\n        </label>\r\n        <span *ngIf=\"!addCustomerTipForm.get('customerPhone').valid && addCustomerTipForm.get('customerPhone').touched\"\r\n          class=\"help-block\">!שדה חובה</span>\r\n      </div>\r\n      <div *ngIf='customerSelected' class=\"col-xs-6 form-group\" align=center>\r\n          \r\n          <ng-container *ngIf='!loading'>\r\n              <h1>({{ selectedCustomer.name }})</h1>\r\n            </ng-container>\r\n      \r\n      </div>\r\n      <ng-container *ngIf=\"!customerSelected\">\r\n       \r\n        <div *ngIf='currentNetStatus' class=\"col-xs-12 form-group\" align=center>\r\n            <button data-toggle=\"collapse\" data-target=\"#customerDetails\" type=\"button\" class=\"btn btn-primary form-control\" [disabled]=\"addCustomerTipForm.get('customerPhone').value.length < 9 || addCustomerTipForm.get('customerPhone').value.length > 10\">הוסף חדש</button>\r\n          <div id=\"customerDetails\" class=\"collapse\">\r\n              <ng-container *ngIf=\"addCustomerTipForm.get('customerPhone').value.length > 8 && addCustomerTipForm.get('customerPhone').value.length < 11\">\r\n            <div class=\"form-group btn-group btn-toggle\" style=\"float:right; clear:both;\">\r\n            <h2>הביא טיפ</h2>\r\n            <button type=\"button\" class=\"btn \" [ngClass]=\"!tipped ? 'btn-success':'btn-disabled'\" (click)=\"onTipped()\">כן</button>\r\n            <button type=\"button\" class=\"btn \" [ngClass]=\"tipped ? 'btn-success':'btn-disabled'\" (click)=\"onTipped()\">לא</button>\r\n          </div>\r\n        \r\n          <ng-container *ngIf='!tipped'>\r\n              <div class=\"col-xs-12 form-group\" align=right>\r\n                <h2 align=center>?כמה הביא</h2>\r\n                <input type=\"number\" formControlName=\"customerTip\" class=\"text-center form-control\" [(ngModel)]=\"tipSelected\">\r\n              </div>\r\n            \r\n            </ng-container>\r\n            <div class=\"col-xs-12 form-group\" align=center>\r\n              <button class='btn btn-success'>הוסף לקוח למערכת</button>\r\n             </div>\r\n          </ng-container>\r\n\r\n          </div>\r\n          </div>\r\n        </ng-container>\r\n        <ng-container *ngIf=\"customerSelected\">\r\n          <button type=\"button\" style=\"max-width: 100px;\" class=\"btn btn-warning form-control\" (click)=\"onUnSelect()\">חזרה</button>\r\n        </ng-container>\r\n      <div *ngIf='!customerSelected' class=\"col-xs-12 form-group\">\r\n         \r\n        <table class=\"table\">\r\n          <thead class=\"thead-dark\">\r\n            <tr>\r\n              <th scope=\"col\">הוסף</th>\r\n              <th scope=\"col\">ממוצע טיפ</th>\r\n              <th scope=\"col\">לא הביא</th>\r\n              <th scope=\"col\">הביא</th>\r\n              <th scope=\"col\">שם</th>\r\n              <th scope=\"col\">פלאפון/טלפון</th>\r\n            </tr>\r\n          </thead>\r\n          <tbody>\r\n            <ng-container *ngFor=\"let customer of allCustomers; let i = index\">\r\n              <ng-container *ngIf=\"customer.phone.match(searchInput) && searchInput.length > 4\">\r\n                <tr>\r\n                  <!-- <td><input name=\"checkbox\" type='radio' class=\"btn btn-primary\" (click)=\"onAddExistingCustomer(customer)\"></td> -->\r\n                  <td><button type=\"button\" class=\"btn btn-primary\" (click)=\"onAddExistingCustomer(i)\" [disabled]='!currentNetStatus'>בחר</button></td>\r\n                  <td>{{ onGetCustomerAvrg(customer) }}</td>\r\n                  <td>{{ customer.notTipped }}</td>\r\n                  <td>{{ customer.tipped }}</td>\r\n                  <td>{{ customer.name }}</td>\r\n                  <td>{{ customer.phone }}</td>\r\n                </tr>\r\n              </ng-container>\r\n            </ng-container>\r\n          </tbody>\r\n        </table>\r\n      </div>\r\n      <div class=\"col-xs-12\" *ngIf='customerSelected'>\r\n        <table class=\"table\">\r\n          <thead class=\"thead-dark\">\r\n            <tr>\r\n              <th scope=\"col\">עדכן</th>\r\n              <th scope=\"col\">?כמה הביא</th>\r\n              <th scope=\"col\">?הביא טיפ</th>\r\n              <th scope=\"col\">שם</th>\r\n              <th scope=\"col\">פלאפון/טלפון</th>\r\n            </tr>\r\n          </thead>\r\n          <tbody>\r\n            <tr>\r\n              <ng-container *ngIf='loading'>\r\n                <p>...מעדכן</p>\r\n              </ng-container>\r\n              <ng-container *ngIf='!loading'>\r\n                <td><button type=\"button\" class=\"btn btn-primary\" (click)=\"onCustomerUpdated(updateCustomerTip)\">עדכן</button></td>\r\n              </ng-container>\r\n              <td><input type=\"number\" class=\"form-control\" style=\"max-width: 100px;\" [disabled]='tipped' #updateCustomerTip></td>\r\n              <td><button type=\"button\" class=\"btn \" [ngClass]=\"!tipped ? 'btn-success':'btn-disabled'\" (click)=\"onTipped()\">כן</button></td>\r\n              <td>{{ selectedCustomer.name }}</td>\r\n              <td>{{ selectedCustomer.phone }}</td>\r\n            </tr>\r\n          </tbody>\r\n        </table>\r\n    \r\n        <p style=\"color:red;\">{{ tipNotSellected }}</p>\r\n      </div>\r\n      <ng-container *ngIf='!currentNetStatus'>\r\n          <div  align=center>\r\n            <div class=\"loader\">\r\n            </div>\r\n          </div>\r\n          </ng-container>\r\n    </div>\r\n    <div *ngIf='!currentNetStatus' class=\"form-group\">\r\n        <p class=\"bg-danger text-danger\">אתה לא מחובר לאינטרנט אינך יכול להוסיף או לעדכן לקוחות במאגר </p>\r\n      </div>\r\n  </form>\r\n  \r\n</div>\r\n\r\n\r\n<hr>"
 
 /***/ }),
 
@@ -345,6 +310,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AddTipComponent", function() { return AddTipComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var src_app_user_services__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/app/user.services */ "./src/app/user.services.ts");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _customers_services__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../customers.services */ "./src/app/main-page/customers.services.ts");
+/* harmony import */ var _models_customer_model__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../models/customer.model */ "./src/app/main-page/models/customer.model.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var src_app_shared_data_storage_services__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/shared/data-storage.services */ "./src/app/shared/data-storage.services.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -356,30 +326,145 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
 
+
+
+
+
+
 var AddTipComponent = /** @class */ (function () {
-    function AddTipComponent(userServices) {
+    function AddTipComponent(userServices, customerServices, router, dataSotrageServices) {
         this.userServices = userServices;
-        this.tipSelected = 0;
+        this.customerServices = customerServices;
+        this.router = router;
+        this.dataSotrageServices = dataSotrageServices;
+        this.successMessage = '';
+        this.error = '';
+        this.loading = false;
+        this.tipNotSellected = '';
+        this.tipped = true;
+        this.currentNetStatus = true;
+        this.searchInput = '';
+        this.customerSelected = false;
+        this.customerExists = false;
     }
-    AddTipComponent.prototype.onAddTwenty = function () {
-        this.tipSelected = 20;
+    AddTipComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.currentUserPauch = this.userServices.getCurrentPauch();
+        this.tipStatusStyles = this.userServices.getTipStatusStyles();
+        // this.customerServices.setLocalStorage();
+        this.customerServices.customersUpdated.subscribe(function (customers) {
+            _this.allCustomers = customers;
+            // todo make it observable when it notices user is offline then it will get the localstorage
+            // todo if there is one.
+        });
+        this.dataSotrageServices.fetchCustomers();
+        this.customerServices.netStatus.subscribe(function (status) {
+            _this.currentNetStatus = status;
+        });
+        this.addCustomerTipForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormGroup"]({
+            'customerName': new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](null, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required),
+            'customerPhone': new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](null, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required),
+            'customerTip': new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](null, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required),
+            'customerTipped': new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](null),
+            'customerShit': new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](null),
+        });
     };
-    AddTipComponent.prototype.onAddTen = function () {
-        this.tipSelected = 10;
+    AddTipComponent.prototype.onTipped = function () {
+        this.tipped = !this.tipped;
     };
-    AddTipComponent.prototype.onAddFive = function () {
-        this.tipSelected = 5;
+    AddTipComponent.prototype.onAddExistingCustomer = function (index) {
+        this.selectedCustomerId = index;
+        this.selectedCustomer = this.allCustomers[index];
+        this.addCustomerTipForm.get('customerName').setValue(this.selectedCustomer.name);
+        this.addCustomerTipForm.get('customerPhone').setValue(this.selectedCustomer.phone);
+        this.customerSelected = true;
     };
-    AddTipComponent.prototype.onAddElse = function () {
-        this.tipSelected = 12;
+    AddTipComponent.prototype.onCustomerUpdated = function (tip) {
+        var _this = this;
+        this.loading = true;
+        if (this.tipped) { // it will fire if tipped is not sellected
+            // todo make it submit customer update without tip
+            var editableCustomer = this.selectedCustomer;
+            var currentCustomerTotalNotTipped = Number(editableCustomer.notTipped) + 1;
+            editableCustomer.notTipped = currentCustomerTotalNotTipped;
+            this.allCustomers[this.selectedCustomerId] = editableCustomer;
+            this.customerServices.updateCustomers(this.allCustomers);
+            this.dataSotrageServices.storeCustomers().
+                subscribe(function (response) {
+                _this.successMessage = '!עודכן בהצלחה';
+                setTimeout(function () {
+                    _this.router.navigate(['../']);
+                }, 1500);
+                // todo make the response create success message!
+            });
+        }
+        else { // it will fire if tipped is sellected
+            if (tip.value == '') {
+                // todo make it return error that tip is empty
+                this.tipNotSellected = 'You Need To Add Tip If You Choosed Customer Tipped!';
+                return;
+            }
+            else {
+                this.tipNotSellected = '';
+                var editableCustomer = this.selectedCustomer;
+                var currentCustomerTipped = Number(editableCustomer.tipped) + 1;
+                var currentCustomerTotal = Number(editableCustomer.totalTip) + Number(tip.value);
+                editableCustomer.tipped = currentCustomerTipped;
+                editableCustomer.totalTip = currentCustomerTotal;
+                this.allCustomers[this.selectedCustomerId] = editableCustomer;
+                this.customerServices.updateCustomers(this.allCustomers);
+                this.userServices.onAddIncome(Number(tip.value));
+                this.currentUserPauch = this.userServices.getCurrentPauch();
+                this.dataSotrageServices.storeCustomers().
+                    subscribe(function (response) {
+                    _this.successMessage = '!עודכן בהצלחה';
+                    setTimeout(function () {
+                        _this.router.navigate(['../']);
+                    }, 1500);
+                    // todo make the response create success message!
+                });
+                // todo make it submit the update
+            }
+        }
+        // let editableCustomer = this.selectedCustomer;
+        // console.log(editableCustomer.name);
+        // this.customerServices.addUpdateToCustomer();
+    };
+    AddTipComponent.prototype.onUnSelect = function () {
+        this.customerSelected = false;
+    };
+    AddTipComponent.prototype.onGetCustomerAvrg = function (customer) {
+        var totalTipTimes = parseInt(customer.tipped) + parseInt(customer.notTipped);
+        var result = parseInt(customer.totalTip) / totalTipTimes;
+        return result;
     };
     AddTipComponent.prototype.onAddIncome = function (income) {
         this.userServices.onAddIncome(income);
         this.currentUserPauch = this.userServices.getCurrentPauch();
     };
-    AddTipComponent.prototype.ngOnInit = function () {
-        this.currentUserPauch = this.userServices.getCurrentPauch();
-        this.tipStatusStyles = this.userServices.getTipStatusStyles();
+    AddTipComponent.prototype.onCustomerAdded = function () {
+        var _this = this;
+        // todo make the tip and customer add
+        if (!this.customerServices.checkIfCustomerExists(this.addCustomerTipForm.get('customerPhone').value)) {
+            this.customerServices
+                .addCustomer(new _models_customer_model__WEBPACK_IMPORTED_MODULE_4__["Customer"](this.addCustomerTipForm.get('customerName').value, this.addCustomerTipForm.get('customerPhone').value, !this.tipped ? '1' : '0', this.tipped ? '1' : '0', '23', this.addCustomerTipForm.get('customerTip').value > 0 ? this.addCustomerTipForm.get('customerTip').value : '0'));
+            alert('customer was added successfuly!');
+            this.allCustomers = this.customerServices.getAllCustomers();
+            this.dataSotrageServices.storeCustomers().
+                subscribe(function (response) {
+                console.log('Customer Was Added Successfuly');
+                _this.allCustomers = _this.customerServices.getAllCustomers();
+            });
+            this.userServices.onAddIncome(this.addCustomerTipForm.get('customerTip').value);
+            this.currentUserPauch = this.userServices.getCurrentPauch();
+            this.router.navigate(['../']);
+        }
+        else {
+            this.error = '!לקוח קיים כבר! בחר בהוסף ועדכן';
+        }
+    };
+    AddTipComponent.prototype.ngOnDestroy = function () {
+        console.log('ngOnDestroy Was Fired! In add-tip');
     };
     AddTipComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -387,7 +472,10 @@ var AddTipComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./add-tip.component.html */ "./src/app/main-page/add-tip/add-tip.component.html"),
             styles: [__webpack_require__(/*! ./add-tip.component.css */ "./src/app/main-page/add-tip/add-tip.component.css")]
         }),
-        __metadata("design:paramtypes", [src_app_user_services__WEBPACK_IMPORTED_MODULE_1__["UserServices"]])
+        __metadata("design:paramtypes", [src_app_user_services__WEBPACK_IMPORTED_MODULE_1__["UserServices"],
+            _customers_services__WEBPACK_IMPORTED_MODULE_3__["CustomerServices"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"],
+            src_app_shared_data_storage_services__WEBPACK_IMPORTED_MODULE_6__["DataStoreServices"]])
     ], AddTipComponent);
     return AddTipComponent;
 }());
@@ -414,7 +502,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div align=center class=\"form-group\">\n  <h1>הרמה היומית שלך</h1>\n  <p>({{ userServices.userCurrentLevel }})</p>\n</div>\n<hr>\n<div align=center class=\"form-group\">\n  <h2>בפאוץ שלך כרגע</h2>\n <p [ngStyle]=\"{'color':userServices.getCurrentPauchStyle()}\">({{ userCurrentPauch }})</p>\n</div>\n<hr>\n  <div align=center class=\"form-group\">\n    <h2>בדוק כמה יוצא לך לשעה עם הטיפים</h2>\n    <div class=\"form-group\">\n      <div class=\"form-group\">\n        <span>?כמה אתה עושה לשעה</span>\n      </div>\n      <div class=\"form-group\">\n      <input align=center  type=\"number\" class=\"form-control text-center\" [(ngModel)]=\"userHourPayed\">\n      </div>\n      <div class=\"form-group\">\n        <span>?כמה שעות אתה עובד</span>\n      </div>\n      <input align=center  type=\"number\" class=\"form-control text-center\" [(ngModel)]=\"userWorkHours\">\n    </div>\n    <p>אתה עושה לשעה</p>\n    <p *ngIf=\"userHourPayed && userWorkHours\">({{ getCurrentHourlyPayed() }})</p>\n    <p *ngIf=\"!userHourPayed || !userWorkHours\">(0)</p>\n    <div class=\"col-xs-12 form-group\" align=right>\n      <button type=\"button\" class=\"btn btn-primary form-control\" (click)=\"onResetPauch()\" [disabled]=\"userCurrentPauch == 0\">שמור פאוץ והתחל יום חדש</button>\n    </div>\n  </div>\n  <hr>"
+module.exports = "<div align=center class=\"form-group\">\r\n  <h1>הרמה שלך</h1>\r\n  <p>({{ userCurrentLevel }})</p>\r\n</div>\r\n<hr>\r\n<div align=center class=\"form-group\">\r\n  <h2>בפאוץ שלך כרגע</h2>\r\n <p [ngStyle]=\"{'color':userServices.getCurrentPauchStyle()}\">({{ userCurrentPauch }})</p>\r\n</div>\r\n<hr>\r\n\r\n<div class=\"form-group\" align=center>\r\n  <button class=\"btn btn-success\" routerLink=\"/add-tip\">הוסף טיפ ועדכן לקוח</button>\r\n</div>\r\n\r\n<hr>\r\n\r\n  <div align=center class=\"form-group\">\r\n    <h2>בדוק כמה יוצא לך לשעה</h2>\r\n    <div class=\"dropdown\" align=center>\r\n        <button class=\"btn btn-primary dropdown-toggle\" type=\"button\" id=\"dropdownMenu2\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\r\n          Dropdown\r\n        </button>\r\n        <div class=\"dropdown-menu\" align=center>\r\n            <div class=\"form-group\" align=center>\r\n                <div class=\"form-group\">\r\n                  <span>?כמה אתה עושה לשעה</span>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                <input align=center  type=\"number\" class=\"form-control text-center\" [(ngModel)]=\"userHourPayed\">\r\n                </div>\r\n                <div class=\"form-group\">\r\n                  <span>?כמה שעות אתה עובד</span>\r\n                </div>\r\n                <input align=center  type=\"number\" class=\"form-control text-center\" [(ngModel)]=\"userWorkHours\">\r\n              </div>\r\n             \r\n            </div>\r\n        </div>\r\n      </div> \r\n      <div class=\"form-group\" align=center>\r\n        <p>אתה עושה לשעה</p>\r\n        <p *ngIf=\"userHourPayed && userWorkHours\">({{ getCurrentHourlyPayed() }})</p>\r\n      </div>\r\n    \r\n  <hr>"
 
 /***/ }),
 
@@ -447,11 +535,21 @@ var CurrentStatusComponent = /** @class */ (function () {
     }
     CurrentStatusComponent.prototype.ngOnInit = function () {
         this.userCurrentPauch = this.userServices.getCurrentPauch();
-        this.userServices.getUserLevel();
+        this.getUserLevel();
     };
-    CurrentStatusComponent.prototype.onResetPauch = function () {
-        this.userServices.onStartNewPauch();
-        this.userCurrentPauch = this.userServices.getCurrentPauch();
+    CurrentStatusComponent.prototype.getUserLevel = function () {
+        if (this.userCurrentPauch < 20) {
+            this.userCurrentLevel = 'חור בפאוץ';
+        }
+        if (this.userCurrentPauch < 40) {
+            this.userCurrentLevel = 'מתחיל את היום';
+        }
+        if (this.userCurrentPauch > 60) {
+            this.userCurrentLevel = 'מתקדם';
+        }
+        if (this.userCurrentPauch > 100) {
+            this.userCurrentLevel = 'תותח';
+        }
     };
     CurrentStatusComponent.prototype.getCurrentHourlyPayed = function () {
         var totalDayHourlyPayed = this.userWorkHours * this.userHourPayed;
@@ -474,456 +572,6 @@ var CurrentStatusComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/main-page/customer-search/add-customer/add-customer.component.css":
-/*!***********************************************************************************!*\
-  !*** ./src/app/main-page/customer-search/add-customer/add-customer.component.css ***!
-  \***********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/* input.ng-invalid.ng-touched{\r\n  border: 1px solid red;\r\n} */\r\n.help-block{\r\n  color: red;\r\n}"
-
-/***/ }),
-
-/***/ "./src/app/main-page/customer-search/add-customer/add-customer.component.html":
-/*!************************************************************************************!*\
-  !*** ./src/app/main-page/customer-search/add-customer/add-customer.component.html ***!
-  \************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<button class=\"btn btn-primary\" type=\"button\" routerLink=\"../\">\n  חזרה\n  </button>\n  <form [formGroup]=\"addCustomerForm\" (ngSubmit)=\"onCustomerAdded()\">\n  <div class=\"form-group\">\n    <h1 align=\"right\">הוסף לקוח חדש</h1>\n    <hr />\n  </div>\n<div class=\"row\">\n  \n    <div class=\"col-xs-6 form-group\">\n        <label>רחוב\n          <input formControlName=\"customerStreet\" type=\"text\" id=\"\" class=\"form-control\">\n        </label>\n        <span *ngIf=\"!addCustomerForm.get('customerStreet').valid && addCustomerForm.get('customerStreet').touched\" class=\"help-block\">שדה רחוב חובה</span>\n      </div>    \n      <div class=\"col-xs-6 form-group\">\n          <label>שם\n            <input formControlName=\"customerName\" type=\"text\" id=\"\" class=\"form-control\">\n          </label>\n           <span *ngIf=\"addCustomerForm.get('customerName').errors && addCustomerForm.get('customerName').errors['required'] && addCustomerForm.get('customerName').touched\" class=\"help-block\">שדה שם חובה</span>\n  </div>\n  <div class=\"col-xs-6 form-group\">\n      <label>מספר דירה\n        <input formControlName=\"customerApartment\" type=\"number\" id=\"\" class=\"form-control\">\n      </label>\n      <span *ngIf=\"!addCustomerForm.get('customerApartment').valid && addCustomerForm.get('customerApartment').touched\" class=\"help-block\">שדה מספר דירה חובה</span>\n    </div>\n      <div class=\"col-xs-6 form-group\">\n          <label>מספר בית\n            <input formControlName=\"customerHouse\" type=\"number\" id=\"\" class=\"form-control\">\n          </label>\n          <span *ngIf=\"!addCustomerForm.get('customerHouse').valid && addCustomerForm.get('customerHouse').touched\" class=\"help-block\">שדה מספר בית חובה</span>\n        </div>\n        <div class=\"btn-group btn-toggle\" style=\"float:right; clear:both;\"> \n            <h2>הביא טיפ</h2>\n            <button type=\"button\" class=\"btn \"  [ngClass]=\"!tipped ? 'btn-success':'btn-disabled'\" (click)=\"onTipped()\">כן</button>\n            <button type=\"button\" class=\"btn \" [ngClass]=\"tipped ? 'btn-success':'btn-disabled'\" (click)=\"onTipped()\">לא</button>\n          </div>\n          \n          <div *ngIf=\"tipped\" class=\"btn-group btn-toggle\" style=\"float:right; clear:both;\"> \n            <h2>חרא לקוח</h2>\n            <button type=\"button\" class=\"btn\"  [ngClass]=\"!badCustomer ? 'btn-success':'btn-disabled'\" (click)=\"onBadCustomer()\">כן</button>\n            <button type=\"button\" class=\"btn\" [ngClass]=\"badCustomer ? 'btn-success':'btn-disabled'\" (click)=\"onBadCustomer()\">לא</button>\n          </div>\n          <div align=center class=\"col-xs-12 form-group\">\n            <button type=\"submit\" class=\"btn btn-primary\" [disabled]=\"!addCustomerForm.valid\">הוסף</button>\n            <span class=\"help-block\" *ngIf=\"onCheckExist()\">\n             *לקוח קיים במערכת\n            </span>\n            <hr>\n          </div>\n</div>\n</form>"
-
-/***/ }),
-
-/***/ "./src/app/main-page/customer-search/add-customer/add-customer.component.ts":
-/*!**********************************************************************************!*\
-  !*** ./src/app/main-page/customer-search/add-customer/add-customer.component.ts ***!
-  \**********************************************************************************/
-/*! exports provided: AddCustomerComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AddCustomerComponent", function() { return AddCustomerComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var src_app_navigation_services__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/app/navigation.services */ "./src/app/navigation.services.ts");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
-/* harmony import */ var _models_customer_model__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../models/customer.model */ "./src/app/main-page/models/customer.model.ts");
-/* harmony import */ var _customers_services__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../customers.services */ "./src/app/main-page/customers.services.ts");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-var AddCustomerComponent = /** @class */ (function () {
-    function AddCustomerComponent(navigationService, customerServices) {
-        this.navigationService = navigationService;
-        this.customerServices = customerServices;
-        this.tipped = false;
-        this.badCustomer = true;
-        this.allReadyExist = this.customerServices.getAllCustomers();
-    }
-    AddCustomerComponent.prototype.onBadCustomer = function () {
-        this.badCustomer = !this.badCustomer;
-    };
-    AddCustomerComponent.prototype.onTipped = function () {
-        this.tipped = !this.tipped;
-    };
-    AddCustomerComponent.prototype.ngOnInit = function () {
-        this.addCustomerForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormGroup"]({
-            'customerName': new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](null, [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, this.allReadyExistCustomerName.bind(this)]),
-            'customerStreet': new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](null, [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, this.allReadyExistCustomerStreet.bind(this)]),
-            'customerHouse': new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](null, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required),
-            'customerApartment': new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](null, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required),
-            'customerTipped': new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](null),
-            'customerShit': new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](null),
-        });
-    };
-    AddCustomerComponent.prototype.onCustomerAdded = function () {
-        this.customerServices
-            .addCustomer(new _models_customer_model__WEBPACK_IMPORTED_MODULE_3__["Customer"](this.addCustomerForm.get('customerName').value, this.addCustomerForm.get('customerStreet').value, this.addCustomerForm.get('customerHouse').value, this.addCustomerForm.get('customerApartment').value, !this.tipped ? '1' : '0', this.tipped ? '1' : '0', !this.badCustomer ? 'חרא לקוח' : 'לא דורג'));
-        alert('customer was added successfuly!');
-        this.addCustomerForm.reset();
-    };
-    AddCustomerComponent.prototype.onCheckExist = function () {
-        if (this.addCustomerForm.controls['customerName'].errors &&
-            this.addCustomerForm.controls['customerName'].errors['customerExists1'] &&
-            this.addCustomerForm.controls['customerStreet'].errors &&
-            this.addCustomerForm.controls['customerStreet'].errors['customerExists2']) {
-            return true;
-        }
-        return false;
-    };
-    AddCustomerComponent.prototype.allReadyExistCustomerName = function (control) {
-        if (this.allReadyExist.map(function (e) {
-            return e.name;
-        }).indexOf(control.value) !== -1) {
-            return { 'customerExists1': true };
-        }
-        return null;
-    };
-    AddCustomerComponent.prototype.allReadyExistCustomerStreet = function (control) {
-        if (this.allReadyExist.map(function (e) {
-            return e.street;
-        }).indexOf(control.value) !== -1) {
-            return { 'customerExists2': true };
-        }
-        return null;
-    };
-    AddCustomerComponent = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'app-add-customer',
-            template: __webpack_require__(/*! ./add-customer.component.html */ "./src/app/main-page/customer-search/add-customer/add-customer.component.html"),
-            styles: [__webpack_require__(/*! ./add-customer.component.css */ "./src/app/main-page/customer-search/add-customer/add-customer.component.css")]
-        }),
-        __metadata("design:paramtypes", [src_app_navigation_services__WEBPACK_IMPORTED_MODULE_1__["NavigationServices"],
-            _customers_services__WEBPACK_IMPORTED_MODULE_4__["CustomerServices"]])
-    ], AddCustomerComponent);
-    return AddCustomerComponent;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/main-page/customer-search/all-customers/all-customers.component.css":
-/*!*************************************************************************************!*\
-  !*** ./src/app/main-page/customer-search/all-customers/all-customers.component.css ***!
-  \*************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ""
-
-/***/ }),
-
-/***/ "./src/app/main-page/customer-search/all-customers/all-customers.component.html":
-/*!**************************************************************************************!*\
-  !*** ./src/app/main-page/customer-search/all-customers/all-customers.component.html ***!
-  \**************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"row\">\n    <div class=\"col-xs-12 form-group\">\n            <button class=\"btn btn-primary\" type=\"button\" (click)=\"navigationService.onNavigateForward('add-customer')\">\n              הוסף לקוח חדש\n            </button>\n      <h1 align=\"right\">חיפוש במאגר הלקוחות</h1>\n      <hr>\n    </div>\n    <div align=right class=\"form-group\">\n        <label>שם\n          <input type=\"text\" id=\"\" class=\"form-control\" [(ngModel)]=\"customerNameSearch\">\n        </label>\n      </div>\n    </div>\n    <div align=right class=\"form-group\">\n      <label>רחוב\n        <input  type=\"text\" id=\"\" class=\"form-control\" [(ngModel)]=\"customerStreetSearch\">\n      </label>\n    </div>\n    <hr>\n    <div>\n        <table class=\"table table-dark\">\n            <thead>\n              <tr>\n                <th scope=\"col\">לא הביא</th>\n                <th scope=\"col\">הביא טיפ</th>\n                <th scope=\"col\">דירוג</th>\n                <th scope=\"col\">דירה</th>\n                <th scope=\"col\">בית</th>\n                <th scope=\"col\">רחוב</th>\n                <th scope=\"col\">שם</th>\n              </tr>\n            </thead>\n            <tbody *ngFor=\"let customer of customers\">\n              <tr *ngIf=\"\n              customer.name.match(customerNameSearch)  \n              && customer.street.match(customerStreetSearch)\n               && customerNameSearch != ''\">\n                <td>{{ customer.notTipped }}</td>\n                <td>{{ customer.tipped }}</td>\n                <td>{{ customer.rating }}</td>\n                <td>{{ customer.apartment }}</td>\n                <td>{{ customer.house }}</td>\n                <td>{{ customer.street }}</td>\n                <td >{{ customer.name }}</td>\n              </tr>\n            </tbody>\n          </table>\n    \n    \n    \n      <!-- <div class=\"col-xs-4\" *ngIf=\"customer.name.match(customerSearch) && !customerSearch == '' \">\n          <h2>Good Customers</h2>\n          <p >\n              {{ customer.name }}\n          </p>\n        </div> -->\n      </div>"
-
-/***/ }),
-
-/***/ "./src/app/main-page/customer-search/all-customers/all-customers.component.ts":
-/*!************************************************************************************!*\
-  !*** ./src/app/main-page/customer-search/all-customers/all-customers.component.ts ***!
-  \************************************************************************************/
-/*! exports provided: AllCustomersComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AllCustomersComponent", function() { return AllCustomersComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _customers_services__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../customers.services */ "./src/app/main-page/customers.services.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var src_app_navigation_services__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/navigation.services */ "./src/app/navigation.services.ts");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-var AllCustomersComponent = /** @class */ (function () {
-    function AllCustomersComponent(customerServices, router, navigationService) {
-        this.customerServices = customerServices;
-        this.router = router;
-        this.navigationService = navigationService;
-        this.customerNameSearch = '';
-        this.customerStreetSearch = '';
-    }
-    AllCustomersComponent.prototype.ngOnInit = function () {
-        this.customers = this.customerServices.getAllCustomers();
-    };
-    AllCustomersComponent = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'app-all-customers',
-            template: __webpack_require__(/*! ./all-customers.component.html */ "./src/app/main-page/customer-search/all-customers/all-customers.component.html"),
-            styles: [__webpack_require__(/*! ./all-customers.component.css */ "./src/app/main-page/customer-search/all-customers/all-customers.component.css")]
-        }),
-        __metadata("design:paramtypes", [_customers_services__WEBPACK_IMPORTED_MODULE_1__["CustomerServices"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"],
-            src_app_navigation_services__WEBPACK_IMPORTED_MODULE_3__["NavigationServices"]])
-    ], AllCustomersComponent);
-    return AllCustomersComponent;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/main-page/customer-search/bad-customers/bad-customers.component.css":
-/*!*************************************************************************************!*\
-  !*** ./src/app/main-page/customer-search/bad-customers/bad-customers.component.css ***!
-  \*************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ""
-
-/***/ }),
-
-/***/ "./src/app/main-page/customer-search/bad-customers/bad-customers.component.html":
-/*!**************************************************************************************!*\
-  !*** ./src/app/main-page/customer-search/bad-customers/bad-customers.component.html ***!
-  \**************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<p>\n  bad-customers works!\n</p>\n"
-
-/***/ }),
-
-/***/ "./src/app/main-page/customer-search/bad-customers/bad-customers.component.ts":
-/*!************************************************************************************!*\
-  !*** ./src/app/main-page/customer-search/bad-customers/bad-customers.component.ts ***!
-  \************************************************************************************/
-/*! exports provided: BadCustomersComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BadCustomersComponent", function() { return BadCustomersComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-var BadCustomersComponent = /** @class */ (function () {
-    function BadCustomersComponent() {
-    }
-    BadCustomersComponent.prototype.ngOnInit = function () {
-    };
-    BadCustomersComponent = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'app-bad-customers',
-            template: __webpack_require__(/*! ./bad-customers.component.html */ "./src/app/main-page/customer-search/bad-customers/bad-customers.component.html"),
-            styles: [__webpack_require__(/*! ./bad-customers.component.css */ "./src/app/main-page/customer-search/bad-customers/bad-customers.component.css")]
-        }),
-        __metadata("design:paramtypes", [])
-    ], BadCustomersComponent);
-    return BadCustomersComponent;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/main-page/customer-search/customer-search.component.css":
-/*!*************************************************************************!*\
-  !*** ./src/app/main-page/customer-search/customer-search.component.css ***!
-  \*************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ""
-
-/***/ }),
-
-/***/ "./src/app/main-page/customer-search/customer-search.component.html":
-/*!**************************************************************************!*\
-  !*** ./src/app/main-page/customer-search/customer-search.component.html ***!
-  \**************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<router-outlet></router-outlet>\n\n\n\n\n\n\n  \n  \n    \n\n\n"
-
-/***/ }),
-
-/***/ "./src/app/main-page/customer-search/customer-search.component.ts":
-/*!************************************************************************!*\
-  !*** ./src/app/main-page/customer-search/customer-search.component.ts ***!
-  \************************************************************************/
-/*! exports provided: CustomerSearchComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CustomerSearchComponent", function() { return CustomerSearchComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-var CustomerSearchComponent = /** @class */ (function () {
-    function CustomerSearchComponent() {
-    }
-    CustomerSearchComponent.prototype.ngOnInit = function () {
-    };
-    CustomerSearchComponent = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'app-customer-search',
-            template: __webpack_require__(/*! ./customer-search.component.html */ "./src/app/main-page/customer-search/customer-search.component.html"),
-            styles: [__webpack_require__(/*! ./customer-search.component.css */ "./src/app/main-page/customer-search/customer-search.component.css")]
-        }),
-        __metadata("design:paramtypes", [])
-    ], CustomerSearchComponent);
-    return CustomerSearchComponent;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/main-page/customer-search/good-customers/good-customers.component.css":
-/*!***************************************************************************************!*\
-  !*** ./src/app/main-page/customer-search/good-customers/good-customers.component.css ***!
-  \***************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ""
-
-/***/ }),
-
-/***/ "./src/app/main-page/customer-search/good-customers/good-customers.component.html":
-/*!****************************************************************************************!*\
-  !*** ./src/app/main-page/customer-search/good-customers/good-customers.component.html ***!
-  \****************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<p>\n  good-customers works!\n</p>\n"
-
-/***/ }),
-
-/***/ "./src/app/main-page/customer-search/good-customers/good-customers.component.ts":
-/*!**************************************************************************************!*\
-  !*** ./src/app/main-page/customer-search/good-customers/good-customers.component.ts ***!
-  \**************************************************************************************/
-/*! exports provided: GoodCustomersComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GoodCustomersComponent", function() { return GoodCustomersComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-var GoodCustomersComponent = /** @class */ (function () {
-    function GoodCustomersComponent() {
-    }
-    GoodCustomersComponent.prototype.ngOnInit = function () {
-    };
-    GoodCustomersComponent = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'app-good-customers',
-            template: __webpack_require__(/*! ./good-customers.component.html */ "./src/app/main-page/customer-search/good-customers/good-customers.component.html"),
-            styles: [__webpack_require__(/*! ./good-customers.component.css */ "./src/app/main-page/customer-search/good-customers/good-customers.component.css")]
-        }),
-        __metadata("design:paramtypes", [])
-    ], GoodCustomersComponent);
-    return GoodCustomersComponent;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/main-page/customer-search/unknown-customers/unknown-customers.component.css":
-/*!*********************************************************************************************!*\
-  !*** ./src/app/main-page/customer-search/unknown-customers/unknown-customers.component.css ***!
-  \*********************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ""
-
-/***/ }),
-
-/***/ "./src/app/main-page/customer-search/unknown-customers/unknown-customers.component.html":
-/*!**********************************************************************************************!*\
-  !*** ./src/app/main-page/customer-search/unknown-customers/unknown-customers.component.html ***!
-  \**********************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<p>\n  unknown-customers works!\n</p>\n"
-
-/***/ }),
-
-/***/ "./src/app/main-page/customer-search/unknown-customers/unknown-customers.component.ts":
-/*!********************************************************************************************!*\
-  !*** ./src/app/main-page/customer-search/unknown-customers/unknown-customers.component.ts ***!
-  \********************************************************************************************/
-/*! exports provided: UnknownCustomersComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UnknownCustomersComponent", function() { return UnknownCustomersComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-var UnknownCustomersComponent = /** @class */ (function () {
-    function UnknownCustomersComponent() {
-    }
-    UnknownCustomersComponent.prototype.ngOnInit = function () {
-    };
-    UnknownCustomersComponent = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'app-unknown-customers',
-            template: __webpack_require__(/*! ./unknown-customers.component.html */ "./src/app/main-page/customer-search/unknown-customers/unknown-customers.component.html"),
-            styles: [__webpack_require__(/*! ./unknown-customers.component.css */ "./src/app/main-page/customer-search/unknown-customers/unknown-customers.component.css")]
-        }),
-        __metadata("design:paramtypes", [])
-    ], UnknownCustomersComponent);
-    return UnknownCustomersComponent;
-}());
-
-
-
-/***/ }),
-
 /***/ "./src/app/main-page/customers.services.ts":
 /*!*************************************************!*\
   !*** ./src/app/main-page/customers.services.ts ***!
@@ -934,20 +582,64 @@ var UnknownCustomersComponent = /** @class */ (function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CustomerServices", function() { return CustomerServices; });
+/* harmony import */ var _models_customer_model__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./models/customer.model */ "./src/app/main-page/models/customer.model.ts");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+
+
 var CustomerServices = /** @class */ (function () {
     function CustomerServices() {
-        this.goodCustomers = [];
+        this.netStatus = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
+        this.customersUpdated = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
+        this.allCustomers = [
+            new _models_customer_model__WEBPACK_IMPORTED_MODULE_0__["Customer"]('אריאל', '0544443334', '2', '2', '20', '20'),
+            new _models_customer_model__WEBPACK_IMPORTED_MODULE_0__["Customer"]('הרצל', '0544443335', '4', '0', '2', '344'),
+            new _models_customer_model__WEBPACK_IMPORTED_MODULE_0__["Customer"]('אלי', '0544543335', '5', '0', '20', '344'),
+            new _models_customer_model__WEBPACK_IMPORTED_MODULE_0__["Customer"]('שמחה', '0544443454', '2', '0', '4', '344'),
+            new _models_customer_model__WEBPACK_IMPORTED_MODULE_0__["Customer"]('רעות', '0524247646', '2', '0', '16', '344'),
+            new _models_customer_model__WEBPACK_IMPORTED_MODULE_0__["Customer"]('שני', '0574537459', '2', '0', '16', '344'),
+            new _models_customer_model__WEBPACK_IMPORTED_MODULE_0__["Customer"]('איציק', '0524234560', '2', '0', '16', '344'),
+            new _models_customer_model__WEBPACK_IMPORTED_MODULE_0__["Customer"]('שמחה', '0524273453', '2', '0', '16', '344'),
+            new _models_customer_model__WEBPACK_IMPORTED_MODULE_0__["Customer"]('חמד', '0524243354', '0', '-12', '0', '344'),
+        ];
     }
     CustomerServices.prototype.getAllCustomers = function () {
-        if (localStorage.getItem('customers')) {
-            return JSON.parse(localStorage.getItem('customers'));
+        // todo make it posible to save data when offline
+        // if (localStorage.getItem('customers')) {
+        //   return JSON.parse(localStorage.getItem('customers'));
+        // }
+        return this.allCustomers;
+    };
+    CustomerServices.prototype.checkIfCustomerExists = function (phoneNum) {
+        for (var _i = 0, _a = this.allCustomers; _i < _a.length; _i++) {
+            var customer = _a[_i];
+            if (customer.phone == phoneNum) {
+                return true;
+            }
         }
-        return this.goodCustomers;
+        return false;
     };
     CustomerServices.prototype.addCustomer = function (customer) {
-        this.goodCustomers.push(customer);
-        var allCustomers = JSON.stringify(this.goodCustomers);
-        localStorage.setItem('customers', allCustomers);
+        this.allCustomers.push(customer);
+    };
+    CustomerServices.prototype.setCustomers = function (updatedCustomers) {
+        this.allCustomers = updatedCustomers;
+        this.customersUpdated.next(this.allCustomers);
+    };
+    CustomerServices.prototype.setNetWorkStatus = function (status) {
+        this.netStatus.next(status);
+    };
+    CustomerServices.prototype.getNetWorkStatus = function () {
+        return this.netStatus;
+    };
+    CustomerServices.prototype.setLocalStorage = function () {
+        // for offline couses
+        var currentCustomers = JSON.stringify(this.allCustomers);
+        localStorage.setItem('customers', currentCustomers);
+    };
+    CustomerServices.prototype.updateCustomers = function (customers) {
+        this.allCustomers = customers;
+    };
+    CustomerServices.prototype.addUpdateToCustomer = function (customer) {
     };
     return CustomerServices;
 }());
@@ -974,7 +666,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n<router-outlet></router-outlet>\n"
+module.exports = "\r\n<router-outlet></router-outlet>\r\n"
 
 /***/ }),
 
@@ -1030,128 +722,16 @@ var MainPageComponent = /** @class */ (function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Customer", function() { return Customer; });
 var Customer = /** @class */ (function () {
-    function Customer(name, street, house, apartment, tipped, notTipped, rating) {
+    // {name: 'ירוחם', street: 'הרב ברלין', house: 12, apartment: 4, tipped: 3, notTipped: 0},
+    function Customer(name, phone, tipped, notTipped, averageTip, totalTip) {
         this.name = name;
-        this.street = street;
-        this.house = house;
-        this.apartment = apartment;
+        this.phone = phone;
         this.tipped = tipped;
         this.notTipped = notTipped;
-        this.rating = rating;
+        this.averageTip = averageTip;
+        this.totalTip = totalTip;
     }
     return Customer;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/main-page/models/pauch.model.ts":
-/*!*************************************************!*\
-  !*** ./src/app/main-page/models/pauch.model.ts ***!
-  \*************************************************/
-/*! exports provided: Pauch */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Pauch", function() { return Pauch; });
-var Pauch = /** @class */ (function () {
-    function Pauch(amount, level, date) {
-        this.amount = amount;
-        this.level = level;
-        this.date = date;
-    }
-    return Pauch;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/main-page/pauch-history/pauch-history.component.css":
-/*!*********************************************************************!*\
-  !*** ./src/app/main-page/pauch-history/pauch-history.component.css ***!
-  \*********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "#total-income-table p {\r\n  color: green;\r\n}"
-
-/***/ }),
-
-/***/ "./src/app/main-page/pauch-history/pauch-history.component.html":
-/*!**********************************************************************!*\
-  !*** ./src/app/main-page/pauch-history/pauch-history.component.html ***!
-  \**********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"form-group\">\n  <h1 align=center>היסטורית הפאוצ'ים</h1>\n</div>\n<hr>\n<table class=\"table\">\n  <thead>\n    <tr>\n      <th>כסף שהיה לך בפאוץ</th>\n      <th>הרמה היומית שהייתה</th>\n      <th>תאריך שמירה</th>\n    </tr>\n  </thead>\n  <tbody *ngFor=\"let pauch of pauchHistory;let i = index\">  \n    <tr class=\"success\">\n      <td>{{ pauch.amount }}</td>\n      <td>{{ pauch.level }}</td>\n      <td>{{ pauch.date }}</td>\n      <td><button class=\"btn btn-danger\" (click)=\"onRemove(i)\">מחק</button></td>\n    </tr>\n  </tbody>\n</table>\n<div id=\"total-income-table\">\n  <p align=right>{{ totalTips }}:סהכ\"ל הכנסה מהטיפים</p>\n  <p align=right>{{ avrgTipsInDay }}:ממוצע טיפים ליום לפי מספר הפאוצ'ים</p>\n</div>"
-
-/***/ }),
-
-/***/ "./src/app/main-page/pauch-history/pauch-history.component.ts":
-/*!********************************************************************!*\
-  !*** ./src/app/main-page/pauch-history/pauch-history.component.ts ***!
-  \********************************************************************/
-/*! exports provided: PauchHistoryComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PauchHistoryComponent", function() { return PauchHistoryComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var src_app_user_services__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/app/user.services */ "./src/app/user.services.ts");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-var PauchHistoryComponent = /** @class */ (function () {
-    function PauchHistoryComponent(userServices) {
-        this.userServices = userServices;
-        this.totalTips = 0;
-        this.avrgTipsInDay = 0;
-    }
-    PauchHistoryComponent.prototype.ngOnInit = function () {
-        this.pauchHistory = this.userServices.getPauchHistory();
-        this.getTotalInfo();
-    };
-    PauchHistoryComponent.prototype.getTotalInfo = function () {
-        for (var i = 0; i < this.pauchHistory.length; i++) {
-            this.totalTips += Number(this.pauchHistory[i].amount);
-        }
-        if (this.pauchHistory.length > 0) {
-            this.avrgTipsInDay = this.totalTips / this.pauchHistory.length;
-            // todo make it work
-            // this.avrgTipsInDay = this.avrgTipsInDay.toFixed(2);
-        }
-        else {
-            this.totalTips = this.userServices.getCurrentPauch();
-            this.avrgTipsInDay = 0;
-        }
-    };
-    PauchHistoryComponent.prototype.onRemove = function (pauchIndex) {
-        this.userServices.onRemoveFromPauchHistory(pauchIndex);
-        this.pauchHistory = this.userServices.getPauchHistory();
-        this.getTotalInfo();
-    };
-    PauchHistoryComponent = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'app-pauch-history',
-            template: __webpack_require__(/*! ./pauch-history.component.html */ "./src/app/main-page/pauch-history/pauch-history.component.html"),
-            styles: [__webpack_require__(/*! ./pauch-history.component.css */ "./src/app/main-page/pauch-history/pauch-history.component.css")]
-        }),
-        __metadata("design:paramtypes", [src_app_user_services__WEBPACK_IMPORTED_MODULE_1__["UserServices"]])
-    ], PauchHistoryComponent);
-    return PauchHistoryComponent;
 }());
 
 
@@ -1325,6 +905,69 @@ var NotFoundPageComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/shared/data-storage.services.ts":
+/*!*************************************************!*\
+  !*** ./src/app/shared/data-storage.services.ts ***!
+  \*************************************************/
+/*! exports provided: DataStoreServices */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DataStoreServices", function() { return DataStoreServices; });
+/* harmony import */ var _angular_http__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/http */ "./node_modules/@angular/http/fesm5/http.js");
+/* harmony import */ var _main_page_customers_services__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../main-page/customers.services */ "./src/app/main-page/customers.services.ts");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var DataStoreServices = /** @class */ (function () {
+    function DataStoreServices(http, customerServices) {
+        this.http = http;
+        this.customerServices = customerServices;
+    }
+    DataStoreServices.prototype.storeCustomers = function () {
+        return this.http.put('https://jerusalem-runners.firebaseio.com/customers.json', this.customerServices.
+            getAllCustomers());
+    };
+    DataStoreServices.prototype.fetchCustomers = function () {
+        var _this = this;
+        return this.http.get('https://jerusalem-runners.firebaseio.com/customers.json').
+            subscribe(function (response) {
+            if (response.json() == null) {
+                var customers = [];
+                _this.customerServices.setCustomers(customers);
+            }
+            else {
+                var customers = response.json();
+                _this.customerServices.setCustomers(customers);
+            }
+            _this.customerServices.setNetWorkStatus(true);
+        }, function (error) {
+            console.log('You Are Offline!' + error);
+            _this.customerServices.setNetWorkStatus(false);
+        });
+    };
+    DataStoreServices = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Injectable"])(),
+        __metadata("design:paramtypes", [_angular_http__WEBPACK_IMPORTED_MODULE_0__["Http"], _main_page_customers_services__WEBPACK_IMPORTED_MODULE_1__["CustomerServices"]])
+    ], DataStoreServices);
+    return DataStoreServices;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/user.services.ts":
 /*!**********************************!*\
   !*** ./src/app/user.services.ts ***!
@@ -1335,28 +978,11 @@ var NotFoundPageComponent = /** @class */ (function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UserServices", function() { return UserServices; });
-/* harmony import */ var _main_page_models_pauch_model__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./main-page/models/pauch.model */ "./src/app/main-page/models/pauch.model.ts");
-
 var UserServices = /** @class */ (function () {
     function UserServices() {
         this.currentPauch = 0;
-        this.pauchHistory = [];
         this.tipStatusStyles = ['red', 'orange', 'green'];
     }
-    UserServices.prototype.getUserLevel = function () {
-        if (this.currentPauch < 20) {
-            this.userCurrentLevel = 'חור בפאוץ';
-        }
-        if (this.currentPauch > 40) {
-            this.userCurrentLevel = 'מתחיל את היום';
-        }
-        if (this.currentPauch > 60) {
-            this.userCurrentLevel = 'מתקדם';
-        }
-        if (this.currentPauch > 100) {
-            this.userCurrentLevel = 'תותח';
-        }
-    };
     UserServices.prototype.getCurrentPauchStyle = function () {
         if (this.currentPauch < 40) {
             return this.tipStatusStyles[0];
@@ -1381,50 +1007,10 @@ var UserServices = /** @class */ (function () {
         return this.tipStatusStyles;
     };
     UserServices.prototype.onAddIncome = function (income) {
-        this.currentPauch += income;
-        localStorage.setItem('pauch', this.currentPauch.toString());
-    };
-    UserServices.prototype.getIfMatch = function (date) {
-        var currentDate = date;
-        var match = this.pauchHistory.map(function (e) {
-            if (e.date.match(currentDate)) {
-                return true;
-            }
-            else {
-                return false;
-            }
-        });
-        return match;
-    };
-    UserServices.prototype.onStartNewPauch = function () {
-        var date = new Date();
-        var currentDate = date.getDate() + "." + (date.getMonth() + 1) + "." + date.getFullYear();
-        this.pauchHistory = this.getPauchHistory();
-        var match = this.getIfMatch(currentDate);
-        // todo make it work
-        // if (match.map((e) => e === true ? true : false )) {
-        this.pauchHistory.push(new _main_page_models_pauch_model__WEBPACK_IMPORTED_MODULE_0__["Pauch"](this.currentPauch, this.userCurrentLevel, currentDate));
-        console.log(this.pauchHistory);
-        localStorage.setItem('pauchHistory', JSON.stringify(this.pauchHistory));
-        localStorage.setItem('pauch', '0');
-        alert('!הפאוץ נשמר בהצלחה');
-        // } else {
-        //   alert('כבר שמרת פאוץ להיום מחק פאוץ קיים כדי להוסיף פאוץ להיום');
-        // }
-    };
-    UserServices.prototype.getPauchHistory = function () {
-        // return this.pauchHistory;
-        if (localStorage.getItem('pauchHistory')) {
-            var pauchHistory = localStorage.getItem('pauchHistory');
-            return JSON.parse(pauchHistory);
+        if (income > 0) {
+            this.currentPauch += income;
+            localStorage.setItem('pauch', this.currentPauch.toString());
         }
-        else {
-            return this.pauchHistory;
-        }
-    };
-    UserServices.prototype.onRemoveFromPauchHistory = function (pauchIndex) {
-        this.pauchHistory.splice(pauchIndex, 1);
-        localStorage.setItem('pauchHistory', JSON.stringify(this.pauchHistory));
     };
     UserServices.prototype.ngOnInit = function () {
     };
