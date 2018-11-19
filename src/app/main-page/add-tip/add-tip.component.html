@@ -40,7 +40,7 @@
 
       <div *ngIf='!customerSelected' class="col-xs-6 form-group">
         <label>פלאפון/טלפון
-          <input formControlName="customerPhone" type="text" id="" class="form-control" [(ngModel)]="searchInput">
+          <input formControlName="customerPhone" type="number" id="" class="form-control" [(ngModel)]="searchInput">
         </label>
         <span *ngIf="!addCustomerTipForm.get('customerPhone').valid && addCustomerTipForm.get('customerPhone').touched"
           class="help-block">!שדה חובה</span>
