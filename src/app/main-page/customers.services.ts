@@ -61,7 +61,6 @@ export class CustomerServices {
 
   updateCustomers(customers: Customer[]) {
     this.allCustomers = customers;
-    
   }
 
   addUpdateToCustomer(customer: Customer) {
