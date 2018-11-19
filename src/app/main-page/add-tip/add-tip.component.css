@@ -15,3 +15,8 @@ input.ng-invalid.ng-touched {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+#tableWrap {
+  max-height: 300px !important;
+
+  color:red;
+}

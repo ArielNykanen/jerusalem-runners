@@ -40,7 +40,7 @@
 
       <div *ngIf='!customerSelected' class="col-xs-6 form-group">
         <label>פלאפון/טלפון
-          <input formControlName="customerPhone" type="number" id="" class="form-control" [(ngModel)]="searchInput">
+          <input formControlName="customerPhone" type="text" id="" class="form-control" [(ngModel)]="searchInput">
         </label>
         <span *ngIf="!addCustomerTipForm.get('customerPhone').valid && addCustomerTipForm.get('customerPhone').touched"
           class="help-block">!שדה חובה</span>
@@ -55,9 +55,9 @@
       <ng-container *ngIf="!customerSelected">
        
         <div *ngIf='currentNetStatus' class="col-xs-12 form-group" align=center>
-            <button data-toggle="collapse" data-target="#customerDetails" type="button" class="btn btn-primary form-control" [disabled]="addCustomerTipForm.get('customerPhone').value.length < 9 || addCustomerTipForm.get('customerPhone').value.length > 10">הוסף חדש</button>
+            <button data-toggle="collapse" data-target="#customerDetails" type="button" class="btn btn-primary form-control" >הוסף חדש</button>
           <div id="customerDetails" class="collapse">
-              <ng-container *ngIf="addCustomerTipForm.get('customerPhone').value.length > 8 && addCustomerTipForm.get('customerPhone').value.length < 11">
+              <ng-container>
             <div class="form-group btn-group btn-toggle" style="float:right; clear:both;">
             <h2>הביא טיפ</h2>
             <button type="button" class="btn " [ngClass]="!tipped ? 'btn-success':'btn-disabled'" (click)="onTipped()">כן</button>
@@ -72,7 +72,13 @@
             
             </ng-container>
             <div class="col-xs-12 form-group" align=center>
-              <button class='btn btn-success'>הוסף לקוח למערכת</button>
+              <button class='btn btn-success' [disabled]="addCustomerTipForm.get('customerName').invalid || addCustomerTipForm.get('customerPhone').value.length < 9 ||
+               addCustomerTipForm.get('customerPhone').value.length > 10">הוסף לקוח למערכת</button>
+              <div *ngIf="addCustomerTipForm.get('customerName').invalid" class="form-group">
+               <p style="color:red;">!לא הוספת שם</p>
+              </div>
+             
+             
              </div>
           </ng-container>
 
@@ -97,7 +103,7 @@
           </thead>
           <tbody>
             <ng-container *ngFor="let customer of allCustomers; let i = index">
-              <ng-container *ngIf="customer.phone.match(searchInput) && searchInput.length > 4">
+              <ng-container *ngIf="customer.phone.match(searchInput) && searchInput > 100">
                 <tr>
                   <!-- <td><input name="checkbox" type='radio' class="btn btn-primary" (click)="onAddExistingCustomer(customer)"></td> -->
                   <td><button type="button" class="btn btn-primary" (click)="onAddExistingCustomer(i)" [disabled]='!currentNetStatus'>בחר</button></td>

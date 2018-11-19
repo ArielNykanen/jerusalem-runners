@@ -8,6 +8,7 @@ import { NavigationServices } from 'src/app/navigation.services';
 import { RouterModule, Routes, Router } from '@angular/router';
 import { DataStoreServices } from 'src/app/shared/data-storage.services';
 import { Response } from '@angular/http';
+import { stringify } from 'querystring';
 
 @Component({
   selector: 'app-add-tip',
@@ -24,7 +25,7 @@ export class AddTipComponent implements OnInit, OnDestroy {
   tipped = true;
   currentNetStatus: Boolean = true;
   currentUserPauch;
-  searchInput = '';
+  searchInput;
   customerSelected = false;
   selectedCustomer;
   selectedCustomerId;
@@ -64,6 +65,7 @@ export class AddTipComponent implements OnInit, OnDestroy {
     this.tipped = !this.tipped;
   }
 
+  
 
   onAddExistingCustomer(index: number) {
     this.selectedCustomerId = index;
@@ -75,7 +77,7 @@ export class AddTipComponent implements OnInit, OnDestroy {
 
   onCustomerUpdated(tip) {
     this.loading = true;
-    if (this.tipped) { // it will fire if tipped is not sellected
+    if (this.tipped && confirm('?אתה בטוח שאתה רוצה לעדכן שהלקוח לא הביא טיפ')) { // it will fire if tipped is not sellected
       // todo make it submit customer update without tip
       let editableCustomer = this.selectedCustomer;
       const currentCustomerTotalNotTipped =  Number(editableCustomer.notTipped) + 1;
@@ -92,8 +94,12 @@ export class AddTipComponent implements OnInit, OnDestroy {
          // todo make the response create success message!
          }
         );
-    } else { // it will fire if tipped is sellected
-
+    } else {
+    this.loading = false;
+    }
+    // it will fire if tipped is sellected
+    if (!this.tipped && confirm('אתה בטוח שאתה רוצה לעדכן שהלקוח הביא לך טיפ של' + tip.value)) {
+      this.loading = true;
       if (tip.value == '') {
         // todo make it return error that tip is empty
         this.tipNotSellected = 'You Need To Add Tip If You Choosed Customer Tipped!';
@@ -112,20 +118,21 @@ export class AddTipComponent implements OnInit, OnDestroy {
         this.dataSotrageServices.storeCustomers().
         subscribe(
           (response: Response) => {
-           this.successMessage = '!עודכן בהצלחה';
-           setTimeout(() => {
-             this.router.navigate(['../']);
-           }, 1500);
-           // todo make the response create success message!
-           }
+            this.successMessage = '!עודכן בהצלחה';
+            setTimeout(() => {
+              this.router.navigate(['../']);
+            }, 1500);
+            // todo make the response create success message!
+          }
           );
-        // todo make it submit the update
+        }
+          // todo make it submit the update
+        }
       }
-    }
-    // let editableCustomer = this.selectedCustomer;
-    // console.log(editableCustomer.name);
+      // let editableCustomer = this.selectedCustomer;
+      // console.log(editableCustomer.name);
     // this.customerServices.addUpdateToCustomer();
-  }
+  
 
   onUnSelect() {
     this.customerSelected = false;
@@ -148,7 +155,7 @@ export class AddTipComponent implements OnInit, OnDestroy {
     this.customerServices
     .addCustomer(new Customer(
       this.addCustomerTipForm.get('customerName').value,
-      this.addCustomerTipForm.get('customerPhone').value,
+      this.addCustomerTipForm.get('customerPhone').value.toString(),
       !this.tipped ? '1' : '0', this.tipped ? '1' : '0',
       '23',
       this.addCustomerTipForm.get('customerTip').value > 0 ? this.addCustomerTipForm.get('customerTip').value : '0'
