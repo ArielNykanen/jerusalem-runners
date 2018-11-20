@@ -23,6 +23,7 @@ export class AddTipComponent implements OnInit, OnDestroy {
   currentNetStatus: Boolean = true;
   currentUserPauch;
   searchInput = '';
+  searchName = '';
   customerSelected = false;
   selectedCustomer;
   selectedCustomerId;

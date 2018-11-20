@@ -2,19 +2,24 @@ import { Http, Response } from '@angular/http';
 import { CustomerServices } from '../main-page/customers.services';
 import { Injectable } from '@angular/core';
 import { Customer } from '../main-page/models/customer.model';
+import { AuthService } from '../auth/auth.service';
 
 @Injectable()
 export class DataStoreServices {
 
-    constructor( private http: Http, private customerServices: CustomerServices) {}
+    constructor( private http: Http,
+      private customerServices: CustomerServices,
+      private authServices: AuthService) {}
 
     storeCustomers() {
-        return this.http.put('https://jerusalem-runners.firebaseio.com/customers.json', this.customerServices.
+      const token =  this.authServices.getToken();
+        return this.http.put('https://jerusalem-runners.firebaseio.com/customers.json?auth=' + token, this.customerServices.
         getAllCustomers());
     }
 
     fetchCustomers() {
-      return this.http.get('https://jerusalem-runners.firebaseio.com/customers.json').
+      const token =  this.authServices.getToken();
+      return this.http.get('https://jerusalem-runners.firebaseio.com/customers.json?auth=' + token).
       subscribe(
         (response: Response) => {
           if (response.json() == null) {

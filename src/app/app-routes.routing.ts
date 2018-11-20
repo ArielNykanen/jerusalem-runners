@@ -6,19 +6,24 @@ import { ProfileEditComponent } from './main-page/profile-edit/profile-edit.comp
 import { NotFoundPageComponent } from './not-found-page/not-found-page.component';
 import { CurrentStatusComponent } from './main-page/current-status/current-status.component';
 import { SignupComponent } from './auth/signup/signup.component';
+import { SigninComponent } from './auth/signin/signin.component';
+import { AuthGuard } from './auth/auth-guard.service';
 
 const AppRoutes: Routes = [
   {
-  path: '', component: CurrentStatusComponent
+  path: '', component: CurrentStatusComponent, canActivate: [AuthGuard]
 },
 {
   path: 'sign-up', component: SignupComponent
 },
 {
-  path: 'add-tip', component: AddTipComponent
+  path: 'sign-in', component: SigninComponent
 },
 {
-  path: 'profile-edit', component: ProfileEditComponent
+  path: 'add-tip', component: AddTipComponent, canActivate: [AuthGuard]
+},
+{
+  path: 'profile-edit', component: ProfileEditComponent, canActivate: [AuthGuard]
 },
 ];
 

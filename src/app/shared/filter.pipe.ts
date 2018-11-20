@@ -6,9 +6,9 @@ import { Customer } from '../main-page/models/customer.model';
 })
 export class FilterPipe implements PipeTransform {
 
-  transform(customer, searchInput: string) {
-      if (customer.phone.match(searchInput) && searchInput.length >= 3) {
-        return customer;
+  transform(customer, search: string) {
+      if (customer.phone.match(search) && search.length >= 3) {
+        return customer.phone;
     }
   }
 

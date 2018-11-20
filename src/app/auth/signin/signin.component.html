@@ -1,3 +1,33 @@
-<p>
-  signin works!
-</p>
+<div class="row">
+    <ng-template [ngIf]='!authService.loading'>
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+        <form (ngSubmit)="onSignIn(f)" #f="ngForm">
+            <div class="form-group" align=center>
+              <h1>התחברות</h1>
+            </div>
+            <div class="form-group" align=center>
+              <label for="email">אימייל</label>
+              <input class="form-control" type="email" placeholder="example@any.any" id="email" name="email" ngModel>
+            </div>
+            <div class="form-group" align=center>
+              <label for="email">סיסמה</label>
+              <input class="form-control" type="password" id="password" name="password" ngModel>
+            </div>
+                <div class="form-group" align=center>
+                    <button class="btn btn-primary" type="submit">התחבר/י</button>
+                  </div>
+            <div class="form-group" align=center>
+              <p>?לא רשומים עדיין</p>
+             <a routerLink="/sign-up">לחצו כאן</a>
+            </div>
+          </form>
+  <hr>
+    </div>
+  </ng-template>
+  <ng-template [ngIf]='authService.loading'>
+    <div class="form-group" align=center>
+      <div class="loader"></div>
+      <span class="help-box">...מתחבר</span>
+    </div>
+  </ng-template>
+  </div>
