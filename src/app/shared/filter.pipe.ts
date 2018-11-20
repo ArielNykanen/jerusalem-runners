@@ -6,14 +6,10 @@ import { Customer } from '../main-page/models/customer.model';
 })
 export class FilterPipe implements PipeTransform {
 
-  transform(customers: Customer[], searchInput: string) {
-    const resultArray = [];
-    for (const customer of customers) {
+  transform(customer, searchInput: string) {
       if (customer.phone.match(searchInput) && searchInput.length >= 3) {
-        resultArray.push(customer);
-      }
+        return customer;
     }
-    return resultArray;
   }
 
 }

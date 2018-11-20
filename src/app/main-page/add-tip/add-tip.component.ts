@@ -72,7 +72,6 @@ export class AddTipComponent implements OnInit, OnDestroy {
     } else if (this.onGetCustomerAvrg(customer) > 20) {
       return 'bg-success text-gold font-weight-bold';
     }
-     
   }
 
   onAddExistingCustomer(index: number) {
@@ -87,7 +86,7 @@ export class AddTipComponent implements OnInit, OnDestroy {
     this.loading = true;
     if (this.tipped && confirm('?אתה בטוח שאתה רוצה לעדכן שהלקוח לא הביא טיפ')) { // it will fire if tipped is not sellected
       // todo make it submit customer update without tip
-      let editableCustomer = this.selectedCustomer;
+      const editableCustomer = this.selectedCustomer;
       const currentCustomerTotalNotTipped =  Number(editableCustomer.notTipped) + 1;
       editableCustomer.notTipped = currentCustomerTotalNotTipped;
       this.allCustomers[this.selectedCustomerId] = editableCustomer;
@@ -119,7 +118,7 @@ export class AddTipComponent implements OnInit, OnDestroy {
         return;
       } else {
         this.tipNotSellected = '';
-        let editableCustomer = this.selectedCustomer;
+        const editableCustomer = this.selectedCustomer;
         const currentCustomerTipped =  Number(editableCustomer.tipped) + 1;
         const currentCustomerTotal =    Number(editableCustomer.totalTip) + Number(tip.value);
         editableCustomer.tipped = currentCustomerTipped;
@@ -145,8 +144,6 @@ export class AddTipComponent implements OnInit, OnDestroy {
       // let editableCustomer = this.selectedCustomer;
       // console.log(editableCustomer.name);
     // this.customerServices.addUpdateToCustomer();
-  
-
   onUnSelect() {
     this.customerSelected = false;
   }
