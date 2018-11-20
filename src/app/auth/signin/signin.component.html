@@ -1,5 +1,15 @@
 <div class="row">
     <ng-template [ngIf]='!authService.loading'>
+      <ng-template [ngIf]="authService.successMessage">
+          <div class="alert alert-success" role="alert">
+            <h2 align=center>!ברוך הבא</h2>
+            <h2 align=center>!נרשמת למערכת בהצלחה</h2>
+            <h1>Jerusalem Runners</h1>
+            <h3 class="alert-heading" align=center>מאחלים לך המון בהצלחה והמון המון המון טיפים ויותר מזה נסיעה בטוחה ונעימה</h3>
+            <hr>
+              <p class="mb-0" align=center>אנא התחברו</p>
+            </div>
+      </ng-template>
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
         <form (ngSubmit)="onSignIn(f)" #f="ngForm">
             <div class="form-group" align=center>

@@ -6,11 +6,17 @@ import { Injectable } from '@angular/core';
 export class AuthService {
   token: string;
   loading = false;
+  successMessage = false;
   constructor(private router: Router) {}
 
   signupUser(email: string, password: string) {
     this.loading = true;
     firebase.auth().createUserWithEmailAndPassword(email, password).
+    then((response) => {
+      this.loading = false;
+      this.router.navigate(['/sign-in']);
+      this.successMessage = true;
+    }).
       catch(
         (error: Error) => {
           this.loading = false;
@@ -21,6 +27,7 @@ export class AuthService {
 
   signinUser(email: string, password: string) {
     this.loading = true;
+    this.successMessage = false;
     firebase.auth().signInWithEmailAndPassword(email, password).
     then(
       response => {
