@@ -41,7 +41,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = " <!-- nav-bar -->\r\n <nav class=\"navbar navbar-default\">\r\n    <div class=\"container\">\r\n      <!-- navbar header -->\r\n      <div class=\"navbar-header\">\r\n        <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#myNavbar\" aria-expanded=\"false\">\r\n          <!-- the hamburger -->\r\n          <span class=\"icon-bar\"></span>\r\n          <span class=\"icon-bar\"></span>\r\n          <span class=\"icon-bar\"></span>\r\n        </button>\r\n        <a class=\"navbar-brand\" routerLink=\"\">Jerusalem Runners</a>\r\n      </div>\r\n      <!-- Collect the nav links, forms, and other content for toggling -->\r\n      <div class=\"collapse navbar-collapse \" id=\"myNavbar\">\r\n        <ul class=\"nav navbar-nav\">\r\n          <li [routerLinkActiveOptions]=\"{exact: 'full'}\" routerLinkActive=\"active\"><a routerLink=\"/\">ראשי</a></li>\r\n          <li routerLinkActive=\"active\"><a routerLink=\"add-tip\">הוסף טיפ ועדכן לקוח</a></li>\r\n          <li class=\"p-2\"><a routerLink='sign-up'>התחברות/הרשמה</a></li>\r\n        </ul>\r\n        <ul class=\"nav navbar-nav navbar-right\">\r\n          <!-- todo make it visible only if user is logged! ! ! -->\r\n          <li> <a href=\"\"><i class=\"fas fa-user\"></i> עריכת פרופיל</a></li>\r\n        </ul>\r\n      </div>\r\n    </div>\r\n  </nav>\r\n  "
+module.exports = " <!-- nav-bar -->\r\n <nav class=\"navbar navbar-default\">\r\n    <div class=\"container\">\r\n      <!-- navbar header -->\r\n      <div class=\"navbar-header\">\r\n        <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#myNavbar\" aria-expanded=\"false\">\r\n          <!-- the hamburger -->\r\n          <span class=\"icon-bar\"></span>\r\n          <span class=\"icon-bar\"></span>\r\n          <span class=\"icon-bar\"></span>\r\n        </button>\r\n        <a class=\"navbar-brand\" routerLink=\"\">Jerusalem Runn<i class=\"fab fa-drupal\"></i>rs </a>\r\n      </div>\r\n      <!-- Collect the nav links, forms, and other content for toggling -->\r\n      <div class=\"collapse navbar-collapse \" id=\"myNavbar\">\r\n        <ul class=\"nav navbar-nav\">\r\n          <ng-template [ngIf]='authService.isAuthenticated()'>\r\n            <li [routerLinkActiveOptions]=\"{exact: 'full'}\" routerLinkActive=\"active\"><a routerLink=\"/\">ראשי</a></li>\r\n            <li routerLinkActive=\"active\"><a routerLink=\"add-tip\">הוסף טיפ ועדכן לקוח</a></li>\r\n          </ng-template>\r\n          <ng-template [ngIf]='!authService.isAuthenticated()'>\r\n          <li class=\"p-2\"><a routerLink='sign-in'>התחברות</a></li>\r\n          <li class=\"p-2\"><a routerLink='sign-up'>הרשמה</a></li>\r\n        </ng-template>\r\n        </ul>\r\n        <ul class=\"nav navbar-nav navbar-right\">\r\n          <!-- todo make it visible only if user is logged! ! ! -->\r\n          <ng-template [ngIf]='authService.isAuthenticated()'>\r\n            <li> <a href=\"\"><i class=\"fas fa-user\"></i> עריכת פרופיל</a></li>\r\n          </ng-template>\r\n          <ng-template [ngIf]='authService.isAuthenticated()'>\r\n            <li style=\"margin-right:10px;\" (click)='onLogOut'><a href=\"\"><i class=\"fas fa-sign-out-alt\"></i></a></li>\r\n          </ng-template>\r\n        </ul>\r\n      </div>\r\n    </div>\r\n  </nav>\r\n  "
 
 /***/ }),
 
@@ -56,22 +56,32 @@ module.exports = " <!-- nav-bar -->\r\n <nav class=\"navbar navbar-default\">\r\
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NavBarComponent", function() { return NavBarComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _auth_auth_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../auth/auth.service */ "./src/app/auth/auth.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
 
 var NavBarComponent = /** @class */ (function () {
-    function NavBarComponent() {
+    function NavBarComponent(authService) {
+        this.authService = authService;
     }
+    NavBarComponent.prototype.onLogOut = function () {
+        this.authService.logOut();
+    };
     NavBarComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-navbar',
             template: __webpack_require__(/*! ./nav-bar.component.html */ "./src/app/app-navbar/nav-bar.component.html"),
             styles: [__webpack_require__(/*! ./nav-bar.component.css */ "./src/app/app-navbar/nav-bar.component.css")]
-        })
+        }),
+        __metadata("design:paramtypes", [_auth_auth_service__WEBPACK_IMPORTED_MODULE_1__["AuthService"]])
     ], NavBarComponent);
     return NavBarComponent;
 }());
@@ -96,6 +106,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _main_page_profile_edit_profile_edit_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./main-page/profile-edit/profile-edit.component */ "./src/app/main-page/profile-edit/profile-edit.component.ts");
 /* harmony import */ var _main_page_current_status_current_status_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./main-page/current-status/current-status.component */ "./src/app/main-page/current-status/current-status.component.ts");
 /* harmony import */ var _auth_signup_signup_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./auth/signup/signup.component */ "./src/app/auth/signup/signup.component.ts");
+/* harmony import */ var _auth_signin_signin_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./auth/signin/signin.component */ "./src/app/auth/signin/signin.component.ts");
+/* harmony import */ var _auth_auth_guard_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./auth/auth-guard.service */ "./src/app/auth/auth-guard.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -108,18 +120,23 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
+
 var AppRoutes = [
     {
-        path: '', component: _main_page_current_status_current_status_component__WEBPACK_IMPORTED_MODULE_4__["CurrentStatusComponent"]
+        path: '', component: _main_page_current_status_current_status_component__WEBPACK_IMPORTED_MODULE_4__["CurrentStatusComponent"], canActivate: [_auth_auth_guard_service__WEBPACK_IMPORTED_MODULE_7__["AuthGuard"]]
     },
     {
         path: 'sign-up', component: _auth_signup_signup_component__WEBPACK_IMPORTED_MODULE_5__["SignupComponent"]
     },
     {
-        path: 'add-tip', component: _main_page_add_tip_add_tip_component__WEBPACK_IMPORTED_MODULE_2__["AddTipComponent"]
+        path: 'sign-in', component: _auth_signin_signin_component__WEBPACK_IMPORTED_MODULE_6__["SigninComponent"]
     },
     {
-        path: 'profile-edit', component: _main_page_profile_edit_profile_edit_component__WEBPACK_IMPORTED_MODULE_3__["ProfileEditComponent"]
+        path: 'add-tip', component: _main_page_add_tip_add_tip_component__WEBPACK_IMPORTED_MODULE_2__["AddTipComponent"], canActivate: [_auth_auth_guard_service__WEBPACK_IMPORTED_MODULE_7__["AuthGuard"]]
+    },
+    {
+        path: 'profile-edit', component: _main_page_profile_edit_profile_edit_component__WEBPACK_IMPORTED_MODULE_3__["ProfileEditComponent"], canActivate: [_auth_auth_guard_service__WEBPACK_IMPORTED_MODULE_7__["AuthGuard"]]
     },
 ];
 var AppRoutingModule = /** @class */ (function () {
@@ -186,7 +203,10 @@ var AppComponent = /** @class */ (function () {
         this.title = 'jerusalem-runners';
     }
     AppComponent.prototype.ngOnInit = function () {
-        firebase__WEBPACK_IMPORTED_MODULE_1__["initializeApp"]({});
+        firebase__WEBPACK_IMPORTED_MODULE_1__["initializeApp"]({
+            apiKey: 'AIzaSyCDmFV0_CC6ltw8-mevf4qphUHgPvANgB0',
+            authDomain: 'jerusalem-runners.firebaseapp.com',
+        });
     };
     AppComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -231,12 +251,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _shared_filter_pipe__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./shared/filter.pipe */ "./src/app/shared/filter.pipe.ts");
 /* harmony import */ var _auth_signup_signup_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./auth/signup/signup.component */ "./src/app/auth/signup/signup.component.ts");
 /* harmony import */ var _auth_signin_signin_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./auth/signin/signin.component */ "./src/app/auth/signin/signin.component.ts");
+/* harmony import */ var _auth_auth_service__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./auth/auth.service */ "./src/app/auth/auth.service.ts");
+/* harmony import */ var _auth_auth_guard_service__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./auth/auth-guard.service */ "./src/app/auth/auth-guard.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -284,12 +308,144 @@ var AppModule = /** @class */ (function () {
                 _main_page_customers_services__WEBPACK_IMPORTED_MODULE_8__["CustomerServices"],
                 _user_services__WEBPACK_IMPORTED_MODULE_12__["UserServices"],
                 _navigation_services__WEBPACK_IMPORTED_MODULE_11__["NavigationServices"],
-                _shared_data_storage_services__WEBPACK_IMPORTED_MODULE_15__["DataStoreServices"]
+                _shared_data_storage_services__WEBPACK_IMPORTED_MODULE_15__["DataStoreServices"],
+                _auth_auth_service__WEBPACK_IMPORTED_MODULE_19__["AuthService"],
+                _auth_auth_guard_service__WEBPACK_IMPORTED_MODULE_20__["AuthGuard"]
             ],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"]]
         })
     ], AppModule);
     return AppModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/auth/auth-guard.service.ts":
+/*!********************************************!*\
+  !*** ./src/app/auth/auth-guard.service.ts ***!
+  \********************************************/
+/*! exports provided: AuthGuard */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AuthGuard", function() { return AuthGuard; });
+/* harmony import */ var _auth_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./auth.service */ "./src/app/auth/auth.service.ts");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var AuthGuard = /** @class */ (function () {
+    function AuthGuard(authService) {
+        this.authService = authService;
+    }
+    AuthGuard.prototype.canActivate = function (route, state) {
+        return this.authService.isAuthenticated();
+    };
+    AuthGuard = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
+        __metadata("design:paramtypes", [_auth_service__WEBPACK_IMPORTED_MODULE_0__["AuthService"]])
+    ], AuthGuard);
+    return AuthGuard;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/auth/auth.service.ts":
+/*!**************************************!*\
+  !*** ./src/app/auth/auth.service.ts ***!
+  \**************************************/
+/*! exports provided: AuthService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AuthService", function() { return AuthService; });
+/* harmony import */ var firebase__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! firebase */ "./node_modules/firebase/dist/index.cjs.js");
+/* harmony import */ var firebase__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(firebase__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var AuthService = /** @class */ (function () {
+    function AuthService(router) {
+        this.router = router;
+        this.loading = false;
+        this.successMessage = false;
+    }
+    AuthService.prototype.signupUser = function (email, password) {
+        var _this = this;
+        this.loading = true;
+        firebase__WEBPACK_IMPORTED_MODULE_0__["auth"]().createUserWithEmailAndPassword(email, password).
+            then(function (response) {
+            _this.loading = false;
+            _this.router.navigate(['/sign-in']);
+            _this.successMessage = true;
+        }).
+            catch(function (error) {
+            _this.loading = false;
+            alert(error);
+        });
+    };
+    AuthService.prototype.signinUser = function (email, password) {
+        var _this = this;
+        this.loading = true;
+        this.successMessage = false;
+        firebase__WEBPACK_IMPORTED_MODULE_0__["auth"]().signInWithEmailAndPassword(email, password).
+            then(function (response) {
+            _this.router.navigate(['../']);
+            console.log(response);
+            firebase__WEBPACK_IMPORTED_MODULE_0__["auth"]().currentUser.getIdToken()
+                .then(function (token) {
+                _this.token = token;
+                console.log(_this.token);
+                console.log('this is the id i took:  t8LuaXh9X0cdPomny3RmINwMIi83');
+            });
+        }).catch(function (error) {
+            _this.loading = false;
+            alert(error);
+        });
+    };
+    AuthService.prototype.getToken = function () {
+        var _this = this;
+        firebase__WEBPACK_IMPORTED_MODULE_0__["auth"]().currentUser.getIdToken()
+            .then(function (token) { return _this.token = token; });
+        return this.token;
+    };
+    AuthService.prototype.isAuthenticated = function () {
+        return this.token != null;
+    };
+    AuthService.prototype.logOut = function () {
+        firebase__WEBPACK_IMPORTED_MODULE_0__["auth"]().signOut();
+        this.token = null;
+    };
+    AuthService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Injectable"])(),
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]])
+    ], AuthService);
+    return AuthService;
 }());
 
 
@@ -303,7 +459,7 @@ var AppModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = ".loader {\r\n  border: 10px solid #f3f3f3; /* Light grey */\r\n  border-top: 10px solid #3498db; /* Blue */\r\n  border-radius: 50%;\r\n  width: 150px;\r\n  height: 150px;\r\n  -webkit-animation: spin 2s linear infinite;\r\n          animation: spin 2s linear infinite;\r\n}\r\n\r\n@-webkit-keyframes spin {\r\n  0% { -webkit-transform: rotate(0deg); transform: rotate(0deg); }\r\n  100% { -webkit-transform: rotate(360deg); transform: rotate(360deg); }\r\n}\r\n\r\n@keyframes spin {\r\n  0% { -webkit-transform: rotate(0deg); transform: rotate(0deg); }\r\n  100% { -webkit-transform: rotate(360deg); transform: rotate(360deg); }\r\n}\r\n\r\n.fa-check-circle {\r\n  font-size: 50px;\r\n}"
 
 /***/ }),
 
@@ -314,7 +470,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  signin works!\n</p>\n"
+module.exports = "<div class=\"row\">\n    <ng-template [ngIf]='!authService.loading'>\n      <ng-template [ngIf]=\"authService.successMessage\">\n          <div class=\"alert alert-success\" role=\"alert\">\n            <h2 align=center>!ברוך הבא</h2>\n            <h2 align=center>!נרשמת למערכת בהצלחה</h2>\n            <h1>Jerusalem Runners</h1>\n            <h3 class=\"alert-heading\" align=center>מאחלים לך המון בהצלחה והמון המון המון טיפים ויותר מזה נסיעה בטוחה ונעימה</h3>\n            <hr>\n              <p class=\"mb-0\" align=center>אנא התחברו</p>\n            </div>\n      </ng-template>\n    <div class=\"col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2\">\n        <form (ngSubmit)=\"onSignIn(f)\" #f=\"ngForm\">\n            <div class=\"form-group\" align=center>\n              <h1>התחברות</h1>\n            </div>\n            <div class=\"form-group\" align=center>\n              <label for=\"email\">אימייל</label>\n              <input class=\"form-control\" type=\"email\" placeholder=\"example@any.any\" id=\"email\" name=\"email\" ngModel>\n            </div>\n            <div class=\"form-group\" align=center>\n              <label for=\"email\">סיסמה</label>\n              <input class=\"form-control\" type=\"password\" id=\"password\" name=\"password\" ngModel>\n            </div>\n                <div class=\"form-group\" align=center>\n                    <button class=\"btn btn-primary\" type=\"submit\">התחבר/י</button>\n                  </div>\n            <div class=\"form-group\" align=center>\n              <p>?לא רשומים עדיין</p>\n             <a routerLink=\"/sign-up\">לחצו כאן</a>\n            </div>\n          </form>\n  <hr>\n    </div>\n  </ng-template>\n  <ng-template [ngIf]='authService.loading'>\n    <div class=\"form-group\" align=center>\n      <div class=\"loader\"></div>\n      <span class=\"help-box\">...מתחבר</span>\n    </div>\n  </ng-template>\n  </div>"
 
 /***/ }),
 
@@ -329,6 +485,7 @@ module.exports = "<p>\n  signin works!\n</p>\n"
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SigninComponent", function() { return SigninComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _auth_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../auth.service */ "./src/app/auth/auth.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -339,10 +496,17 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var SigninComponent = /** @class */ (function () {
-    function SigninComponent() {
+    function SigninComponent(authService) {
+        this.authService = authService;
     }
     SigninComponent.prototype.ngOnInit = function () {
+    };
+    SigninComponent.prototype.onSignIn = function (form) {
+        var email = form.value.email;
+        var password = form.value.password;
+        this.authService.signinUser(email, password);
     };
     SigninComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -350,7 +514,7 @@ var SigninComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./signin.component.html */ "./src/app/auth/signin/signin.component.html"),
             styles: [__webpack_require__(/*! ./signin.component.css */ "./src/app/auth/signin/signin.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [_auth_service__WEBPACK_IMPORTED_MODULE_1__["AuthService"]])
     ], SigninComponent);
     return SigninComponent;
 }());
@@ -366,7 +530,7 @@ var SigninComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = ".loader {\r\n  border: 10px solid #f3f3f3; /* Light grey */\r\n  border-top: 10px solid #3498db; /* Blue */\r\n  border-radius: 50%;\r\n  width: 150px;\r\n  height: 150px;\r\n  -webkit-animation: spin 2s linear infinite;\r\n          animation: spin 2s linear infinite;\r\n}\r\n\r\n@-webkit-keyframes spin {\r\n  0% { -webkit-transform: rotate(0deg); transform: rotate(0deg); }\r\n  100% { -webkit-transform: rotate(360deg); transform: rotate(360deg); }\r\n}\r\n\r\n@keyframes spin {\r\n  0% { -webkit-transform: rotate(0deg); transform: rotate(0deg); }\r\n  100% { -webkit-transform: rotate(360deg); transform: rotate(360deg); }\r\n}"
 
 /***/ }),
 
@@ -377,7 +541,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\n  <div class=\"col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2\">\n      <form (ngSubmit)=\"onSignUp(f)\" #f=\"ngForm\">\n          <div class=\"form-group\" align=center>\n            <h1>הרשמה לקהילה</h1>\n          </div>\n          <div class=\"form-group\" align=center>\n            <label for=\"email\">אימייל</label>\n            <input class=\"form-control\" type=\"email\" placeholder=\"example@any.any\" id=\"email\" name=\"email\" ngModel>\n          </div>\n          <div class=\"form-group\" align=center>\n            <label for=\"email\">סיסמה</label>\n            <input class=\"form-control\" type=\"password\" id=\"password\" name=\"password\" ngModel>\n          </div>\n          <div class=\"form-group\" align=center>\n            <button class=\"btn btn-primary\" type=\"submit\">הירשם</button>\n          </div>\n        </form>\n  </div>\n</div>\n<hr>"
+module.exports = "<div class=\"row\">\n<ng-template [ngIf]='!authService.loading'>\n  <div class=\"col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2\">\n      <form (ngSubmit)=\"onSignUp(f)\" #f=\"ngForm\">\n          <div class=\"form-group\" align=center>\n            <h1>הרשמה</h1>\n          </div>\n          <div class=\"form-group\" align=center>\n            <label for=\"email\">אימייל</label>\n            <input class=\"form-control\" type=\"email\" placeholder=\"example@any.any\" id=\"email\" name=\"email\" ngModel>\n          </div>\n          <div class=\"form-group\" align=center>\n            <label for=\"email\">סיסמה</label>\n            <input class=\"form-control\" type=\"password\" id=\"password\" name=\"password\" ngModel>\n          </div>\n          <div class=\"form-group\" align=center>\n            <button class=\"btn btn-primary\" type=\"submit\">הרשמה</button>\n          </div>\n          <div class=\"form-group\" align=center>\n              <p>?רשומים כבר</p>\n             <a routerLink=\"/sign-in\">לחצו כאן</a>\n            </div>\n        </form>\n  </div>\n<hr>\n</ng-template>\n\n<ng-template [ngIf]='authService.loading'>\n    <div class=\"form-group\" align=center>\n      <div class=\"loader\"></div>\n      <span class=\"help-box\">...מתחבר</span>\n    </div>\n  </ng-template>\n</div>\n"
 
 /***/ }),
 
@@ -392,6 +556,7 @@ module.exports = "<div class=\"row\">\n  <div class=\"col-xs-12 col-sm-10 col-md
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SignupComponent", function() { return SignupComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _auth_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../auth.service */ "./src/app/auth/auth.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -402,12 +567,15 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var SignupComponent = /** @class */ (function () {
-    function SignupComponent() {
+    function SignupComponent(authService) {
+        this.authService = authService;
     }
     SignupComponent.prototype.onSignUp = function (form) {
         var email = form.value.email;
         var password = form.value.password;
+        this.authService.signupUser(email, password);
     };
     SignupComponent.prototype.ngOnInit = function () {
     };
@@ -417,7 +585,7 @@ var SignupComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./signup.component.html */ "./src/app/auth/signup/signup.component.html"),
             styles: [__webpack_require__(/*! ./signup.component.css */ "./src/app/auth/signup/signup.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [_auth_service__WEBPACK_IMPORTED_MODULE_1__["AuthService"]])
     ], SignupComponent);
     return SignupComponent;
 }());
@@ -444,7 +612,7 @@ module.exports = "input.ng-invalid.ng-touched {\r\n  border: 1px solid red;\r\n}
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf='successMessage' class=\"alert alert-success alert-dismissible\">\r\n    <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>\r\n    <h1 align=center>{{ successMessage }}</h1>\r\n  </div>\r\n<div *ngIf='error' class=\"alert alert-danger alert-dismissible\">\r\n    <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>\r\n    <h1 align=center>{{ error }}</h1>\r\n  </div>\r\n<div class=\"form-group\">\r\n  <p align=right [ngStyle]=\"{'color': userServices.getCurrentPauchStyle()}\">({{ currentUserPauch }}) - בפאוץ כרגע</p>\r\n  <span class=\"help-block\" align=right *ngIf=\"currentUserPauch >= 100 && currentUserPauch < 200\">מברוק הגעת ל100 אולי\r\n    עוד תגיע ל200</span>\r\n  <span class=\"help-block\" align=right *ngIf=\"currentUserPauch >= 200  && currentUserPauch < 220\">!עשית את זה הגעת ל200\r\n    אלוף אתה</span>\r\n  <span class=\"help-block\" align=right *ngIf=\"currentUserPauch >= 220\">!!!ממשיך לעלות?? מטורף אתה תשלח לי מייל איך אתה\r\n    עושה את זה בבקשה</span>\r\n</div>\r\n\r\n<div class=\"form-group\">\r\n  <h1 align=center>הוספת טיפים ופרטי לקוח</h1>\r\n</div>\r\n<div class=\"row\">\r\n  <div class=\"col-md-12\" align=center>\r\n    <h1>הוסף פרטי לקוח</h1>\r\n  </div>\r\n  <hr>\r\n  <form [formGroup]=\"addCustomerTipForm\" (ngSubmit)=\"onCustomerAdded()\">\r\n    <div class=\"row\">\r\n    \r\n      <div *ngIf='!customerSelected' class=\"col-xs-3 form-group\">\r\n          <input placeholder=\"שם\" formControlName=\"customerName\" type=\"text\" id=\"\" class=\"form-control\">\r\n        <span *ngIf=\"addCustomerTipForm.get('customerName').errors && addCustomerTipForm.get('customerName').touched\"\r\n          class=\"help-block\">!שדה חובה</span>\r\n      </div>\r\n      <div class=\"col-xs-2\">\r\n          <a href=\"tel:{{ searchInput }}\"> <button type=\"button\" class=\"btn btn-success\"><i class=\"fas fa-phone\"></i></button></a>\r\n       </div>\r\n      <div *ngIf='!customerSelected' class=\"col-xs-6 form-group\">\r\n          <input placeholder=\"פלאפון/טלפון\" formControlName=\"customerPhone\" type=\"text\" id=\"\" class=\"form-control\" [(ngModel)]=\"searchInput\">\r\n        <span *ngIf=\"!addCustomerTipForm.get('customerPhone').valid && addCustomerTipForm.get('customerPhone').touched\"\r\n          class=\"help-block\">!שדה חובה</span>\r\n      </div>\r\n      <div *ngIf='customerSelected' class=\"col-xs-6 form-group\" align=center>\r\n          \r\n          <ng-container *ngIf='!loading'>\r\n              <h1>({{ selectedCustomer.name }})</h1>\r\n            </ng-container>\r\n      \r\n      </div>\r\n      <ng-container *ngIf=\"!customerSelected\">\r\n       \r\n        <div *ngIf='currentNetStatus' class=\"col-xs-12 form-group\" align=center>\r\n            <button data-toggle=\"collapse\" data-target=\"#customerDetails\" type=\"button\" class=\"btn btn-primary form-control\" >הוסף חדש</button>\r\n          <div id=\"customerDetails\" class=\"collapse\">\r\n              <ng-container>\r\n            <div class=\"form-group btn-group btn-toggle\" style=\"float:right; clear:both;\">\r\n            <h2>הביא טיפ</h2>\r\n            <button type=\"button\" class=\"btn \" [ngClass]=\"!tipped ? 'btn-success':'btn-disabled'\" (click)=\"onTipped()\">כן</button>\r\n            <button type=\"button\" class=\"btn \" [ngClass]=\"tipped ? 'btn-success':'btn-disabled'\" (click)=\"onTipped()\">לא</button>\r\n          </div>\r\n        \r\n          <ng-container *ngIf='!tipped'>\r\n              <div class=\"col-xs-12 form-group\" align=right>\r\n                <h2 align=center>?כמה הביא</h2>\r\n                <input type=\"number\" formControlName=\"customerTip\" class=\"text-center form-control\" [(ngModel)]=\"tipSelected\">\r\n              </div>\r\n            \r\n            </ng-container>\r\n            <div class=\"col-xs-12 form-group\" align=center>\r\n              <button class='btn btn-success' [disabled]=\"addCustomerTipForm.get('customerName').invalid || addCustomerTipForm.get('customerPhone').value.length < 9 ||\r\n               addCustomerTipForm.get('customerPhone').value.length > 10\">הוסף לקוח למערכת</button>\r\n              <div *ngIf=\"addCustomerTipForm.get('customerName').invalid\" class=\"form-group\">\r\n               <p style=\"color:red;\">!לא הוספת שם</p>\r\n              </div>\r\n             \r\n             \r\n             </div>\r\n          </ng-container>\r\n\r\n          </div>\r\n          </div>\r\n        </ng-container>\r\n        <ng-container *ngIf=\"customerSelected\">\r\n          <button type=\"button\" style=\"max-width: 100px;\" class=\"btn btn-warning form-control\" (click)=\"onUnSelect()\">חזרה</button>\r\n        </ng-container>\r\n      <div *ngIf='!customerSelected' class=\"col-xs-12 form-group\">\r\n         \r\n        <table class=\"table\">\r\n          <thead class=\"thead-dark\">\r\n            <tr>\r\n              <!-- <th scope=\"col\"></th> -->\r\n              <th scope=\"col\">הוסף</th>\r\n              <th scope=\"col\">ממוצע טיפ</th>\r\n              <th scope=\"col\">לא הביא</th>\r\n              <th scope=\"col\">הביא</th>\r\n              <th scope=\"col\">שם</th>\r\n              <th scope=\"col\">פלאפון/טלפון</th>\r\n            </tr>\r\n          </thead>\r\n          <tbody>\r\n            <ng-container *ngFor=\"let customer of allCustomers; let i = index\">\r\n              <ng-container *ngIf=\"customer | filter:searchInput\">\r\n                <tr [ngClass]='onGetCustomerColor(customer)'>\r\n                  <!-- <td><input name=\"checkbox\" type='radio' class=\"btn btn-primary\" (click)=\"onAddExistingCustomer(customer)\"></td> -->\r\n                  <!-- <td></td> -->\r\n                  <td><button type=\"button\" class=\"btn btn-primary\" (click)=\"onAddExistingCustomer(i)\" [disabled]='!currentNetStatus'>בחר</button></td>\r\n                  <td>{{ onGetCustomerAvrg(customer) }}</td>\r\n                  <td>{{ customer.notTipped }}</td>\r\n                  <td>{{ customer.tipped }}</td>\r\n                  <td>{{ customer.name }}</td>\r\n                  <td><a class=\"btn btn-success w-25\" href=\"tel:{{customer.phone}}\">{{ customer.phone }} <i class=\"fas fa-phone\"></i> </a></td>\r\n                </tr>\r\n              </ng-container>\r\n            </ng-container>\r\n          </tbody>\r\n        </table>\r\n      </div>\r\n      <div class=\"col-xs-12\" *ngIf='customerSelected'>\r\n        <table class=\"table\">\r\n          <thead class=\"thead-dark\">\r\n            <tr>\r\n              <th scope=\"col\">עדכן</th>\r\n              <th scope=\"col\">?כמה הביא</th>\r\n              <th scope=\"col\">?הביא טיפ</th>\r\n              <th scope=\"col\">שם</th>\r\n              <th scope=\"col\">פלאפון/טלפון</th>\r\n            </tr>\r\n          </thead>\r\n          <tbody>\r\n            <tr>\r\n              <ng-container *ngIf='loading'>\r\n                <p>...מעדכן</p>\r\n              </ng-container>\r\n              <ng-container *ngIf='!loading'>\r\n                <td><button type=\"button\" class=\"btn btn-primary\" (click)=\"onCustomerUpdated(updateCustomerTip)\">עדכן</button></td>\r\n              </ng-container>\r\n              <td><input type=\"number\" class=\"form-control\" style=\"max-width: 100px;\" [disabled]='tipped' #updateCustomerTip></td>\r\n              <td><button type=\"button\" class=\"btn \" [ngClass]=\"!tipped ? 'btn-success':'btn-disabled'\" (click)=\"onTipped()\">כן</button></td>\r\n              <td>{{ selectedCustomer.name }}</td>\r\n              <td>{{ selectedCustomer.phone }}</td>\r\n            </tr>\r\n          </tbody>\r\n        </table>\r\n    \r\n        <p style=\"color:red;\">{{ tipNotSellected }}</p>\r\n      </div>\r\n      <ng-container *ngIf='!currentNetStatus'>\r\n          <div  align=center>\r\n            <div class=\"loader\">\r\n            </div>\r\n          </div>\r\n          </ng-container>\r\n    </div>\r\n    <div *ngIf='!currentNetStatus' class=\"form-group\">\r\n        <p class=\"bg-danger text-danger\">אתה לא מחובר לאינטרנט אינך יכול להוסיף או לעדכן לקוחות במאגר </p>\r\n      </div>\r\n  </form>\r\n  \r\n</div>\r\n\r\n\r\n<hr>"
+module.exports = "          <div *ngIf='successMessage' class=\"alert alert-success alert-dismissible\">\r\n            <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>\r\n            <h1 align=center>{{ successMessage }}</h1>\r\n          </div>\r\n          <div *ngIf='error' class=\"alert alert-danger alert-dismissible\">\r\n            <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>\r\n            <h1 align=center>{{ error }}</h1>\r\n          </div>\r\n          <div class=\"form-group\">\r\n            <p align=right [ngStyle]=\"{'color': userServices.getCurrentPauchStyle()}\">({{ currentUserPauch }}) - בפאוץ\r\n              כרגע</p>\r\n            <span class=\"help-block\" align=right *ngIf=\"currentUserPauch >= 100 && currentUserPauch < 200\">מברוק הגעת\r\n              ל100 אולי\r\n              עוד תגיע ל200</span>\r\n            <span class=\"help-block\" align=right *ngIf=\"currentUserPauch >= 200  && currentUserPauch < 220\">!עשית את זה\r\n              הגעת ל200\r\n              אלוף אתה</span>\r\n            <span class=\"help-block\" align=right *ngIf=\"currentUserPauch >= 220\">!!!ממשיך לעלות?? מטורף אתה תשלח לי\r\n              מייל איך אתה\r\n              עושה את זה בבקשה</span>\r\n          </div>\r\n\r\n          <div class=\"form-group\">\r\n            <h1 align=center>הוספת טיפים ופרטי לקוח</h1>\r\n          </div>\r\n          <div class=\"row\">\r\n\r\n            <hr>\r\n            <form [formGroup]=\"addCustomerTipForm\" (ngSubmit)=\"onCustomerAdded()\">\r\n              <div class=\"row\">\r\n\r\n                <div *ngIf='!customerSelected' class=\"col-xs-3 form-group\">\r\n                  <input placeholder=\"שם\" formControlName=\"customerName\" type=\"text\" id=\"\" class=\"form-control\"  [(ngModel)]=\"searchName\">\r\n                  <span *ngIf=\"addCustomerTipForm.get('customerName').errors && addCustomerTipForm.get('customerName').touched\"\r\n                    class=\"help-block\">!שדה חובה</span>\r\n                </div>\r\n                <div class=\"col-xs-2\">\r\n                  <a href=\"tel:{{ searchInput }}\"> <button type=\"button\" class=\"btn btn-success\"><i class=\"fas fa-phone\"></i></button></a>\r\n                </div>\r\n                <div *ngIf='!customerSelected' class=\"col-xs-6 form-group\">\r\n                  <input placeholder=\"פלאפון/טלפון\" formControlName=\"customerPhone\" type=\"text\" id=\"\" class=\"form-control\"\r\n                    [(ngModel)]=\"searchInput\">\r\n                  <span *ngIf=\"!addCustomerTipForm.get('customerPhone').valid && addCustomerTipForm.get('customerPhone').touched\"\r\n                    class=\"help-block\">!שדה חובה</span>\r\n                </div>\r\n                <div *ngIf='customerSelected' class=\"col-xs-6 form-group\" align=center>\r\n\r\n                  <ng-container *ngIf='!loading'>\r\n                    <h1>({{ selectedCustomer.name }})</h1>\r\n                  </ng-container>\r\n\r\n                </div>\r\n                <ng-container *ngIf=\"!customerSelected\">\r\n\r\n                  <div *ngIf='currentNetStatus' class=\"col-xs-12 form-group\" align=center>\r\n                    <button data-toggle=\"collapse\" data-target=\"#customerDetails\" type=\"button\" class=\"btn btn-primary form-control\">הוסף\r\n                      חדש</button>\r\n                    <div id=\"customerDetails\" class=\"collapse\">\r\n                      <ng-container>\r\n                        <div class=\"form-group btn-group btn-toggle\" style=\"float:right; clear:both;\">\r\n                          <h2>הביא טיפ</h2>\r\n                          <button type=\"button\" class=\"btn \" [ngClass]=\"!tipped ? 'btn-success':'btn-disabled'\" (click)=\"onTipped()\">כן</button>\r\n                          <button type=\"button\" class=\"btn \" [ngClass]=\"tipped ? 'btn-success':'btn-disabled'\" (click)=\"onTipped()\">לא</button>\r\n                        </div>\r\n\r\n                        <ng-container *ngIf='!tipped'>\r\n                          <div class=\"col-xs-12 form-group\" align=right>\r\n                            <h2 align=center>?כמה הביא</h2>\r\n                            <input type=\"number\" formControlName=\"customerTip\" class=\"text-center form-control\"\r\n                              [(ngModel)]=\"tipSelected\">\r\n                          </div>\r\n\r\n                        </ng-container>\r\n                        <div class=\"col-xs-12 form-group\" align=center>\r\n                          <button class='btn btn-success' [disabled]=\"addCustomerTipForm.get('customerName').invalid || addCustomerTipForm.get('customerPhone').value.length < 9 ||\r\n               addCustomerTipForm.get('customerPhone').value.length > 10\">הוסף\r\n                            לקוח למערכת</button>\r\n                          <div *ngIf=\"addCustomerTipForm.get('customerName').invalid\" class=\"form-group\">\r\n                            <p style=\"color:red;\">!לא הוספת שם</p>\r\n                          </div>\r\n\r\n\r\n                        </div>\r\n                      </ng-container>\r\n\r\n                    </div>\r\n                  </div>\r\n                </ng-container>\r\n                <ng-container *ngIf=\"customerSelected\">\r\n                  <button type=\"button\" style=\"max-width: 100px;\" class=\"btn btn-warning form-control\" (click)=\"onUnSelect()\">חזרה</button>\r\n                </ng-container>\r\n                <div *ngIf='!customerSelected' class=\"col-xs-12 form-group\">\r\n\r\n                  <table class=\"table\">\r\n                    <thead class=\"thead-dark\">\r\n                      <tr>\r\n                        <!-- <th scope=\"col\"></th> -->\r\n                        <th scope=\"col\">הוסף</th>\r\n                        <th scope=\"col\">ממוצע טיפ</th>\r\n                        <th scope=\"col\">לא הביא</th>\r\n                        <th scope=\"col\">הביא</th>\r\n                        <th scope=\"col\">שם</th>\r\n                        <th scope=\"col\">פלאפון/טלפון</th>\r\n                      </tr>\r\n                    </thead>\r\n                    <tbody>\r\n                      <ng-container *ngFor=\"let customer of allCustomers; let i = index\">\r\n                        <ng-container *ngIf=\"customer | filter:searchInput \">\r\n                          <tr [ngClass]='onGetCustomerColor(customer)'>\r\n                            <!-- <td><input name=\"checkbox\" type='radio' class=\"btn btn-primary\" (click)=\"onAddExistingCustomer(customer)\"></td> -->\r\n                            <!-- <td></td> -->\r\n                            <td><button type=\"button\" class=\"btn btn-primary\" (click)=\"onAddExistingCustomer(i)\"\r\n                                [disabled]='!currentNetStatus'>בחר</button></td>\r\n                            <td>{{ onGetCustomerAvrg(customer) }}</td>\r\n                            <td>{{ customer.notTipped }}</td>\r\n                            <td>{{ customer.tipped }}</td>\r\n                            <td>{{ customer.name }}</td>\r\n                            <td><a class=\"btn btn-success w-25\" href=\"tel:{{customer.phone}}\">{{ customer.phone }} <i\r\n                                  class=\"fas fa-phone\"></i> </a></td>\r\n                          </tr>\r\n                        </ng-container>\r\n                      </ng-container>\r\n                    </tbody>\r\n                  </table>\r\n                </div>\r\n                <div class=\"col-xs-12\" *ngIf='customerSelected'>\r\n                  <table class=\"table\">\r\n                    <thead class=\"thead-dark\">\r\n                      <tr>\r\n                        <th scope=\"col\">עדכן</th>\r\n                        <th scope=\"col\">?כמה הביא</th>\r\n                        <th scope=\"col\">?הביא טיפ</th>\r\n                        <th scope=\"col\">שם</th>\r\n                        <th scope=\"col\">פלאפון/טלפון</th>\r\n                      </tr>\r\n                    </thead>\r\n                    <tbody>\r\n                      <tr>\r\n                        <ng-container *ngIf='loading'>\r\n                          <p>...מעדכן</p>\r\n                        </ng-container>\r\n                        <ng-container *ngIf='!loading'>\r\n                          <td><button type=\"button\" class=\"btn btn-primary\" (click)=\"onCustomerUpdated(updateCustomerTip)\">עדכן</button></td>\r\n                        </ng-container>\r\n                        <td><input type=\"number\" class=\"form-control\" style=\"max-width: 100px;\" [disabled]='tipped'\r\n                            #updateCustomerTip></td>\r\n                        <td><button type=\"button\" class=\"btn \" [ngClass]=\"!tipped ? 'btn-success':'btn-disabled'\"\r\n                            (click)=\"onTipped()\">כן</button></td>\r\n                        <td>{{ selectedCustomer.name }}</td>\r\n                        <td>{{ selectedCustomer.phone }}</td>\r\n                      </tr>\r\n                    </tbody>\r\n                  </table>\r\n\r\n                  <p style=\"color:red;\">{{ tipNotSellected }}</p>\r\n                </div>\r\n                <ng-container *ngIf='!currentNetStatus'>\r\n                  <div align=center>\r\n                    <div class=\"loader\">\r\n                    </div>\r\n                  </div>\r\n                </ng-container>\r\n              </div>\r\n              <div *ngIf='!currentNetStatus' class=\"form-group\">\r\n                <p class=\"bg-danger text-danger\">אתה לא מחובר לאינטרנט אינך יכול להוסיף או לעדכן לקוחות במאגר </p>\r\n              </div>\r\n            </form>\r\n\r\n          </div>\r\n\r\n\r\n          <hr>"
 
 /***/ }),
 
@@ -494,6 +662,7 @@ var AddTipComponent = /** @class */ (function () {
         this.tipped = true;
         this.currentNetStatus = true;
         this.searchInput = '';
+        this.searchName = '';
         this.customerSelected = false;
         this.customerExists = false;
     }
@@ -856,6 +1025,8 @@ module.exports = "\r\n<router-outlet></router-outlet>\r\n"
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MainPageComponent", function() { return MainPageComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _auth_auth_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../auth/auth.service */ "./src/app/auth/auth.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -866,10 +1037,17 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
 var MainPageComponent = /** @class */ (function () {
-    function MainPageComponent() {
+    function MainPageComponent(authService, router) {
+        this.authService = authService;
+        this.router = router;
     }
     MainPageComponent.prototype.ngOnInit = function () {
+        if (!this.authService.isAuthenticated()) {
+            this.router.navigate(['/sign-in']);
+        }
     };
     MainPageComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -877,7 +1055,7 @@ var MainPageComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./main-page.component.html */ "./src/app/main-page/main-page.component.html"),
             styles: [__webpack_require__(/*! ./main-page.component.css */ "./src/app/main-page/main-page.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [_auth_auth_service__WEBPACK_IMPORTED_MODULE_1__["AuthService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
     ], MainPageComponent);
     return MainPageComponent;
 }());
@@ -1093,6 +1271,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_http__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/http */ "./node_modules/@angular/http/fesm5/http.js");
 /* harmony import */ var _main_page_customers_services__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../main-page/customers.services */ "./src/app/main-page/customers.services.ts");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _auth_auth_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../auth/auth.service */ "./src/app/auth/auth.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1105,18 +1284,22 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var DataStoreServices = /** @class */ (function () {
-    function DataStoreServices(http, customerServices) {
+    function DataStoreServices(http, customerServices, authServices) {
         this.http = http;
         this.customerServices = customerServices;
+        this.authServices = authServices;
     }
     DataStoreServices.prototype.storeCustomers = function () {
-        return this.http.put('https://jerusalem-runners.firebaseio.com/customers.json', this.customerServices.
+        var token = this.authServices.getToken();
+        return this.http.put('https://jerusalem-runners.firebaseio.com/customers.json?auth=' + token, this.customerServices.
             getAllCustomers());
     };
     DataStoreServices.prototype.fetchCustomers = function () {
         var _this = this;
-        return this.http.get('https://jerusalem-runners.firebaseio.com/customers.json').
+        var token = this.authServices.getToken();
+        return this.http.get('https://jerusalem-runners.firebaseio.com/customers.json?auth=' + token).
             subscribe(function (response) {
             if (response.json() == null) {
                 var customers = [];
@@ -1134,7 +1317,9 @@ var DataStoreServices = /** @class */ (function () {
     };
     DataStoreServices = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Injectable"])(),
-        __metadata("design:paramtypes", [_angular_http__WEBPACK_IMPORTED_MODULE_0__["Http"], _main_page_customers_services__WEBPACK_IMPORTED_MODULE_1__["CustomerServices"]])
+        __metadata("design:paramtypes", [_angular_http__WEBPACK_IMPORTED_MODULE_0__["Http"],
+            _main_page_customers_services__WEBPACK_IMPORTED_MODULE_1__["CustomerServices"],
+            _auth_auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"]])
     ], DataStoreServices);
     return DataStoreServices;
 }());
@@ -1164,9 +1349,9 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var FilterPipe = /** @class */ (function () {
     function FilterPipe() {
     }
-    FilterPipe.prototype.transform = function (customer, searchInput) {
-        if (customer.phone.match(searchInput) && searchInput.length >= 3) {
-            return customer;
+    FilterPipe.prototype.transform = function (customer, search) {
+        if (customer.phone.match(search) && search.length >= 3) {
+            return customer.phone;
         }
     };
     FilterPipe = __decorate([
