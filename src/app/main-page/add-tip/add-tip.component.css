@@ -20,3 +20,10 @@ input.ng-invalid.ng-touched {
 
   color:red;
 }
+.bg-success {
+  background-color: rgb(164, 241, 164);
+}
+.text-gold {
+  color: orange;
+  font-weight: 600;
+}

@@ -103,9 +103,8 @@
             </tr>
           </thead>
           <tbody>
-            <ng-container *ngFor="let customer of allCustomers; let i = index">
-              <ng-container *ngIf="customer.phone.match(searchInput) && searchInput > 100">
-                <tr>
+            <ng-container *ngFor="let customer of allCustomers | filter:searchInput; let i = index">
+                <tr [ngClass]='onGetCustomerColor(customer)'>
                   <!-- <td><input name="checkbox" type='radio' class="btn btn-primary" (click)="onAddExistingCustomer(customer)"></td> -->
                   <td><a class="btn btn-success" href="tel:{{customer.phone}}">התקשר</a></td>
                   <td><button type="button" class="btn btn-primary" (click)="onAddExistingCustomer(i)" [disabled]='!currentNetStatus'>בחר</button></td>
@@ -116,7 +115,6 @@
                   <td>{{ customer.phone }}</td>
                   
                 </tr>
-              </ng-container>
             </ng-container>
           </tbody>
         </table>

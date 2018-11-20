@@ -15,6 +15,7 @@ import { UserServices } from './user.services';
 import { CurrentStatusComponent } from './main-page/current-status/current-status.component';
 import { HttpModule } from '@angular/http';
 import { DataStoreServices } from './shared/data-storage.services';
+import { FilterPipe } from './shared/filter.pipe';
 
 
 
@@ -27,6 +28,7 @@ import { DataStoreServices } from './shared/data-storage.services';
     ProfileEditComponent,
     NotFoundPageComponent,
     CurrentStatusComponent,
+    FilterPipe,
   ],
   imports: [
     BrowserModule,

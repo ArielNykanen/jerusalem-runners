@@ -22,7 +22,7 @@ export class AddTipComponent implements OnInit, OnDestroy {
   tipped = true;
   currentNetStatus: Boolean = true;
   currentUserPauch;
-  searchInput;
+  searchInput = '';
   customerSelected = false;
   selectedCustomer;
   selectedCustomerId;
@@ -62,6 +62,18 @@ export class AddTipComponent implements OnInit, OnDestroy {
     this.tipped = !this.tipped;
   }
 
+  onGetCustomerColor(customer: Customer) {
+    if (this.onGetCustomerAvrg(customer) < 5) {
+      return 'bg-danger text-danger';
+    } else if (this.onGetCustomerAvrg(customer) < 10) {
+      return 'bg-warning text-secondary';
+    } else if (this.onGetCustomerAvrg(customer) < 20) {
+      return 'bg-info text-success';
+    } else if (this.onGetCustomerAvrg(customer) > 20) {
+      return 'bg-success text-gold font-weight-bold';
+    }
+     
+  }
 
   onAddExistingCustomer(index: number) {
     this.selectedCustomerId = index;
@@ -140,8 +152,8 @@ export class AddTipComponent implements OnInit, OnDestroy {
   }
 
   onGetCustomerAvrg(customer: Customer) {
-  const totalTipTimes = parseInt(customer.tipped) + parseInt(customer.notTipped);
-  const result = parseInt(customer.totalTip) / totalTipTimes;
+  const totalTipTimes = Number(customer.tipped) + Number(customer.notTipped);
+  const result = Number(customer.totalTip) / totalTipTimes;
   return result;
   }
 
@@ -181,7 +193,6 @@ export class AddTipComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     console.log('ngOnDestroy Was Fired! In add-tip');
-    
   }
 
 }
