@@ -190,19 +190,29 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var firebase__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! firebase */ "./node_modules/firebase/dist/index.cjs.js");
 /* harmony import */ var firebase__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(firebase__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _auth_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./auth/auth.service */ "./src/app/auth/auth.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
 
 
 var AppComponent = /** @class */ (function () {
-    function AppComponent() {
+    function AppComponent(authService) {
+        this.authService = authService;
         this.title = 'jerusalem-runners';
     }
     AppComponent.prototype.ngOnInit = function () {
+        if (localStorage.getItem('userId')) {
+            var token = localStorage.getItem('userId');
+            this.authService.token = token;
+        }
         firebase__WEBPACK_IMPORTED_MODULE_1__["initializeApp"]({
             apiKey: 'AIzaSyCDmFV0_CC6ltw8-mevf4qphUHgPvANgB0',
             authDomain: 'jerusalem-runners.firebaseapp.com',
@@ -213,7 +223,8 @@ var AppComponent = /** @class */ (function () {
             selector: 'app-root',
             template: __webpack_require__(/*! ./app.component.html */ "./src/app/app.component.html"),
             styles: [__webpack_require__(/*! ./app.component.css */ "./src/app/app.component.css")]
-        })
+        }),
+        __metadata("design:paramtypes", [_auth_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"]])
     ], AppComponent);
     return AppComponent;
 }());
@@ -420,8 +431,7 @@ var AuthService = /** @class */ (function () {
             firebase__WEBPACK_IMPORTED_MODULE_0__["auth"]().currentUser.getIdToken()
                 .then(function (token) {
                 _this.token = token;
-                console.log(_this.token);
-                console.log('this is the id i took:  t8LuaXh9X0cdPomny3RmINwMIi83');
+                localStorage.setItem('userId', token);
             });
         }).catch(function (error) {
             _this.loading = false;
@@ -438,7 +448,9 @@ var AuthService = /** @class */ (function () {
         return this.token != null;
     };
     AuthService.prototype.logOut = function () {
-        firebase__WEBPACK_IMPORTED_MODULE_0__["auth"]().signOut();
+        // todo make it async
+        window.localStorage.clear();
+        firebase__WEBPACK_IMPORTED_MODULE_0__["auth"]().signOut().then();
         this.token = null;
     };
     AuthService = __decorate([
