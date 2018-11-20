@@ -37,8 +37,7 @@ export class AuthService {
          .then(
            (token: string) => {
              this.token = token;
-             console.log(this.token);
-             console.log('this is the id i took:  t8LuaXh9X0cdPomny3RmINwMIi83');
+             localStorage.setItem('userId', token);
             }
          );
       }
@@ -62,7 +61,9 @@ export class AuthService {
 }
 
 logOut() {
-  firebase.auth().signOut();
+  // todo make it async
+  window.localStorage.clear();
+  firebase.auth().signOut().then();
   this.token = null;
 }
 
