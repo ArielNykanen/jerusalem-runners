@@ -21,27 +21,22 @@
 </div>
 <div class="row">
   <div class="col-md-12" align=center>
-    <h1>מאגר לקוחות</h1>
+    <h1>הוסף פרטי לקוח</h1>
   </div>
   <hr>
   <form [formGroup]="addCustomerTipForm" (ngSubmit)="onCustomerAdded()">
     <div class="row">
-      <div class="col-xs-3 form-group">
-
-
-      </div>
+    
       <div *ngIf='!customerSelected' class="col-xs-3 form-group">
-        <label>שם
-          <input formControlName="customerName" type="text" id="" class="form-control">
-        </label>
+          <input placeholder="שם" formControlName="customerName" type="text" id="" class="form-control">
         <span *ngIf="addCustomerTipForm.get('customerName').errors && addCustomerTipForm.get('customerName').touched"
           class="help-block">!שדה חובה</span>
       </div>
-
+      <div class="col-xs-2">
+          <a href="tel:{{ searchInput }}"> <button type="button" class="btn btn-success"><i class="fas fa-phone"></i></button></a>
+       </div>
       <div *ngIf='!customerSelected' class="col-xs-6 form-group">
-        <label>פלאפון/טלפון
-          <input formControlName="customerPhone" type="text" id="" class="form-control" [(ngModel)]="searchInput">
-        </label>
+          <input placeholder="פלאפון/טלפון" formControlName="customerPhone" type="text" id="" class="form-control" [(ngModel)]="searchInput">
         <span *ngIf="!addCustomerTipForm.get('customerPhone').valid && addCustomerTipForm.get('customerPhone').touched"
           class="help-block">!שדה חובה</span>
       </div>

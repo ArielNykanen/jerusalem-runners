@@ -16,7 +16,11 @@
         <ul class="nav navbar-nav">
           <li [routerLinkActiveOptions]="{exact: 'full'}" routerLinkActive="active"><a routerLink="/">ראשי</a></li>
           <li routerLinkActive="active"><a routerLink="add-tip">הוסף טיפ ועדכן לקוח</a></li>
-          <li routerLinkActive="active"><a routerLink="profile-edit">עריכת פרופיל</a></li>
+          <li class="p-2"><a routerLink='sign-up'>התחברות/הרשמה</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <!-- todo make it visible only if user is logged! ! ! -->
+          <li> <a href=""><i class="fas fa-user"></i> עריכת פרופיל</a></li>
         </ul>
       </div>
     </div>

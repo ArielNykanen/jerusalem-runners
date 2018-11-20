@@ -16,6 +16,8 @@ import { CurrentStatusComponent } from './main-page/current-status/current-statu
 import { HttpModule } from '@angular/http';
 import { DataStoreServices } from './shared/data-storage.services';
 import { FilterPipe } from './shared/filter.pipe';
+import { SignupComponent } from './auth/signup/signup.component';
+import { SigninComponent } from './auth/signin/signin.component';
 
 
 
@@ -29,6 +31,8 @@ import { FilterPipe } from './shared/filter.pipe';
     NotFoundPageComponent,
     CurrentStatusComponent,
     FilterPipe,
+    SignupComponent,
+    SigninComponent,
   ],
   imports: [
     BrowserModule,
