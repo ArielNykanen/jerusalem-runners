@@ -41,7 +41,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = " <!-- nav-bar -->\r\n <nav class=\"navbar navbar-default\">\r\n    <div class=\"container\">\r\n      <!-- navbar header -->\r\n      <div class=\"navbar-header\">\r\n        <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#myNavbar\" aria-expanded=\"false\">\r\n          <!-- the hamburger -->\r\n          <span class=\"icon-bar\"></span>\r\n          <span class=\"icon-bar\"></span>\r\n          <span class=\"icon-bar\"></span>\r\n        </button>\r\n        <a class=\"navbar-brand\" routerLink=\"\">Jerusalem Runn<i class=\"fab fa-drupal\"></i>rs </a>\r\n      </div>\r\n      <!-- Collect the nav links, forms, and other content for toggling -->\r\n      <div class=\"collapse navbar-collapse \" id=\"myNavbar\">\r\n        <ul class=\"nav navbar-nav\">\r\n          <ng-template [ngIf]='authService.isAuthenticated()'>\r\n            <li [routerLinkActiveOptions]=\"{exact: 'full'}\" routerLinkActive=\"active\"><a routerLink=\"/\">ראשי</a></li>\r\n            <li routerLinkActive=\"active\"><a routerLink=\"add-tip\">הוסף טיפ ועדכן לקוח</a></li>\r\n          </ng-template>\r\n          <ng-template [ngIf]='!authService.isAuthenticated()'>\r\n          <li class=\"p-2\"><a routerLink='sign-in'>התחברות</a></li>\r\n          <li class=\"p-2\"><a routerLink='sign-up'>הרשמה</a></li>\r\n        </ng-template>\r\n        </ul>\r\n        <ul class=\"nav navbar-nav navbar-right\">\r\n          <!-- todo make it visible only if user is logged! ! ! -->\r\n          <ng-template [ngIf]='authService.isAuthenticated()'>\r\n            <li> <a href=\"\"><i class=\"fas fa-user\"></i> עריכת פרופיל</a></li>\r\n          </ng-template>\r\n          <ng-template [ngIf]='authService.isAuthenticated()'>\r\n            <li style=\"margin-right:10px;\" (click)='onLogOut'><a href=\"\"><i class=\"fas fa-sign-out-alt\"></i></a></li>\r\n          </ng-template>\r\n        </ul>\r\n      </div>\r\n    </div>\r\n  </nav>\r\n  "
+module.exports = " <!-- nav-bar -->\r\n <nav class=\"navbar navbar-default\">\r\n    <div class=\"container\">\r\n      <!-- navbar header -->\r\n      <div class=\"navbar-header\">\r\n        <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#myNavbar\" aria-expanded=\"false\">\r\n          <!-- the hamburger -->\r\n          <span class=\"icon-bar\"></span>\r\n          <span class=\"icon-bar\"></span>\r\n          <span class=\"icon-bar\"></span>\r\n        </button>\r\n        <a class=\"navbar-brand\" routerLink=\"\">Jerusalem Runn<i class=\"fab fa-drupal\"></i>rs </a>\r\n      </div>\r\n      <!-- Collect the nav links, forms, and other content for toggling -->\r\n      <div class=\"collapse navbar-collapse \" id=\"myNavbar\">\r\n        <ul class=\"nav navbar-nav\">\r\n          <ng-template [ngIf]='authService.isAuthenticated()'>\r\n            <li [routerLinkActiveOptions]=\"{exact: 'full'}\" routerLinkActive=\"active\"><a routerLink=\"/\">ראשי</a></li>\r\n            <li routerLinkActive=\"active\"><a routerLink=\"add-tip\">הוסף טיפ ועדכן לקוח</a></li>\r\n          </ng-template>\r\n          <ng-template [ngIf]='!authService.isAuthenticated()'>\r\n          <li class=\"p-2\"><a routerLink='sign-in'>התחברות</a></li>\r\n          <li class=\"p-2\"><a routerLink='sign-up'>הרשמה</a></li>\r\n        </ng-template>\r\n        </ul>\r\n        <ul class=\"nav navbar-nav navbar-right\">\r\n          <!-- todo make it visible only if user is logged! ! ! -->\r\n          <ng-template [ngIf]='authService.isAuthenticated()'>\r\n            <li> <a href=\"\"><i class=\"fas fa-user\"></i> עריכת פרופיל</a></li>\r\n          </ng-template>\r\n          <ng-template [ngIf]='authService.isAuthenticated()'>\r\n            <li style=\"margin-right:10px;\" (click)='onLogOut()'><a><i class=\"fas fa-sign-out-alt\"></i></a></li>\r\n          </ng-template>\r\n        </ul>\r\n      </div>\r\n    </div>\r\n  </nav>\r\n  "
 
 /***/ }),
 
@@ -209,14 +209,11 @@ var AppComponent = /** @class */ (function () {
         this.title = 'jerusalem-runners';
     }
     AppComponent.prototype.ngOnInit = function () {
-        if (localStorage.getItem('userId')) {
-            var token = localStorage.getItem('userId');
-            this.authService.token = token;
-        }
         firebase__WEBPACK_IMPORTED_MODULE_1__["initializeApp"]({
             apiKey: 'AIzaSyCDmFV0_CC6ltw8-mevf4qphUHgPvANgB0',
             authDomain: 'jerusalem-runners.firebaseapp.com',
         });
+        this.authService.getToken();
     };
     AppComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -440,18 +437,32 @@ var AuthService = /** @class */ (function () {
     };
     AuthService.prototype.getToken = function () {
         var _this = this;
-        firebase__WEBPACK_IMPORTED_MODULE_0__["auth"]().currentUser.getIdToken()
-            .then(function (token) { return _this.token = token; });
+        if (localStorage.getItem('userId')) {
+            var token = localStorage.getItem('userId');
+            this.token = token;
+        }
+        else {
+            firebase__WEBPACK_IMPORTED_MODULE_0__["auth"]().currentUser.getIdToken()
+                .then(function (token) { return _this.token = token; });
+        }
         return this.token;
+    };
+    AuthService.prototype.removeToken = function () {
+        this.token = null;
     };
     AuthService.prototype.isAuthenticated = function () {
         return this.token != null;
     };
     AuthService.prototype.logOut = function () {
         // todo make it async
-        window.localStorage.clear();
-        firebase__WEBPACK_IMPORTED_MODULE_0__["auth"]().signOut().then();
-        this.token = null;
+        if (confirm('?אתה בטוח שהינך רוצה להתנתק')) {
+            firebase__WEBPACK_IMPORTED_MODULE_0__["auth"]().signOut().then(function () {
+                localStorage.clear();
+            });
+            this.token = null;
+            this.loading = false;
+            this.router.navigate(['sign-in']);
+        }
     };
     AuthService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Injectable"])(),
@@ -680,6 +691,13 @@ var AddTipComponent = /** @class */ (function () {
     }
     AddTipComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.addCustomerTipForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormGroup"]({
+            'customerName': new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](null, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required),
+            'customerPhone': new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](null, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required),
+            'customerTip': new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](null, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required),
+            'customerTipped': new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](null),
+            'customerShit': new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](null),
+        });
         this.currentUserPauch = this.userServices.getCurrentPauch();
         this.tipStatusStyles = this.userServices.getTipStatusStyles();
         // this.customerServices.setLocalStorage();
@@ -691,13 +709,6 @@ var AddTipComponent = /** @class */ (function () {
         this.dataSotrageServices.fetchCustomers();
         this.customerServices.netStatus.subscribe(function (status) {
             _this.currentNetStatus = status;
-        });
-        this.addCustomerTipForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormGroup"]({
-            'customerName': new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](null, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required),
-            'customerPhone': new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](null, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required),
-            'customerTip': new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](null, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required),
-            'customerTipped': new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](null),
-            'customerShit': new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](null),
         });
     };
     AddTipComponent.prototype.onTipped = function () {
