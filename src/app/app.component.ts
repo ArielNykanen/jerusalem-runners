@@ -12,14 +12,11 @@ export class AppComponent implements OnInit {
   constructor(private authService: AuthService) {}
 
   ngOnInit() {
-    if (localStorage.getItem('userId')) {
-      const token = localStorage.getItem('userId');
-      this.authService.token = token;
-    }
     firebase.initializeApp({
-    apiKey: 'AIzaSyCDmFV0_CC6ltw8-mevf4qphUHgPvANgB0',
-    authDomain: 'jerusalem-runners.firebaseapp.com',
+      apiKey: 'AIzaSyCDmFV0_CC6ltw8-mevf4qphUHgPvANgB0',
+      authDomain: 'jerusalem-runners.firebaseapp.com',
     });
+    this.authService.getToken();
   }
 
 }

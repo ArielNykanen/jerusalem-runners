@@ -29,7 +29,7 @@
             <li> <a href=""><i class="fas fa-user"></i> עריכת פרופיל</a></li>
           </ng-template>
           <ng-template [ngIf]='authService.isAuthenticated()'>
-            <li style="margin-right:10px;" (click)='onLogOut'><a href=""><i class="fas fa-sign-out-alt"></i></a></li>
+            <li style="margin-right:10px;" (click)='onLogOut()'><a><i class="fas fa-sign-out-alt"></i></a></li>
           </ng-template>
         </ul>
       </div>

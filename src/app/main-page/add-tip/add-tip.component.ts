@@ -37,6 +37,13 @@ export class AddTipComponent implements OnInit, OnDestroy {
     ) { }
 
   ngOnInit() {
+    this.addCustomerTipForm = new FormGroup({
+      'customerName': new FormControl(null, Validators.required),
+      'customerPhone': new FormControl(null, Validators.required),
+      'customerTip': new FormControl(null, Validators.required),
+      'customerTipped': new FormControl(null),
+      'customerShit': new FormControl(null),
+    });
     this.currentUserPauch = this.userServices.getCurrentPauch();
     this.tipStatusStyles = this.userServices.getTipStatusStyles();
     // this.customerServices.setLocalStorage();
@@ -45,19 +52,14 @@ export class AddTipComponent implements OnInit, OnDestroy {
       // todo make it observable when it notices user is offline then it will get the localstorage
       // todo if there is one.
     });
+   
     this.dataSotrageServices.fetchCustomers();
     this.customerServices.netStatus.subscribe(
       (status: Boolean) => {
         this.currentNetStatus = status;
       });
 
-    this.addCustomerTipForm = new FormGroup({
-      'customerName': new FormControl(null, Validators.required),
-      'customerPhone': new FormControl(null, Validators.required),
-      'customerTip': new FormControl(null, Validators.required),
-      'customerTipped': new FormControl(null),
-      'customerShit': new FormControl(null),
-    });
+ 
   }
   onTipped() {
     this.tipped = !this.tipped;

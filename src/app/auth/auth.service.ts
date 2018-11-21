@@ -49,11 +49,20 @@ export class AuthService {
   }
 
   getToken() {
-    firebase.auth().currentUser.getIdToken()
-    .then(
-      (token: string) => this.token = token
-      );
+    if (localStorage.getItem('userId')) {
+      const token = localStorage.getItem('userId');
+      this.token = token;
+    } else {
+      firebase.auth().currentUser.getIdToken()
+      .then(
+        (token: string) => this.token = token
+        );
+      }
       return this.token;
+  }
+
+  removeToken() {
+    this.token = null;
   }
 
   isAuthenticated() {
@@ -62,9 +71,14 @@ export class AuthService {
 
 logOut() {
   // todo make it async
-  window.localStorage.clear();
-  firebase.auth().signOut().then();
-  this.token = null;
+  if (confirm('?אתה בטוח שהינך רוצה להתנתק')) {
+  firebase.auth().signOut().then(function () {
+      localStorage.clear();
+    });
+    this.token = null;
+    this.loading = false;
+    this.router.navigate(['sign-in']);
+}
 }
 
 }
