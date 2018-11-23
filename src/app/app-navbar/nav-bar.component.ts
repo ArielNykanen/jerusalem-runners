@@ -13,5 +13,7 @@ export class NavBarComponent {
   onLogOut() {
     this.authService.logOut();
   }
-
+  isAuthenticated() {
+    return this.authService.isAuthenticated();
+  }
 }

@@ -14,21 +14,21 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse " id="myNavbar">
         <ul class="nav navbar-nav">
-          <ng-template [ngIf]='authService.isAuthenticated()'>
+          <ng-template [ngIf]='isAuthenticated()'>
             <li [routerLinkActiveOptions]="{exact: 'full'}" routerLinkActive="active"><a routerLink="/">ראשי</a></li>
             <li routerLinkActive="active"><a routerLink="add-tip">הוסף טיפ ועדכן לקוח</a></li>
           </ng-template>
-          <ng-template [ngIf]='!authService.isAuthenticated()'>
+          <ng-template [ngIf]='!isAuthenticated()'>
           <li class="p-2"><a routerLink='sign-in'>התחברות</a></li>
           <li class="p-2"><a routerLink='sign-up'>הרשמה</a></li>
         </ng-template>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <!-- todo make it visible only if user is logged! ! ! -->
-          <ng-template [ngIf]='authService.isAuthenticated()'>
+          <ng-template [ngIf]='isAuthenticated()'>
             <li> <a href=""><i class="fas fa-user"></i> עריכת פרופיל</a></li>
           </ng-template>
-          <ng-template [ngIf]='authService.isAuthenticated()'>
+          <ng-template [ngIf]='isAuthenticated()'>
             <li style="margin-right:10px;" (click)='onLogOut()'><a><i class="fas fa-sign-out-alt"></i></a></li>
           </ng-template>
         </ul>
