@@ -35,11 +35,11 @@
                     class="help-block">!שדה חובה</span>
                 </div>
                 <div class="col-xs-2">
-                  <a href="tel:{{ searchInput }}"> <button type="button" class="btn btn-success"><i class="fas fa-phone"></i></button></a>
+                  <a href="tel:{{ searchPhone }}"> <button type="button" class="btn btn-success"><i class="fas fa-phone"></i></button></a>
                 </div>
                 <div *ngIf='!customerSelected' class="col-xs-6 form-group">
-                  <input placeholder="פלאפון/טלפון" formControlName="customerPhone" type="text" id="" class="form-control"
-                    [(ngModel)]="searchInput">
+                  <input placeholder="פלאפון/טלפון" formControlName="customerPhone" type="number" id="" class="form-control"
+                    [(ngModel)]="searchPhone">
                   <span *ngIf="!addCustomerTipForm.get('customerPhone').valid && addCustomerTipForm.get('customerPhone').touched"
                     class="help-block">!שדה חובה</span>
                 </div>
@@ -105,7 +105,7 @@
                     </thead>
                     <tbody>
                       <ng-container *ngFor="let customer of allCustomers; let i = index">
-                        <ng-container *ngIf="customer | filter:searchInput ">
+                        <ng-container *ngIf="customer | filter:searchPhone ">
                           <tr [ngClass]='onGetCustomerColor(customer)'>
                             <!-- <td><input name="checkbox" type='radio' class="btn btn-primary" (click)="onAddExistingCustomer(customer)"></td> -->
                             <!-- <td></td> -->

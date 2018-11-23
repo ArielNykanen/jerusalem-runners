@@ -22,7 +22,7 @@ export class AddTipComponent implements OnInit, OnDestroy {
   tipped = true;
   currentNetStatus: Boolean = true;
   currentUserPauch;
-  searchInput = '';
+  searchPhone = '';
   searchName = '';
   customerSelected = false;
   selectedCustomer;
@@ -44,6 +44,7 @@ export class AddTipComponent implements OnInit, OnDestroy {
       'customerTipped': new FormControl(null),
       'customerShit': new FormControl(null),
     });
+    
     this.currentUserPauch = this.userServices.getCurrentPauch();
     this.tipStatusStyles = this.userServices.getTipStatusStyles();
     // this.customerServices.setLocalStorage();
@@ -168,7 +169,7 @@ export class AddTipComponent implements OnInit, OnDestroy {
     this.customerServices
     .addCustomer(new Customer(
       this.addCustomerTipForm.get('customerName').value,
-      this.addCustomerTipForm.get('customerPhone').value.toString(),
+      '0' + this.addCustomerTipForm.get('customerPhone').value.toString(),
       !this.tipped ? '1' : '0', this.tipped ? '1' : '0',
       '23',
       this.addCustomerTipForm.get('customerTip').value > 0 ? this.addCustomerTipForm.get('customerTip').value : '0'
