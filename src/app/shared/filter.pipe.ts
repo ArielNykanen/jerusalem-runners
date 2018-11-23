@@ -9,7 +9,7 @@ export class FilterPipe implements PipeTransform {
   transform(customer, search: string) {
      console.log(search);
      
-      if (customer.phone.match(search)) {
+      if (customer.phone.match(search) && search > '10') {
         return customer.phone;
     }
   }
