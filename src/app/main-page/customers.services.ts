@@ -29,7 +29,7 @@ export class CustomerServices {
 
   checkIfCustomerExists(phoneNum) {
     for (const customer of this.allCustomers) {
-      if (customer.phone == phoneNum) {
+      if (customer && customer.phone != null && customer.phone == phoneNum) {
         return true;
       }
     }

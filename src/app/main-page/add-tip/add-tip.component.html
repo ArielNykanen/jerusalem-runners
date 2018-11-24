@@ -72,8 +72,7 @@
 
                         </ng-container>
                         <div class="col-xs-12 form-group" align=center>
-                          <button class='btn btn-success' [disabled]="addCustomerTipForm.get('customerName').invalid || addCustomerTipForm.get('customerPhone').value.length < 9 ||
-               addCustomerTipForm.get('customerPhone').value.length > 10">הוסף
+                          <button class='btn btn-success' [disabled]="addCustomerTipForm.get('customerName').invalid && !addCustomerTipForm.get('customerPhone').valid">הוסף
                             לקוח למערכת</button>
                           <div *ngIf="addCustomerTipForm.get('customerName').invalid" class="form-group">
                             <p style="color:red;">!לא הוספת שם</p>
@@ -105,7 +104,7 @@
                     </thead>
                     <tbody>
                       <ng-container *ngFor="let customer of allCustomers; let i = index">
-                        <ng-container *ngIf="customer | filter:searchPhone ">
+                        <ng-container *ngIf="customer | filter:searchPhone:searchName ">
                           <tr [ngClass]='onGetCustomerColor(customer)'>
                             <!-- <td><input name="checkbox" type='radio' class="btn btn-primary" (click)="onAddExistingCustomer(customer)"></td> -->
                             <!-- <td></td> -->
