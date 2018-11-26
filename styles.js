@@ -621,9 +621,9 @@ if(false) {}
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\angular-projects\jerusalem-runners\node_modules\bootstrap\dist\css\bootstrap.min.css */"./node_modules/bootstrap/dist/css/bootstrap.min.css");
-__webpack_require__(/*! C:\angular-projects\jerusalem-runners\node_modules\font-awesome\css\font-awesome.css */"./node_modules/font-awesome/css/font-awesome.css");
-module.exports = __webpack_require__(/*! C:\angular-projects\jerusalem-runners\src\styles.css */"./src/styles.css");
+__webpack_require__(/*! C:\GIT\JerusalemRunnersOnGit\jerusalem-runners\node_modules\bootstrap\dist\css\bootstrap.min.css */"./node_modules/bootstrap/dist/css/bootstrap.min.css");
+__webpack_require__(/*! C:\GIT\JerusalemRunnersOnGit\jerusalem-runners\node_modules\font-awesome\css\font-awesome.css */"./node_modules/font-awesome/css/font-awesome.css");
+module.exports = __webpack_require__(/*! C:\GIT\JerusalemRunnersOnGit\jerusalem-runners\src\styles.css */"./src/styles.css");
 
 
 /***/ })
