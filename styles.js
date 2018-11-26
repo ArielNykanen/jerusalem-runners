@@ -89,7 +89,7 @@ module.exports = "/*!\n *  Font Awesome 4.7.0 by @davegandy - http://fontawesome
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/* You can add global styles to this file, and also import other style files */\r\nlabel {\r\n  direction:RTL;\r\n}"
+module.exports = "/* You can add global styles to this file, and also import other style files */\r\nlabel {\r\n  direction:RTL;\r\n}\r\nbody {\r\n  background-color: rgb(118, 205, 255);\r\n}\r\nh1, h2 {\r\n  color: rgb(255, 255, 255);\r\n  text-shadow: 2px 3px 4px rgba(0, 0, 0, 0.5);\r\n}"
 
 /***/ }),
 
