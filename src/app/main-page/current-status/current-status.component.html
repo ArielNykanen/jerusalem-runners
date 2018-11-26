@@ -21,7 +21,11 @@
         <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Dropdown
         </button>
-        <div class="dropdown-menu" align=center>
+
+            <!-- ! dropdown -->
+
+        <div  class="dropdown-menu" align=center>
+          
             <div class="form-group" align=center>
                 <div class="form-group">
                   <span>?כמה אתה עושה לשעה</span>
@@ -36,35 +40,17 @@
               </div>
              
             </div>
+            <!-- ! end of dropdown -->
+
         </div>
       </div> 
       <div class="form-group" align=center>
+          <h2>הוסף הודעות רנדומליות לעידוד</h2>
+          <button routerLink='add-random-msg' class="btn btn-warning">לחץ כאן</button>
+        </div>
+      <div *ngIf='userHourPayed && userWorkHours' class="form-group" align=center>
         <p>אתה עושה לשעה</p>
         <p *ngIf="userHourPayed && userWorkHours">({{ getCurrentHourlyPayed() }})</p>
       </div>
     
   <hr>
-  <button type="button" class="button" data-toggle="offCanvasLeft1">Open Left</button>
-<button type="button" class="button" data-toggle="offCanvasRight1">Open Right</button>
-<button type="button" class="button" data-toggle="offCanvasTop1">Open Top</button>
-<button type="button" class="button" data-toggle="offCanvasBottom1">Open Bottom</button>
-
-<div class="cell">
-  <div class="off-canvas-wrapper">
-    <div class="off-canvas position-left" id="offCanvasLeft1" data-off-canvas>
-      <!-- Your menu or Off-canvas content goes here -->
-    </div>
-    <div class="off-canvas position-right" id="offCanvasRight1" data-off-canvas>
-      <!-- Your menu or Off-canvas content goes here -->
-    </div>
-    <div class="off-canvas position-top" id="offCanvasTop1" data-off-canvas>
-      <!-- Your menu or Off-canvas content goes here -->
-    </div>
-    <div class="off-canvas position-bottom" id="offCanvasBottom1" data-off-canvas>
-      <!-- Your menu or Off-canvas content goes here -->
-    </div>
-    <div class="off-canvas-content" data-off-canvas-content>
-      <img src="http://placehold.it/300x300" class="" height="" width="" alt="">
-    </div>
-  </div>
-</div>

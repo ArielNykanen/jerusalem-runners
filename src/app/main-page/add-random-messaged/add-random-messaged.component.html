@@ -1,0 +1,41 @@
+<ng-container *ngIf='errorMessage'>
+    <div class="alert alert-danger alert-dismissible" @translateFromL (click)="onDisableAlertMessage()">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <h3 align=center>{{ errorMessage }}</h3>
+      </div>
+</ng-container>
+<ng-container *ngIf='successMessage'>
+    <div class="alert alert-success alert-dismissible" @translateFromL (click)="onDisableAlertMessage()">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <h3 align=center>{{ successMessage }}</h3>
+      </div>
+</ng-container>
+
+<ng-container *ngIf='!errorMessage && !successMessage'>
+
+  <div class="form-group" align=right>
+    <h1>הוסף הודעות רנדומליות </h1>
+  </div>
+  <div class="messagesFomrWrapers">
+    <form (ngSubmit)='onAddMessage(f)' [formGroup]='addMessageForm' #f>
+      
+      <div class="form-group col-md-12 col-sm-12" align=center>
+        <h2>בחר באיזה נושא</h2>
+        <select class="form-control" formControlName="selection">
+          <option value="2">הודעות קצרות על חרא לקוחות שלא מביאים טיפ</option>
+          <option value="1">הודעות קצרות על אחלה לקוחות שכן מביאים טיפ</option>
+        </select>
+      </div>
+      <div class="form-group col-md-12 col-sm-12" align=center>
+        <h2>תרשום הודעה קצרה וקולעת</h2>
+        <textarea formControlName="message" cols="40" rows="3" maxlength="100" placeholder="רשמו משהו עד 100 אותיות"></textarea>
+        <ng-template [ngIf]='addMessageForm.invalid && addMessageForm.touched'>
+          <span>שליחוס אם אתה מעוניין לעלות הודעה אז היא לא יכולה להיות רייקה תמלא בבקשה</span>
+        </ng-template>
+      </div>
+      <div class="form-group" align=center>
+        <button class='btn btn-success col-xs-12'>הוסף</button>
+      </div>
+    </form>
+  </div>
+</ng-container>

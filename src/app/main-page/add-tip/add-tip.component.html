@@ -1,11 +1,30 @@
-          <div *ngIf='successMessage' class="alert alert-success alert-dismissible">
-            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-            <h1 align=center>{{ successMessage }}</h1>
+      
+          <ng-container *ngIf='successMessage'>
+            <div *ngIf='successMessage' class="alert alert-success alert-dismissible" @translateFromL (click)="onDisableAlertMessage()">
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+              <h3 align=center>{{ successMessage }}</h3>
+            </div>
+          </ng-container>
+
+            <div *ngIf='!alertMessage.init && alertMessage.message' class="alert {{alertMessage.danger}} alert-dismissible" @translateFromL (click)="onDisableAlertMessage()">
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      
+              <h3 align=center>{{ alertMessage.message }}</h3>
+            </div>
+
+            <div *ngIf='alertMessage.init && alertMessage.message' class="alert {{alertMessage.success}} alert-dismissible" @translateFromL (click)="onDisableAlertMessage()">
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      
+              <h3 align=center>{{ alertMessage.message }}</h3>
+            </div>
+
+
+          <div *ngIf='error' @translateFromL class="alert alert-danger">
+            <a  class="close" aria-label="close" (click)="error = false">&times;</a>
+            <h3 align=center>{{ error }}</h3>
           </div>
-          <div *ngIf='error' class="alert alert-danger alert-dismissible">
-            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-            <h1 align=center>{{ error }}</h1>
-          </div>
+          <ng-container *ngIf='!successMessage'>
+
           <div class="form-group">
             <p align=right [ngStyle]="{'color': userServices.getCurrentPauchStyle()}">({{ currentUserPauch }}) - בפאוץ
               כרגע</p>
@@ -21,15 +40,17 @@
           </div>
 
           <div class="form-group">
-            <h1 align=center>הוספת טיפים ופרטי לקוח</h1>
+            <h1 class="header" align=center>הוספת טיפים ולקוח</h1>
           </div>
           <div class="row">
 
             <hr>
             <form [formGroup]="addCustomerTipForm" (ngSubmit)="onCustomerAdded()">
               <div class="row">
-
-                <div *ngIf='!customerSelected' class="col-xs-3 form-group">
+                <div class="col-xs-1">
+                  
+                </div>
+                <div *ngIf='!customerSelected' class="col-xs-4 form-group" >
                   <input placeholder="שם" formControlName="customerName" type="text" id="" class="form-control"  [(ngModel)]="searchName">
                   <span *ngIf="addCustomerTipForm.get('customerName').errors && addCustomerTipForm.get('customerName').touched"
                     class="help-block">!שדה חובה</span>
@@ -37,7 +58,7 @@
                 <div class="col-xs-2">
                   <a href="tel:0{{ searchPhone }}"> <button type="button" class="btn btn-success"><i class="fas fa-phone"></i></button></a>
                 </div>
-                <div *ngIf='!customerSelected' class="col-xs-6 form-group">
+                <div *ngIf='!customerSelected' class="col-xs-4 form-group">
                   <input placeholder="פלאפון/טלפון" formControlName="customerPhone" type="number" id="" class="form-control"
                     [(ngModel)]="searchPhone">
                   <span *ngIf="!addCustomerTipForm.get('customerPhone').valid && addCustomerTipForm.get('customerPhone').touched"
@@ -105,10 +126,10 @@
                     <tbody>
                       <ng-container *ngFor="let customer of allCustomers; let i = index">
                         <ng-container *ngIf="customer | filter:searchPhone:searchName ">
-                          <tr [ngClass]='onGetCustomerColor(customer)'>
+                          <tr id="customersTr"  [ngClass]='onGetCustomerColor(customer)' @translateFromL >
                             <!-- <td><input name="checkbox" type='radio' class="btn btn-primary" (click)="onAddExistingCustomer(customer)"></td> -->
                             <!-- <td></td> -->
-                            <td><button type="button" class="btn btn-primary" (click)="onAddExistingCustomer(i)"
+                            <td ><button type="button" class="btn btn-primary" (click)="onAddExistingCustomer(i)"
                                 [disabled]='!currentNetStatus'>בחר</button></td>
                             <td>{{ onGetCustomerAvrg(customer) }}</td>
                             <td>{{ customer.notTipped }}</td>
@@ -169,3 +190,4 @@
 
 
           <hr>
+        </ng-container>

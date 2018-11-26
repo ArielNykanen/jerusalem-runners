@@ -1,22 +1,15 @@
 import { Customer } from './models/customer.model';
-import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
+
+
 export class CustomerServices {
 
+  successMessage = new Subject<string>();
+  errorMessage = new Subject<string>();
   netStatus = new Subject<Boolean>();
   customersUpdated = new Subject<Customer[]>();
 
-  allCustomers: Customer[] = [
-    new Customer('אריאל', '0544443334', '2' , '2', '20', '20'),
-    new Customer('הרצל', '0544443335', '4' , '0', '2', '344'),
-    new Customer('אלי', '0544543335', '5' , '0', '20', '344'),
-    new Customer('שמחה', '0544443454', '2' , '0', '4', '344'),
-    new Customer('רעות', '0524247646', '2' , '0', '16', '344'),
-    new Customer('שני', '0574537459', '2' , '0', '16', '344'),
-    new Customer('איציק', '0524234560', '2' , '0', '16', '344'),
-    new Customer('שמחה', '0524273453', '2' , '0', '16', '344'),
-    new Customer('חמד', '0524243354', '0' , '-12', '0', '344'),
-  ];
+  allCustomers: Customer[] = [];
 
 
   getAllCustomers() {
@@ -29,7 +22,7 @@ export class CustomerServices {
 
   checkIfCustomerExists(phoneNum) {
     for (const customer of this.allCustomers) {
-      if (customer && customer.phone != null && customer.phone == phoneNum) {
+      if (customer && customer.phone != null && customer.phone.match(phoneNum)) {
         return true;
       }
     }
@@ -63,8 +56,15 @@ export class CustomerServices {
     this.allCustomers = customers;
   }
 
-  addUpdateToCustomer(customer: Customer) {
+  addSuccessMsg(message: string) {
+    this.successMessage.next(message);
+  }
 
+  addErrorMsg(message: string) {
+    this.errorMessage.next(message);
+  }
+
+  addUpdateToCustomer(customer: Customer) {
   }
 
 

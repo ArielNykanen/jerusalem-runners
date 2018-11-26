@@ -1,10 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { UserServices } from 'src/app/user.services';
+import { trigger, transition, style, animate, state } from '@angular/animations';
+import { translateFromL } from 'src/app/shared/my-animations';
 
 @Component({
   selector: 'app-current-status',
   templateUrl: './current-status.component.html',
-  styleUrls: ['./current-status.component.css']
+  styleUrls: ['./current-status.component.css'],
+  animations: [
+    translateFromL
+  ]
 })
 export class CurrentStatusComponent implements OnInit {
 

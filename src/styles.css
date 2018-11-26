@@ -2,3 +2,10 @@
 label {
   direction:RTL;
 }
+body {
+  background-color: rgb(118, 205, 255);
+}
+h1, h2 {
+  color: rgb(255, 255, 255);
+  text-shadow: 2px 3px 4px rgba(0, 0, 0, 0.5);
+}

@@ -8,6 +8,7 @@ import { CurrentStatusComponent } from './main-page/current-status/current-statu
 import { SignupComponent } from './auth/signup/signup.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import { AuthGuard } from './auth/auth-guard.service';
+import { AddRandomMessagedComponent } from './main-page/add-random-messaged/add-random-messaged.component';
 
 const AppRoutes: Routes = [
   {
@@ -21,6 +22,9 @@ const AppRoutes: Routes = [
 },
 {
   path: 'add-tip', component: AddTipComponent, canActivate: [AuthGuard]
+},
+{
+  path: 'add-random-msg', component: AddRandomMessagedComponent, canActivate: [AuthGuard]
 },
 {
   path: 'profile-edit', component: ProfileEditComponent, canActivate: [AuthGuard]

@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './app-navbar/nav-bar.component';
@@ -20,6 +21,9 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import { AuthService } from './auth/auth.service';
 import { AuthGuard } from './auth/auth-guard.service';
+import { PublicMsgServices } from './shared/PublicMsg.services';
+import { AddRandomMessagedComponent } from './main-page/add-random-messaged/add-random-messaged.component';
+import { UserAlertServices } from './shared/user-alert.services';
 
 
 
@@ -35,13 +39,15 @@ import { AuthGuard } from './auth/auth-guard.service';
     FilterPipe,
     SignupComponent,
     SigninComponent,
+    AddRandomMessagedComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpModule
+    HttpModule,
+    BrowserAnimationsModule,
   ],
   providers: [
     CustomerServices,
@@ -49,7 +55,9 @@ import { AuthGuard } from './auth/auth-guard.service';
     NavigationServices,
     DataStoreServices,
     AuthService,
-    AuthGuard
+    AuthGuard,
+    PublicMsgServices,
+    UserAlertServices
   ],
 
   bootstrap: [AppComponent]
