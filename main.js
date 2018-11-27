@@ -821,6 +821,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var src_app_shared_data_storage_services__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/shared/data-storage.services */ "./src/app/shared/data-storage.services.ts");
 /* harmony import */ var src_app_shared_my_animations__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! src/app/shared/my-animations */ "./src/app/shared/my-animations.ts");
 /* harmony import */ var src_app_shared_PublicMsg_services__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! src/app/shared/PublicMsg.services */ "./src/app/shared/PublicMsg.services.ts");
+/* harmony import */ var util__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! util */ "./node_modules/util/util.js");
+/* harmony import */ var util__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(util__WEBPACK_IMPORTED_MODULE_9__);
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -830,6 +832,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -959,7 +962,8 @@ var AddTipComponent = /** @class */ (function () {
     };
     AddTipComponent.prototype.onCustomerAdded = function () {
         // todo make the tip and customer add
-        if (this.addCustomerTipForm.get('customerPhone').value !== Number) {
+        console.log(typeof (this.addCustomerTipForm.get('customerPhone').value));
+        if (!Object(util__WEBPACK_IMPORTED_MODULE_9__["isNumber"])(this.addCustomerTipForm.get('customerPhone').value)) {
             this.customerServices.errorMessage.next('בבקשה השתמש למספר פלאפון רק במספרים תודה');
             return;
         }
