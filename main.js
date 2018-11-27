@@ -1725,8 +1725,7 @@ var DataStoreServices = /** @class */ (function () {
         if (selectedMsg.rating == '-1') {
             this.http.delete('https://jerusalem-runners.firebaseio.com/publicFailAlertMessages/'
                 + selectedMsg.id + '.json?auth=' + token).subscribe(function (response) {
-                _this.publicMsgServices.successAlert.
-                    next('ההודעה נמחקה מהמאגר תודה על ההצבעה והמשך יום של טיפים מפנקים');
+                _this.customerServices.addSuccessMsg('ההודעה נמחקה מהמאגר תודה על ההצבעה והמשך יום של טיפים מפנקים');
             });
         }
         else {
@@ -1744,7 +1743,7 @@ var DataStoreServices = /** @class */ (function () {
                 _this.customerServices.addErrorMsg('הסנכרון לא הוצלח בהצלחה :(');
                 _this.ngOnDestroy();
             }, function () {
-                _this.customerServices.addSuccessMsg('תודה על ההצבעה ברגע שזה מגיע ל-3 זה עף מהמאגר');
+                _this.customerServices.addSuccessMsg('תודה על ההצבעה המשך יום נעים');
                 _this.ngOnDestroy();
                 updateMessages_1.unsubscribe();
             });
@@ -1756,7 +1755,7 @@ var DataStoreServices = /** @class */ (function () {
         if (selectedMsg.rating == '-1') {
             this.http.delete('https://jerusalem-runners.firebaseio.com/publicSuccessAlertMessages/'
                 + selectedMsg.id + '.json?auth=' + token).subscribe(function (response) {
-                _this.customerServices.addSuccessMsg('תודה על ההצבעה ברגע שזה מגיע למינוס 3 זה עף מהמאגר');
+                _this.customerServices.addSuccessMsg('תודה על ההצבעה המשך יום נעים');
             });
         }
         else {
@@ -1774,7 +1773,7 @@ var DataStoreServices = /** @class */ (function () {
                 _this.customerServices.addErrorMsg('הסנכרון לא הוצלח בהצלחה :(');
                 _this.ngOnDestroy();
             }, function () {
-                _this.customerServices.addSuccessMsg('תודה על ההצבעה ברגע שזה מגיע למינוס 3 זה עף מהמאגר');
+                _this.customerServices.addSuccessMsg('תודה על ההצבעה המשך יום נעים');
                 _this.ngOnDestroy();
                 updateMessages_2.unsubscribe();
             });
