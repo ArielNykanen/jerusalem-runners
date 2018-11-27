@@ -647,7 +647,7 @@ var SignupComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "textarea.ng-invalid.ng-touched {\r\n    transition: 1s;\r\n    border: 1px solid red;\r\n\r\n}"
+module.exports = "textarea.ng-invalid.ng-touched {\r\n    transition: 1s;\r\n    border: 1px solid red;\r\n\r\n}\r\n.fa-flushed{\r\n  font-size: 50px;\r\n}"
 
 /***/ }),
 
@@ -658,7 +658,7 @@ module.exports = "textarea.ng-invalid.ng-touched {\r\n    transition: 1s;\r\n   
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ng-container *ngIf='failAlert'>\r\n    <div class=\"alert alert-danger alert-dismissible\" @translateFromL (click)=\"onDisableAlertMessage()\">\r\n      <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>\r\n        <h3 align=center><i class=\"far fa-frown\"></i>{{ failAlert | async }}</h3>\r\n      </div>\r\n</ng-container>\r\n<ng-container *ngIf='successAlert'>\r\n    <div class=\"alert alert-danger alert-dismissible\" @translateFromL (click)=\"onDisableAlertMessage()\">\r\n      <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>\r\n        <h3 align=center><i class=\"far fa-frown\"></i>{{ successAlert }}</h3>\r\n      </div>\r\n</ng-container>\r\n<ng-container *ngIf='successMessage'>\r\n    <div class=\"alert alert-success alert-dismissible\" @translateFromL (click)=\"onDisableAlertMessage()\">\r\n      <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>\r\n        <h3 align=center><i class=\"far fa-grin-wink\"></i>{{ successMessage }}</h3>\r\n      </div>\r\n</ng-container>\r\n\r\n<ng-container *ngIf='!errorMessage && !successMessage'>\r\n\r\n  <div class=\"form-group\" align=right>\r\n    <h1>הוסף הודעות רנדומליות </h1>\r\n  </div>\r\n  <div class=\"messagesFomrWrapers\">\r\n    <form (ngSubmit)='onAddMessage(f)' [formGroup]='addMessageForm' #f>\r\n      \r\n      <div class=\"form-group col-md-12 col-sm-12\" align=center>\r\n        <h2>בחר באיזה נושא</h2>\r\n        <select class=\"form-control\" formControlName=\"selection\">\r\n          <option value=\"2\">הודעות קצרות על חרא לקוחות שלא מביאים טיפ</option>\r\n          <option value=\"1\">הודעות קצרות על אחלה לקוחות שכן מביאים טיפ</option>\r\n        </select>\r\n      </div>\r\n      <div class=\"form-group col-md-12 col-sm-12\" align=center>\r\n        <h2>תרשום הודעה קצרה וקולעת</h2>\r\n        <textarea formControlName=\"message\" cols=\"40\" rows=\"3\" maxlength=\"150\" placeholder=\"רשמו משהו עד 150 אותיות\"></textarea>\r\n        <ng-template [ngIf]='addMessageForm.invalid && addMessageForm.touched'>\r\n          <span>שליחוס אם אתה מעוניין לעלות הודעה אז היא לא יכולה להיות רייקה תמלא בבקשה</span>\r\n        </ng-template>\r\n      </div>\r\n      <div class=\"form-group\" align=center>\r\n        <button class='btn btn-success col-xs-12'>הוסף</button>\r\n      </div>\r\n    </form>\r\n  </div>\r\n</ng-container>"
+module.exports = "<ng-container *ngIf='failAlert'>\r\n    <div class=\"alert alert-danger alert-dismissible\" @translateFromL (click)=\"onDisableAlertMessage()\">\r\n      <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>\r\n        <h3 align=center><i class=\"far fa-frown\"></i>{{ failAlert | async }}</h3>\r\n      </div>\r\n</ng-container>\r\n<ng-container *ngIf='successAlert'>\r\n    <div class=\"alert alert-danger alert-dismissible\" @translateFromL (click)=\"onDisableAlertMessage()\">\r\n      <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>\r\n        <h3 align=center><i class=\"far fa-frown\"></i>{{ successAlert }}</h3>\r\n      </div>\r\n</ng-container>\r\n<ng-container *ngIf='successMessage'>\r\n    <div class=\"alert alert-success alert-dismissible\" @translateFromL (click)=\"onDisableAlertMessage()\">\r\n      <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>\r\n        <h3 align=center><i class=\"far fa-grin-wink\"></i>{{ successMessage }}</h3>\r\n      </div>\r\n</ng-container>\r\n<ng-container *ngIf='errorMessage'>\r\n    <div class=\"alert alert-warning alert-dismissible\" @translateFromL (click)=\"onDisableAlertMessage()\">\r\n      <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>\r\n        <h3 align=center><i class=\"far fa-flushed\"></i></h3>\r\n        <h3 align=center>{{ errorMessage }}</h3>\r\n      </div>\r\n</ng-container>\r\n\r\n<ng-container *ngIf='!errorMessage && !successMessage' @translateFromL>\r\n\r\n  <div class=\"form-group\" align=right>\r\n    <h1>הוסף הודעות רנדומליות </h1>\r\n  </div>\r\n  <div class=\"messagesFomrWrapers\">\r\n    <form (ngSubmit)='onAddMessage(f)' [formGroup]='addMessageForm' #f>\r\n      \r\n      <div class=\"form-group col-md-12 col-sm-12\" align=center>\r\n        <h2>בחר באיזה נושא</h2>\r\n        <select class=\"form-control\" formControlName=\"selection\">\r\n          <option value=\"2\">הודעות קצרות על לקוחות שלא מביאים טיפ</option>\r\n          <option value=\"1\">הודעות קצרות על לקוחות שכן מביאים טיפ</option>\r\n        </select>\r\n      </div>\r\n      <div class=\"form-group col-sm-12\" align=center>\r\n        <h2>תרשום הודעה קצרה וקולעת</h2>\r\n        <textarea class=\"form-control\" formControlName=\"message\" cols=\"35\" rows=\"3\" maxlength=\"150\" placeholder=\"רשמו משהו עד 150 אותיות\"></textarea>\r\n        <ng-template [ngIf]='addMessageForm.invalid && addMessageForm.touched'>\r\n          <span>שליחוס אם אתה מעוניין לעלות הודעה אז היא לא יכולה להיות רייקה תמלא בבקשה</span>\r\n        </ng-template>\r\n      </div>\r\n      <div class=\"form-group\" align=center>\r\n        <button class='btn btn-success col-xs-12'>הוסף</button>\r\n      </div>\r\n    </form>\r\n  </div>\r\n</ng-container>"
 
 /***/ }),
 
@@ -749,9 +749,14 @@ var AddRandomMessagedComponent = /** @class */ (function () {
         }
     };
     AddRandomMessagedComponent.prototype.onDisableAlertMessage = function () {
-        this.errorMessage = null;
-        this.successMessage = null;
-        this.router.navigate(['./']);
+        if (!this.successMessage) {
+            this.errorMessage = null;
+        }
+        else {
+            this.errorMessage = null;
+            this.successMessage = null;
+            this.router.navigate(['./']);
+        }
     };
     AddRandomMessagedComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -793,7 +798,7 @@ module.exports = "input.ng-invalid.ng-touched {\r\n  border: 1px solid red;\r\n}
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "      \r\n          <ng-container *ngIf='successMessage'>\r\n            <div *ngIf='successMessage' class=\"alert alert-success alert-dismissible\" @translateFromL (click)=\"onDisableAlertMessage()\">\r\n              <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>\r\n              <h3 align=center>{{ successMessage }}</h3>\r\n            </div>\r\n          </ng-container>\r\n\r\n            <div *ngIf='failAlert' class=\"alert alert-danger alert-dismissible\" @translateFromL>\r\n              <h3 align=center>{{ failAlert.message }}</h3>\r\n              <div class=\"row form-group\">\r\n                <div align=center class=\"col-xs-12\">\r\n                  <p>({{ failAlert.rating }})</p>\r\n                </div>\r\n                <div class=\"col-xs-2\">\r\n                  <i class=\"far fa-thumbs-down\" (click)=\"onFailMsgVote(false, failAlert)\"></i>\r\n                  <p>לא אהבתי</p>\r\n                </div>\r\n                <div class=\"col-xs-8\">\r\n                </div>\r\n                <div class=\"col-xs-2\">\r\n                  <i class=\"far fa-thumbs-up\" (click)=\"onFailMsgVote(true, failAlert)\"></i>\r\n                  <p>אהבתי</p>\r\n                </div>\r\n              </div>\r\n            </div>\r\n\r\n            <div *ngIf='successAlert' class=\"alert alert-success alert-dismissible\" @translateFromL (click)=\"onDisableAlertMessage()\">\r\n              <h3 align=center>{{ successAlert.message }}</h3>\r\n              <div class=\"row form-group\">\r\n                  <div align=center class=\"col-xs-12\">\r\n                    <p>({{ successAlert.rating }})</p>\r\n                  </div>\r\n                  <div class=\"col-xs-2\">\r\n                    <i class=\"far fa-thumbs-down\" (click)=\"onSuccessMsgVote(false, successAlert)\"></i>\r\n                    <p>לא אהבתי</p>\r\n                  </div>\r\n                  <div class=\"col-xs-8\">\r\n                  </div>\r\n                  <div class=\"col-xs-2\">\r\n                    <i class=\"far fa-thumbs-up\" (click)=\"onSuccessMsgVote(true, successAlert)\"></i>\r\n                    <p>אהבתי</p>\r\n                  </div>\r\n                </div>\r\n            </div>\r\n\r\n\r\n          <div *ngIf='error' @translateFromL class=\"alert alert-danger\">\r\n            <a  class=\"close\" aria-label=\"close\" (click)=\"error = false\">&times;</a>\r\n            <h3 align=center>{{ error }}</h3>\r\n          </div>\r\n          <ng-container *ngIf='!successMessage'>\r\n\r\n          <div class=\"form-group\">\r\n            <p align=right [ngStyle]=\"{'color': userServices.getCurrentPauchStyle()}\">({{ currentUserPauch }}) - בפאוץ\r\n              כרגע</p>\r\n            <span class=\"help-block\" align=right *ngIf=\"currentUserPauch >= 100 && currentUserPauch < 200\">מברוק הגעת\r\n              ל100 אולי\r\n              עוד תגיע ל200</span>\r\n            <span class=\"help-block\" align=right *ngIf=\"currentUserPauch >= 200  && currentUserPauch < 220\">!עשית את זה\r\n              הגעת ל200\r\n              אלוף אתה</span>\r\n            <span class=\"help-block\" align=right *ngIf=\"currentUserPauch >= 220\">!!!ממשיך לעלות?? מטורף אתה תשלח לי\r\n              מייל איך אתה\r\n              עושה את זה בבקשה</span>\r\n          </div>\r\n\r\n          <div class=\"form-group\">\r\n            <h1 class=\"header\" align=center>הוספת טיפים ולקוח</h1>\r\n          </div>\r\n          <div class=\"row\">\r\n\r\n            <hr>\r\n            <form [formGroup]=\"addCustomerTipForm\" (ngSubmit)=\"onCustomerAdded()\">\r\n              <div class=\"row\">\r\n                <div class=\"col-xs-1\">\r\n                  \r\n                </div>\r\n                <div *ngIf='!customerSelected' class=\"col-xs-4 form-group\" >\r\n                  <input placeholder=\"שם\" formControlName=\"customerName\" type=\"text\" id=\"\" class=\"form-control\"  [(ngModel)]=\"searchName\">\r\n                  <span *ngIf=\"addCustomerTipForm.get('customerName').errors && addCustomerTipForm.get('customerName').touched\"\r\n                    class=\"help-block\">!שדה חובה</span>\r\n                </div>\r\n                <div class=\"col-xs-2\">\r\n                  <a href=\"tel:0{{ searchPhone }}\"> <button type=\"button\" class=\"btn btn-success\"><i class=\"fas fa-phone\"></i></button></a>\r\n                </div>\r\n                <div *ngIf='!customerSelected' class=\"col-xs-4 form-group\">\r\n                  <input placeholder=\"פלאפון/טלפון\" formControlName=\"customerPhone\" type=\"number\" id=\"\" class=\"form-control\"\r\n                    [(ngModel)]=\"searchPhone\">\r\n                  <span *ngIf=\"!addCustomerTipForm.get('customerPhone').valid && addCustomerTipForm.get('customerPhone').touched\"\r\n                    class=\"help-block\">!שדה חובה</span>\r\n                </div>\r\n                <div *ngIf='customerSelected' class=\"col-xs-6 form-group\" align=center>\r\n\r\n                  <ng-container *ngIf='!loading'>\r\n                    <h1>({{ selectedCustomer.name }})</h1>\r\n                  </ng-container>\r\n\r\n                </div>\r\n                <ng-container *ngIf=\"!customerSelected\">\r\n\r\n                  <div *ngIf='currentNetStatus' class=\"col-xs-12 form-group\" align=center>\r\n                    <button data-toggle=\"collapse\" data-target=\"#customerDetails\" type=\"button\" class=\"btn btn-primary form-control\">הוסף\r\n                      חדש</button>\r\n                    <div id=\"customerDetails\" class=\"collapse\">\r\n                      <ng-container>\r\n                        <div class=\"form-group btn-group btn-toggle\" style=\"float:right; clear:both;\">\r\n                          <h2>הביא טיפ</h2>\r\n                          <button type=\"button\" class=\"btn \" [ngClass]=\"!tipped ? 'btn-success':'btn-disabled'\" (click)=\"onTipped()\">כן</button>\r\n                          <button type=\"button\" class=\"btn \" [ngClass]=\"tipped ? 'btn-success':'btn-disabled'\" (click)=\"onTipped()\">לא</button>\r\n                        </div>\r\n\r\n                        <ng-container *ngIf='!tipped'>\r\n                          <div class=\"col-xs-12 form-group\" align=right>\r\n                            <h2 align=center>?כמה הביא</h2>\r\n                            <input type=\"number\" formControlName=\"customerTip\" class=\"text-center form-control\"\r\n                              [(ngModel)]=\"tipSelected\">\r\n                          </div>\r\n\r\n                        </ng-container>\r\n                        <div class=\"col-xs-12 form-group\" align=center>\r\n                          <button class='btn btn-success' [disabled]=\"addCustomerTipForm.get('customerName').invalid && !addCustomerTipForm.get('customerPhone').valid\">הוסף\r\n                            לקוח למערכת</button>\r\n                          <div *ngIf=\"addCustomerTipForm.get('customerName').invalid\" class=\"form-group\">\r\n                            <p style=\"color:red;\">!לא הוספת שם</p>\r\n                          </div>\r\n\r\n\r\n                        </div>\r\n                      </ng-container>\r\n\r\n                    </div>\r\n                  </div>\r\n                </ng-container>\r\n                <ng-container *ngIf=\"customerSelected\">\r\n                  <button type=\"button\" style=\"max-width: 100px;\" class=\"btn btn-warning form-control\" (click)=\"onUnSelect()\">חזרה</button>\r\n                </ng-container>\r\n                <div *ngIf='!customerSelected' class=\"col-xs-12 form-group\">\r\n\r\n                  <table class=\"table\">\r\n                    <thead class=\"thead-dark\">\r\n                      <tr>\r\n                        <!-- <th scope=\"col\"></th> -->\r\n                        <th scope=\"col\">הוסף</th>\r\n                        <th scope=\"col\">ממוצע טיפ</th>\r\n                        <th scope=\"col\">לא הביא</th>\r\n                        <th scope=\"col\">הביא</th>\r\n                        <th scope=\"col\">שם</th>\r\n                        <th scope=\"col\">פלאפון/טלפון</th>\r\n                      </tr>\r\n                    </thead>\r\n                    <tbody>\r\n                      <ng-container *ngFor=\"let customer of allCustomers; let i = index\">\r\n                        <ng-container *ngIf=\"customer | filter:searchPhone:searchName \">\r\n                          <tr id=\"customersTr\"  [ngClass]='onGetCustomerColor(customer)' @translateFromL >\r\n                            <!-- <td><input name=\"checkbox\" type='radio' class=\"btn btn-primary\" (click)=\"onAddExistingCustomer(customer)\"></td> -->\r\n                            <!-- <td></td> -->\r\n                            <td ><button type=\"button\" class=\"btn btn-primary\" (click)=\"onAddExistingCustomer(i)\"\r\n                                [disabled]='!currentNetStatus'>בחר</button></td>\r\n                            <td>{{ onGetCustomerAvrg(customer) }}</td>\r\n                            <td>{{ customer.notTipped }}</td>\r\n                            <td>{{ customer.tipped }}</td>\r\n                            <td>{{ customer.name }}</td>\r\n                            <td><a class=\"btn btn-success w-25\" href=\"tel:{{customer.phone}}\">{{ customer.phone }} <i\r\n                                  class=\"fas fa-phone\"></i> </a></td>\r\n                          </tr>\r\n                        </ng-container>\r\n                      </ng-container>\r\n                    </tbody>\r\n                  </table>\r\n                </div>\r\n                <div class=\"col-xs-12\" *ngIf='customerSelected'>\r\n                  <table class=\"table\">\r\n                    <thead class=\"thead-dark\">\r\n                      <tr>\r\n                        <th scope=\"col\">עדכן</th>\r\n                        <th scope=\"col\">?כמה הביא</th>\r\n                        <th scope=\"col\">?הביא טיפ</th>\r\n                        <th scope=\"col\">שם</th>\r\n                        <th scope=\"col\">פלאפון/טלפון</th>\r\n                      </tr>\r\n                    </thead>\r\n                    <tbody>\r\n                      <tr>\r\n                        <ng-container *ngIf='loading'>\r\n                          <p>...מעדכן</p>\r\n                        </ng-container>\r\n                        <ng-container *ngIf='!loading'>\r\n                          <td><button type=\"button\" class=\"btn btn-primary\" (click)=\"onCustomerUpdated(updateCustomerTip)\">עדכן</button></td>\r\n                        </ng-container>\r\n                        <td><input type=\"number\" class=\"form-control\" style=\"max-width: 100px;\" [disabled]='tipped'\r\n                            #updateCustomerTip></td>\r\n                        <td><button type=\"button\" class=\"btn \" [ngClass]=\"!tipped ? 'btn-success':'btn-disabled'\"\r\n                            (click)=\"onTipped()\">כן</button></td>\r\n                        <td>{{ selectedCustomer.name }}</td>\r\n                        <td>{{ selectedCustomer.phone }}</td>\r\n                      </tr>\r\n                    </tbody>\r\n                  </table>\r\n\r\n                  <p style=\"color:red;\">{{ tipNotSellected }}</p>\r\n                </div>\r\n                <ng-container *ngIf='!currentNetStatus'>\r\n                  <div align=center>\r\n                    <div class=\"loader\">\r\n                    </div>\r\n                  </div>\r\n                </ng-container>\r\n              </div>\r\n              <div *ngIf='!currentNetStatus' class=\"form-group\">\r\n                <p class=\"bg-danger text-danger\">אתה לא מחובר לאינטרנט אינך יכול להוסיף או לעדכן לקוחות במאגר </p>\r\n              </div>\r\n            </form>\r\n\r\n          </div>\r\n\r\n\r\n          <hr>\r\n        </ng-container>\r\n"
+module.exports = "      \r\n          <ng-container *ngIf='successMessage'>\r\n            <div *ngIf='successMessage' class=\"alert alert-success alert-dismissible\" @translateFromL (click)=\"onDisableAlertMessage()\">\r\n              <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>\r\n              <h3 align=center>{{ successMessage }}</h3>\r\n            </div>\r\n          </ng-container>\r\n\r\n            <div *ngIf='failAlert' class=\"alert alert-danger alert-dismissible\" @translateFromL>\r\n              <h3 align=center>{{ failAlert.message }}</h3>\r\n              <div class=\"row form-group\">\r\n                <div align=center class=\"col-xs-12\">\r\n                  <p>({{ failAlert.rating }})</p>\r\n                </div>\r\n                <div class=\"col-xs-2\">\r\n                  <i class=\"far fa-thumbs-down\" (click)=\"onFailMsgVote(false, failAlert)\"></i>\r\n                  <p>לא אהבתי</p>\r\n                </div>\r\n                <div class=\"col-xs-8\">\r\n                </div>\r\n                <div class=\"col-xs-2\">\r\n                  <i class=\"far fa-thumbs-up\" (click)=\"onFailMsgVote(true, failAlert)\"></i>\r\n                  <p>אהבתי</p>\r\n                </div>\r\n              </div>\r\n            </div>\r\n\r\n            <div *ngIf='successAlert' class=\"alert alert-success alert-dismissible\" @translateFromL (click)=\"onDisableAlertMessage()\">\r\n              <h3 align=center>{{ successAlert.message }}</h3>\r\n              <div class=\"row form-group\">\r\n                  <div align=center class=\"col-xs-12\">\r\n                    <p>({{ successAlert.rating }})</p>\r\n                  </div>\r\n                  <div class=\"col-xs-2\">\r\n                    <i class=\"far fa-thumbs-down\" (click)=\"onSuccessMsgVote(false, successAlert)\"></i>\r\n                    <p>לא אהבתי</p>\r\n                  </div>\r\n                  <div class=\"col-xs-8\">\r\n                  </div>\r\n                  <div class=\"col-xs-2\">\r\n                    <i class=\"far fa-thumbs-up\" (click)=\"onSuccessMsgVote(true, successAlert)\"></i>\r\n                    <p>אהבתי</p>\r\n                  </div>\r\n                </div>\r\n            </div>\r\n\r\n\r\n          <div *ngIf='error' @translateFromL class=\"alert alert-danger\">\r\n            <a  class=\"close\" aria-label=\"close\" (click)=\"error = false\">&times;</a>\r\n            <h3 align=center>{{ error }}</h3>\r\n          </div>\r\n          <ng-container *ngIf='!successMessage'>\r\n\r\n          <div class=\"form-group\">\r\n            <p align=right [ngStyle]=\"{'color': userServices.getCurrentPauchStyle()}\">({{ currentUserPauch }}) - בפאוץ\r\n              כרגע</p>\r\n            <span class=\"help-block\" align=right *ngIf=\"currentUserPauch >= 100 && currentUserPauch < 200\">מברוק הגעת\r\n              ל100 אולי\r\n              עוד תגיע ל200</span>\r\n            <span class=\"help-block\" align=right *ngIf=\"currentUserPauch >= 200  && currentUserPauch < 220\">!עשית את זה\r\n              הגעת ל200\r\n              אלוף אתה</span>\r\n            <span class=\"help-block\" align=right *ngIf=\"currentUserPauch >= 220\">!!!ממשיך לעלות?? מטורף אתה תשלח לי\r\n              מייל איך אתה\r\n              עושה את זה בבקשה</span>\r\n          </div>\r\n\r\n          <div class=\"form-group\">\r\n            <h1 class=\"header\" align=center>הוספת טיפים ולקוח</h1>\r\n          </div>\r\n          <div class=\"row\">\r\n\r\n            <hr>\r\n            <form [formGroup]=\"addCustomerTipForm\" (ngSubmit)=\"onCustomerAdded()\">\r\n              <div class=\"row\">\r\n                <div class=\"col-xs-1\">\r\n                  \r\n                </div>\r\n                <div *ngIf='!customerSelected' class=\"col-xs-4 form-group\" >\r\n                  <input placeholder=\"שם\" formControlName=\"customerName\" type=\"text\" id=\"\" class=\"form-control\"  [(ngModel)]=\"searchName\">\r\n                  <span *ngIf=\"addCustomerTipForm.get('customerName').errors && addCustomerTipForm.get('customerName').touched\"\r\n                    class=\"help-block\">!שדה חובה</span>\r\n                </div>\r\n                <div class=\"col-xs-2\">\r\n                  <a href=\"tel:0{{ searchPhone }}\"> <button type=\"button\" class=\"btn btn-success\"><i class=\"fas fa-phone\"></i></button></a>\r\n                </div>\r\n                <div *ngIf='!customerSelected' class=\"col-xs-4 form-group\">\r\n                  <input placeholder=\"פלאפון/טלפון\" formControlName=\"customerPhone\" type=\"number\" id=\"\" class=\"form-control\"\r\n                    [(ngModel)]=\"searchPhone\">\r\n                  <span *ngIf=\"!addCustomerTipForm.get('customerPhone').valid && addCustomerTipForm.get('customerPhone').touched\"\r\n                    class=\"help-block\">!שדה חובה</span>\r\n                </div>\r\n                <div *ngIf='customerSelected' class=\"col-xs-6 form-group\" align=center>\r\n\r\n                  <ng-container >\r\n                    <h1>({{ selectedCustomer.name }})</h1>\r\n                  </ng-container>\r\n\r\n                </div>\r\n                <ng-container *ngIf=\"!customerSelected\">\r\n\r\n                  <div *ngIf='currentNetStatus' class=\"col-xs-12 form-group\" align=center>\r\n                    <button data-toggle=\"collapse\" data-target=\"#customerDetails\" type=\"button\" class=\"btn btn-primary form-control\">הוסף\r\n                      חדש</button>\r\n                    <div id=\"customerDetails\" class=\"collapse\">\r\n                      <ng-container>\r\n                        <div class=\"form-group btn-group btn-toggle\" style=\"float:right; clear:both;\">\r\n                          <h2>הביא טיפ</h2>\r\n                          <button type=\"button\" class=\"btn \" [ngClass]=\"!tipped ? 'btn-success':'btn-disabled'\" (click)=\"onTipped()\">כן</button>\r\n                          <button type=\"button\" class=\"btn \" [ngClass]=\"tipped ? 'btn-success':'btn-disabled'\" (click)=\"onTipped()\">לא</button>\r\n                        </div>\r\n\r\n                        <ng-container *ngIf='!tipped'>\r\n                          <div class=\"col-xs-12 form-group\" align=right>\r\n                            <h2 align=center>?כמה הביא</h2>\r\n                            <input type=\"number\" formControlName=\"customerTip\" class=\"text-center form-control\"\r\n                              [(ngModel)]=\"tipSelected\">\r\n                          </div>\r\n\r\n                        </ng-container>\r\n                        <div class=\"col-xs-12 form-group\" align=center>\r\n                          <button class='btn btn-success' [disabled]=\"addCustomerTipForm.get('customerName').invalid && !addCustomerTipForm.get('customerPhone').valid\">הוסף\r\n                            לקוח למערכת</button>\r\n                          <div *ngIf=\"addCustomerTipForm.get('customerName').invalid\" class=\"form-group\">\r\n                            <p style=\"color:red;\">!לא הוספת שם</p>\r\n                          </div>\r\n\r\n\r\n                        </div>\r\n                      </ng-container>\r\n\r\n                    </div>\r\n                  </div>\r\n                </ng-container>\r\n                <ng-container *ngIf=\"customerSelected\">\r\n                  <button type=\"button\" style=\"max-width: 100px;\" class=\"btn btn-warning form-control\" (click)=\"onUnSelect()\">חזרה</button>\r\n                </ng-container>\r\n                <div *ngIf='!customerSelected' class=\"col-xs-12 form-group\">\r\n\r\n                  <table class=\"table\">\r\n                    <thead class=\"thead-dark\">\r\n                      <tr>\r\n                        <!-- <th scope=\"col\"></th> -->\r\n                        <th scope=\"col\">הוסף</th>\r\n                        <th scope=\"col\">ממוצע טיפ</th>\r\n                        <th scope=\"col\">לא הביא</th>\r\n                        <th scope=\"col\">הביא</th>\r\n                        <th scope=\"col\">שם</th>\r\n                        <th scope=\"col\">פלאפון/טלפון</th>\r\n                      </tr>\r\n                    </thead>\r\n                    <tbody>\r\n                      <ng-container *ngFor=\"let customer of allCustomers; let i = index\">\r\n                        <ng-container *ngIf=\"customer | filter:searchPhone:searchName \">\r\n                          <tr id=\"customersTr\"  [ngClass]='onGetCustomerColor(customer)' @translateFromL >\r\n                            <!-- <td><input name=\"checkbox\" type='radio' class=\"btn btn-primary\" (click)=\"onAddExistingCustomer(customer)\"></td> -->\r\n                            <!-- <td></td> -->\r\n                            <td ><button type=\"button\" class=\"btn btn-primary\" (click)=\"onSelectCustomer(i, customer)\"\r\n                                [disabled]='!currentNetStatus'>בחר</button></td>\r\n                            <td>{{ onGetCustomerAvrg(customer) }}</td>\r\n                            <td>{{ customer.notTipped }}</td>\r\n                            <td>{{ customer.tipped }}</td>\r\n                            <td>{{ customer.name }}</td>\r\n                            <td><a class=\"btn btn-success w-25\" href=\"tel:{{customer.phone}}\">{{ customer.phone }} <i\r\n                                  class=\"fas fa-phone\"></i> </a></td>\r\n                          </tr>\r\n                        </ng-container>\r\n                      </ng-container>\r\n                    </tbody>\r\n                  </table>\r\n                </div>\r\n                <div class=\"col-xs-12\" *ngIf='customerSelected'>\r\n                  <table class=\"table\">\r\n                    <thead class=\"thead-dark\">\r\n                      <tr>\r\n                        <th scope=\"col\">עדכן</th>\r\n                        <th scope=\"col\">?כמה הביא</th>\r\n                        <th scope=\"col\">?הביא טיפ</th>\r\n                        <th scope=\"col\">שם</th>\r\n                        <th scope=\"col\">פלאפון/טלפון</th>\r\n                      </tr>\r\n                    </thead>\r\n                    <tbody>\r\n                      <tr class=\"bg-info\"> \r\n                        <ng-container >\r\n                          <td><button type=\"button\" class=\"btn btn-primary\" (click)=\"onUpdateCustomer(updateCustomerTip)\">עדכן</button></td>\r\n                        </ng-container>\r\n                        <td><input type=\"number\" class=\"form-control\" style=\"max-width: 100px;\" [disabled]='tipped'\r\n                            #updateCustomerTip></td>\r\n                        <td><button type=\"button\" class=\"btn \" [ngClass]=\"!tipped ? 'btn-success':'btn-disabled'\"\r\n                            (click)=\"onTipped()\">כן</button></td>\r\n                        <td>{{ selectedCustomer.name }}</td>\r\n                        <td><a class=\"btn btn-success w-25\" href=\"tel:{{selectedCustomer.phone}}\">{{ selectedCustomer.phone }}</a></td>\r\n                      </tr>\r\n                    </tbody>\r\n                  </table>\r\n\r\n                  <p style=\"color:red;\">{{ tipNotSellected }}</p>\r\n                </div>\r\n                <ng-container *ngIf='!currentNetStatus'>\r\n                  <div align=center>\r\n                    <div class=\"loader\">\r\n                    </div>\r\n                  </div>\r\n                </ng-container>\r\n              </div>\r\n              <div *ngIf='!currentNetStatus' class=\"form-group\">\r\n                <p class=\"bg-danger text-danger\">אתה לא מחובר לאינטרנט אינך יכול להוסיף או לעדכן לקוחות במאגר </p>\r\n              </div>\r\n            </form>\r\n\r\n          </div>\r\n\r\n\r\n          <hr>\r\n        </ng-container>\r\n"
 
 /***/ }),
 
@@ -870,14 +875,7 @@ var AddTipComponent = /** @class */ (function () {
         });
         this.publicMsgService.successMessagesUpdated.subscribe(function (allMessages) {
             _this.randomSuccessMessages = allMessages;
-            console.log(allMessages);
         });
-        // todo this.dataSotrageServices.storeFailAlertMessages().
-        // subscribe(
-        //   (response: Response) => {
-        //    this.successMessage = '!עודכן בהצלחה';
-        //    // todo make the response create success message!
-        //   });
         this.dataSotrageServices.fetchFailAlertMessages();
         this.dataSotrageServices.fetchSuccessAlertMessages();
         this.customerServices.customersUpdated.subscribe(function (customers) {
@@ -925,77 +923,31 @@ var AddTipComponent = /** @class */ (function () {
             return 'bg-success text-gold font-weight-bold';
         }
     };
-    AddTipComponent.prototype.onAddExistingCustomer = function (index) {
+    AddTipComponent.prototype.onSelectCustomer = function (index, customer, tip) {
+        this.selectedCustomer = customer;
         this.selectedCustomerId = index;
-        this.selectedCustomer = this.allCustomers[index];
+        this.customerSelected = true;
         this.addCustomerTipForm.get('customerName').setValue(this.selectedCustomer.name);
         this.addCustomerTipForm.get('customerPhone').setValue(this.selectedCustomer.phone);
-        this.customerSelected = true;
+        // todo make it work on maybe other component or else
     };
-    // onCustomerUpdated(tip) {
-    //   this.loading = true;
-    //   if (this.tipped && confirm('?אתה בטוח שאתה רוצה לעדכן שהלקוח לא הביא טיפ')) { // it will fire if tipped is not sellected
-    //     // todo make it submit customer update without tip
-    //     const editableCustomer = this.selectedCustomer;
-    //     const currentCustomerTotalNotTipped =  Number(editableCustomer.notTipped) + 1;
-    //     editableCustomer.notTipped = currentCustomerTotalNotTipped;
-    //     this.allCustomers[this.selectedCustomerId] = editableCustomer;
-    //     this.customerServices.updateCustomers(this.allCustomers);
-    //     this.dataSotrageServices.storeCustomers().
-    //     subscribe(
-    //       (response: Response) => {
-    //         if (response.json != null) {
-    //           this.successMessage = '!עודכן בהצלחה';
-    //           setTimeout(() => {
-    //             this.setMessage(tip.value);
-    //           }, 400);
-    //         } else {
-    //           this.error = 'ואללק איש יקר. סליחה אבל יש איזה תקלה';
-    //         }
-    //        // todo make the response create success message!
-    //       });
-    //   } else {
-    //   this.loading = false;
-    //   }
-    //   // it will fire if tipped is sellected
-    //   if (!this.tipped && confirm('אתה בטוח שאתה רוצה לעדכן שהלקוח הביא לך טיפ של' + tip.value)) {
-    //     this.loading = true;
-    //     if (tip.value == '') {
-    //       // todo make it return error that tip is empty
-    //       this.tipNotSellected = 'You Need To Add Tip If You Choosed Customer Tipped!';
-    //       return;
-    //     } else {
-    //       this.tipNotSellected = '';
-    //       const editableCustomer = this.selectedCustomer;
-    //       const currentCustomerTipped =  Number(editableCustomer.tipped) + 1;
-    //       const currentCustomerTotal =    Number(editableCustomer.totalTip) + Number(tip.value);
-    //       editableCustomer.tipped = currentCustomerTipped;
-    //       editableCustomer.totalTip = currentCustomerTotal;
-    //       this.allCustomers[this.selectedCustomerId] = editableCustomer;
-    //       this.customerServices.updateCustomers(this.allCustomers);
-    //       this.userServices.onAddIncome(Number(tip.value));
-    //       this.currentUserPauch = this.userServices.getCurrentPauch();
-    //       this.dataSotrageServices.storeCustomers().
-    //       subscribe(
-    //         (response: Response) => {
-    //           this.successMessage = '!עודכן בהצלחה';
-    //           setTimeout(() => {
-    //             console.log(tip.value);
-    //             this.setMessage(tip.value);
-    //           }, 400);
-    //           // todo make the response create success message!
-    //         }
-    //         );
-    //       }
-    //         // todo make it submit the update
-    //       }
-    //     }
-    //     // let editableCustomer = this.selectedCustomer;
-    //     // console.log(editableCustomer.name);
-    //   // this.customerServices.addUpdateToCustomer();
-    // onUnSelect() {
-    //   this.customerSelected = false;
-    // }
+    AddTipComponent.prototype.onUpdateCustomer = function (tip) {
+        var customer = this.selectedCustomer;
+        var customerTip = Number(tip.value);
+        var customerId = this.selectedCustomerId;
+        if (customerTip === 0) {
+            var totalNotTipped = Number(customer.notTipped);
+            customer.notTipped = Number(totalNotTipped += 1).toString();
+        }
+        else {
+            var totalTipped = Number(customer.tipped);
+            var totalTip = Number(customer.totalTip);
+            customer.tipped = Number(totalTipped += 1).toString();
+            customer.totalTip = Number(totalTip += customerTip).toString();
+        }
+        this.dataSotrageServices
+            .updateCustomer(customerId, customer, customerTip);
+    };
     AddTipComponent.prototype.onGetCustomerAvrg = function (customer) {
         var totalTipTimes = Number(customer.tipped) + Number(customer.notTipped);
         var result = Number(customer.totalTip) / totalTipTimes;
@@ -1007,6 +959,10 @@ var AddTipComponent = /** @class */ (function () {
     };
     AddTipComponent.prototype.onCustomerAdded = function () {
         // todo make the tip and customer add
+        if (this.addCustomerTipForm.get('customerPhone').value !== Number) {
+            this.customerServices.errorMessage.next('בבקשה השתמש למספר פלאפון רק במספרים תודה');
+            return;
+        }
         var tip = this.addCustomerTipForm.get('customerTip').value;
         this.customerServices.addSuccessMsg('...טוען נתונים');
         if (!this.customerServices.checkIfCustomerExists(this.addCustomerTipForm.get('customerPhone').value)) {
@@ -1551,7 +1507,7 @@ var PublicMsgServices = /** @class */ (function () {
         var ammount = tip != null ? tip : '0';
         var numFa = Math.floor(Math.random() * this.publicRandomFailMsg.length);
         var numSu = Math.floor(Math.random() * this.publicRandomSuccessMsg.length);
-        if (ammount === '0') {
+        if (ammount === '0' || ammount === null || ammount === '' || ammount === 0) {
             this.failAlert.next(this.publicRandomFailMsg[numFa]);
         }
         else {
@@ -1651,6 +1607,24 @@ var DataStoreServices = /** @class */ (function () {
         }, function (error) {
             _this.customerServices.addErrorMsg('תקלה! :( ! אנא התחבר מחדש תודה');
             _this.customerServices.setNetWorkStatus(false);
+        });
+    };
+    DataStoreServices.prototype.updateCustomer = function (customerId, customer, tip) {
+        var _this = this;
+        this.userAlertServices.addSuccessMsg('...טוען');
+        var token = this.authServices.getToken();
+        var updateCustomer = this.http.put('https://jerusalem-runners.firebaseio.com/customers/'
+            + customerId + '.json?auth=' + token, customer).subscribe(function (response) {
+            // todo fix the some kind of subscription there!
+        }, function (error) {
+            _this.customerServices.addErrorMsg('הסנכרון לא הוצלח בהצלחה :(');
+            _this.ngOnDestroy();
+        }, function () {
+            _this.customerServices.addSuccessMsg('הלקוח עודכן בהצלחה');
+            setTimeout(function () {
+                _this.publicMsgServices.setOnAddTipMessage(tip);
+                updateCustomer.unsubscribe();
+            }, 300);
         });
     };
     DataStoreServices.prototype.storeSuccessAlertMessages = function (message) {
