@@ -1,13 +1,13 @@
 <ng-container *ngIf='errorMessage'>
     <div class="alert alert-danger alert-dismissible" @translateFromL (click)="onDisableAlertMessage()">
       <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-        <h3 align=center>{{ errorMessage }}</h3>
+        <h3 align=center><i class="far fa-frown"></i>{{ errorMessage }}</h3>
       </div>
 </ng-container>
 <ng-container *ngIf='successMessage'>
     <div class="alert alert-success alert-dismissible" @translateFromL (click)="onDisableAlertMessage()">
       <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-        <h3 align=center>{{ successMessage }}</h3>
+        <h3 align=center><i class="far fa-grin-wink"></i>{{ successMessage }}</h3>
       </div>
 </ng-container>
 
@@ -28,7 +28,7 @@
       </div>
       <div class="form-group col-md-12 col-sm-12" align=center>
         <h2>תרשום הודעה קצרה וקולעת</h2>
-        <textarea formControlName="message" cols="40" rows="3" maxlength="100" placeholder="רשמו משהו עד 100 אותיות"></textarea>
+        <textarea formControlName="message" cols="40" rows="3" maxlength="150" placeholder="רשמו משהו עד 150 אותיות"></textarea>
         <ng-template [ngIf]='addMessageForm.invalid && addMessageForm.touched'>
           <span>שליחוס אם אתה מעוניין לעלות הודעה אז היא לא יכולה להיות רייקה תמלא בבקשה</span>
         </ng-template>

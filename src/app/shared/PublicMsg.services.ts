@@ -3,8 +3,8 @@ import { Subject } from 'rxjs';
 
 export class PublicMsgServices {
 
-    publicRandomFailMsg: PublicMsg[] = [new PublicMsg('hahaha fail')];
-    publicRandomSuccessMsg: PublicMsg[] = [new PublicMsg('hahaha success')];
+    publicRandomFailMsg: PublicMsg[] = [];
+    publicRandomSuccessMsg: PublicMsg[] = [];
     successMessagesUpdated = new Subject<PublicMsg[]>();
     failMessagesUpdated = new Subject<PublicMsg[]>();
 
@@ -22,20 +22,17 @@ export class PublicMsgServices {
     }
 
     addSuccessMessage(message: PublicMsg) {
-        this.publicRandomFailMsg.push(message);
+        this.publicRandomSuccessMsg.push(message);
         this.successMessagesUpdated.next(this.publicRandomSuccessMsg);
     }
 
     setFailMessages(publicMsg: PublicMsg[]) {
-        console.log(publicMsg[1]);
-        this.publicRandomFailMsg = publicMsg;
-        this.failMessagesUpdated.next(this.publicRandomFailMsg);
+      this.publicRandomFailMsg = publicMsg;
+      this.failMessagesUpdated.next(this.publicRandomFailMsg);
     }
 
     setSuccessMessages(publicMsg: PublicMsg[]) {
         this.publicRandomSuccessMsg = publicMsg;
         this.successMessagesUpdated.next(this.publicRandomSuccessMsg);
     }
-
-    
 }

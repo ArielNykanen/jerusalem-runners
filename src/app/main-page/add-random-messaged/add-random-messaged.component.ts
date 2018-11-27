@@ -56,24 +56,24 @@ export class AddRandomMessagedComponent implements OnInit {
   }
 
   onAddMessage(f) {
-    const selection = this.addMessageForm.get('selection').value;
+    const selection = Number(this.addMessageForm.get('selection').value);
     const formMsg = this.addMessageForm.get('message').value;
-   
     if (this.addMessageForm.invalid) {
       const randomPick = Math.floor(Math.random() * this.errorMsgArr.length);
       this.errorMessage = this.errorMsgArr[randomPick];
       return;
-    } else if (formMsg.length > 100) {
+    } else if (formMsg.length > 150) {
       this.errorMessage = 'משהו הישתבש אנא התחבר שנית';
       this.authServices.removeToken();
     } else {
       const message = new PublicMsg(formMsg);
       if (selection === 1) {
         this.publicMsgServices.addSuccessMessage(message);
-        this.dataStoreServices.storeAlertMessages();
+        console.log(selection);
+        this.dataStoreServices.storeSuccessAlertMessages();
       } else if (selection === 2) {
-        this.publicMsgServices.addFailMessage(message);
-        this.dataStoreServices.storeAlertMessages();
+        console.log(selection);
+        this.dataStoreServices.storeFailAlertMessages(message);
       }
     }
   }

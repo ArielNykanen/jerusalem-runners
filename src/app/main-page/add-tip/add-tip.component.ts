@@ -78,9 +78,10 @@ export class AddTipComponent implements OnInit, OnDestroy {
     this.tipStatusStyles = this.userServices.getTipStatusStyles();
     this.publicMsgService.failMessagesUpdated.subscribe(
       (allMessages: PublicMsg[]) => {
-        this.randomFaliureMessages = allMessages;
+          this.randomFaliureMessages = allMessages;
       }
       );
+
     this.publicMsgService.successMessagesUpdated.subscribe(
       (allMessages: PublicMsg[]) => {
         this.randomSuccessMessages = allMessages;

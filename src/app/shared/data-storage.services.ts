@@ -7,6 +7,7 @@ import { PublicMsgServices } from './PublicMsg.services';
 import {  Subject, Subscription } from 'rxjs';
 import { PublicMsg } from '../main-page/models/publicMsg.model';
 import { UserAlertServices } from './user-alert.services';
+import { Options } from 'selenium-webdriver/ie';
 
 @Injectable()
 export class DataStoreServices implements OnDestroy {
@@ -77,23 +78,28 @@ export class DataStoreServices implements OnDestroy {
       });
     }
 
-    storeAlertMessages() {
+    storeSuccessAlertMessages() {
       this.userAlertServices.addSuccessMsg('...טוען');
       const token = this.authServices.getToken();
-      const failMessage = this.publicMsgServices.getAllFailMessages();
       const successMsg = this.publicMsgServices.getAllSuccessMessages();
-      const request1 = this.http.
-      put('https://jerusalem-runners.firebaseio.com/publicFailAlertMessages.json?auth=' + token, successMsg);
-      request1.subscribe(
+      this.http.
+      post('https://jerusalem-runners.firebaseio.com/publicSuccessAlertMessages.json?auth=' + token, successMsg)
+      .subscribe(
         (response: Response) => {
           this.userAlertServices.addSuccessMsg('נשלח ונשמר בהצלחה תודה');
       },
       (error: ErrorHandler) => this.userAlertServices.addErrorMsg('אופסי דייזי משהו השתבש לנו ')
       );
-      const request2 = this.http.
-      put('https://jerusalem-runners.firebaseio.com/publicSuccessAlertMessages.json?auth=' + token, failMessage);
-      request2.subscribe(
+    }
+
+    storeFailAlertMessages(message: PublicMsg) {
+      this.userAlertServices.addSuccessMsg('...טוען');
+      const token = this.authServices.getToken();
+      this.http.
+      post('https://jerusalem-runners.firebaseio.com/publicFailAlertMessages.json?auth=' + token, message)
+      .subscribe(
         (response: Response) => {
+          this.publicMsgServices.addFailMessage(message);
           this.userAlertServices.addSuccessMsg('נשלח ונשמר בהצלחה תודה');
       },
       (error: ErrorHandler) => this.userAlertServices.addErrorMsg('אופסי דייזי משהו השתבש לנו ')
@@ -108,7 +114,12 @@ export class DataStoreServices implements OnDestroy {
         (response: Response) => {
           if (response.json() !== null) {
             const publicMsg: PublicMsg[] = response.json();
-            this.publicMsgServices.setFailMessages(publicMsg);
+            const resultsArr: PublicMsg[] = [];
+            Object.keys(publicMsg).map(
+              (key) => {
+                resultsArr.push(new PublicMsg(publicMsg[key].message));
+              });
+            this.publicMsgServices.setFailMessages(resultsArr);
           } else {
             this.customerServices.setNetWorkStatus(true);
           }
