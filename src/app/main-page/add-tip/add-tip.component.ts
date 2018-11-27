@@ -37,12 +37,8 @@ export class AddTipComponent implements OnInit, OnDestroy {
 
   tipStatusStyles;
   successMessage = '';
-  alertMessage = {
-    message: '',
-    danger: 'alert-danger',
-    success: 'alert-success',
-    init: false
-  };
+  failAlert = null;
+  successAlert = null;
   error = '';
   loading = false;
   tipSelected: number;
@@ -76,6 +72,10 @@ export class AddTipComponent implements OnInit, OnDestroy {
     });
     this.currentUserPauch = this.userServices.getCurrentPauch();
     this.tipStatusStyles = this.userServices.getTipStatusStyles();
+  
+    this.publicMsgService.successAlert.subscribe((message) => this.successAlert = message);
+    this.publicMsgService.failAlert.subscribe((message) => this.failAlert = message);
+
     this.publicMsgService.failMessagesUpdated.subscribe(
       (allMessages: PublicMsg[]) => {
           this.randomFaliureMessages = allMessages;
@@ -85,6 +85,7 @@ export class AddTipComponent implements OnInit, OnDestroy {
     this.publicMsgService.successMessagesUpdated.subscribe(
       (allMessages: PublicMsg[]) => {
         this.randomSuccessMessages = allMessages;
+        console.log(allMessages);
       }
       );
       // todo this.dataSotrageServices.storeFailAlertMessages().
@@ -111,9 +112,6 @@ export class AddTipComponent implements OnInit, OnDestroy {
       this.customerServices.successMessage.subscribe(
         (successMessage: string) => {
           this.successMessage = successMessage;
-          setTimeout(() => {
-            this.setOnAddTipMessage(this.addCustomerTipForm.get('customerTip').value);
-          }, 1000);
         }
       );
       this.customerServices.errorMessage.subscribe(
@@ -227,6 +225,7 @@ export class AddTipComponent implements OnInit, OnDestroy {
 
   onCustomerAdded() {
     // todo make the tip and customer add
+    const tip = this.addCustomerTipForm.get('customerTip').value;
     this.customerServices.addSuccessMsg('...טוען נתונים');
     if (!this.customerServices.checkIfCustomerExists(this.addCustomerTipForm.get('customerPhone').value)) {
       const customer = new Customer(
@@ -236,8 +235,8 @@ export class AddTipComponent implements OnInit, OnDestroy {
         '23',
         this.addCustomerTipForm.get('customerTip').value > 0 ? this.addCustomerTipForm.get('customerTip').value : '0'
         );
-      this.dataSotrageServices.storeCustomers(customer);
-      this.userServices.onAddIncome(this.addCustomerTipForm.get('customerTip').value);
+      this.dataSotrageServices.storeCustomers(customer, tip);
+      this.userServices.onAddIncome(tip);
       this.currentUserPauch = this.userServices.getCurrentPauch();
     } else {
       this.error = '!לקוח קיים כבר! בחר בהוסף ועדכן';
@@ -247,24 +246,11 @@ export class AddTipComponent implements OnInit, OnDestroy {
 
   onDisableAlertMessage() {
     this.successMessage = null;
-    this.alertMessage.message = null;
+    // this.alertMessage.message = null;
     this.router.navigate(['./']);
   }
 
   ngOnDestroy() {
     console.log('ngOnDestroy Was Fired! In add-tip');
   }
-
-  setOnAddTipMessage(tip) {
-    const ammount = tip > 0 ? tip : '0';
-    const numSu =  Math.floor(Math.random() * this.randomSuccessMessages.length);
-    const numFa =  Math.floor(Math.random() * this.randomFaliureMessages.length);
-     if (ammount < 5) {
-       this.alertMessage.message = this.randomFaliureMessages[numFa].message;
-     } else {
-       this.alertMessage.message = ' נוסף לך' + ammount  + this.randomSuccessMessages[numSu].message;
-       this.alertMessage.init = true;
-     }
-  }
-
 }

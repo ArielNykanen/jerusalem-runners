@@ -68,11 +68,8 @@ export class AddRandomMessagedComponent implements OnInit {
     } else {
       const message = new PublicMsg(formMsg);
       if (selection === 1) {
-        this.publicMsgServices.addSuccessMessage(message);
-        console.log(selection);
-        this.dataStoreServices.storeSuccessAlertMessages();
+        this.dataStoreServices.storeSuccessAlertMessages(message);
       } else if (selection === 2) {
-        console.log(selection);
         this.dataStoreServices.storeFailAlertMessages(message);
       }
     }

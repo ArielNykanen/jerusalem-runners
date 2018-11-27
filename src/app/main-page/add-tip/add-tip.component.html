@@ -6,16 +6,16 @@
             </div>
           </ng-container>
 
-            <div *ngIf='!alertMessage.init && alertMessage.message' class="alert {{alertMessage.danger}} alert-dismissible" @translateFromL (click)="onDisableAlertMessage()">
+            <div *ngIf='failAlert' class="alert alert-danger alert-dismissible" @translateFromL (click)="onDisableAlertMessage()">
               <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
       
-              <h3 align=center>{{ alertMessage.message }}</h3>
+              <h3 align=center>{{ failAlert }}</h3>
             </div>
 
-            <div *ngIf='alertMessage.init && alertMessage.message' class="alert {{alertMessage.success}} alert-dismissible" @translateFromL (click)="onDisableAlertMessage()">
+            <div *ngIf='successAlert' class="alert alert-success alert-dismissible" @translateFromL (click)="onDisableAlertMessage()">
               <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
       
-              <h3 align=center>{{ alertMessage.message }}</h3>
+              <h3 align=center>{{ successAlert }}</h3>
             </div>
 
 

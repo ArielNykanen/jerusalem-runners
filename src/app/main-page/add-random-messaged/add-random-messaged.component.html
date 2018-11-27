@@ -1,7 +1,13 @@
-<ng-container *ngIf='errorMessage'>
+<ng-container *ngIf='failAlert'>
     <div class="alert alert-danger alert-dismissible" @translateFromL (click)="onDisableAlertMessage()">
       <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-        <h3 align=center><i class="far fa-frown"></i>{{ errorMessage }}</h3>
+        <h3 align=center><i class="far fa-frown"></i>{{ failAlert | async }}</h3>
+      </div>
+</ng-container>
+<ng-container *ngIf='successAlert'>
+    <div class="alert alert-danger alert-dismissible" @translateFromL (click)="onDisableAlertMessage()">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <h3 align=center><i class="far fa-frown"></i>{{ successAlert }}</h3>
       </div>
 </ng-container>
 <ng-container *ngIf='successMessage'>

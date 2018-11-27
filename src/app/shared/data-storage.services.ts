@@ -21,7 +21,7 @@ export class DataStoreServices implements OnDestroy {
       private userAlertServices: UserAlertServices
       ) {}
 
-    storeCustomers(customer: Customer) {
+    storeCustomers(customer: Customer, tip) {
       this.tempCustomersDownloaded = new Subject();
       const token =  this.authServices.getToken();
       this.tempCustomersDownloaded.subscribe(
@@ -32,7 +32,6 @@ export class DataStoreServices implements OnDestroy {
             'https://jerusalem-runners.firebaseio.com/customers.json?auth=' + token, dbCustomers).subscribe(
             (response: Response) => {
               // todo fix the some kind of subscription there!
-              console.log('i was here trying to upload!!!!');
           },
           (error: ErrorHandler) => {
             this.customerServices.addErrorMsg('הסנכרון לא הוצלח בהצלחה :( אנא נסה שנית תודה');
@@ -40,6 +39,7 @@ export class DataStoreServices implements OnDestroy {
           },
           () => {
             this.customerServices.addSuccessMsg('!הלקוח הועלה למאגר בהצלחה');
+            this.publicMsgServices.setOnAddTipMessage(tip);
             this.ngOnDestroy();
           }
         );
@@ -78,14 +78,14 @@ export class DataStoreServices implements OnDestroy {
       });
     }
 
-    storeSuccessAlertMessages() {
+    storeSuccessAlertMessages(message: PublicMsg) {
       this.userAlertServices.addSuccessMsg('...טוען');
       const token = this.authServices.getToken();
-      const successMsg = this.publicMsgServices.getAllSuccessMessages();
       this.http.
-      post('https://jerusalem-runners.firebaseio.com/publicSuccessAlertMessages.json?auth=' + token, successMsg)
+      post('https://jerusalem-runners.firebaseio.com/publicSuccessAlertMessages.json?auth=' + token, message)
       .subscribe(
         (response: Response) => {
+        this.publicMsgServices.addSuccessMessage(message);
           this.userAlertServices.addSuccessMsg('נשלח ונשמר בהצלחה תודה');
       },
       (error: ErrorHandler) => this.userAlertServices.addErrorMsg('אופסי דייזי משהו השתבש לנו ')
@@ -137,7 +137,12 @@ export class DataStoreServices implements OnDestroy {
         (response: Response) => {
           if (response.json() !== null) {
             const publicMsg: PublicMsg[] = response.json();
-            this.publicMsgServices.setSuccessMessages(publicMsg);
+            const resultsArr: PublicMsg[] = [];
+            Object.keys(publicMsg).map(
+              (key) => {
+                resultsArr.push(new PublicMsg(publicMsg[key].message));
+              });
+            this.publicMsgServices.setSuccessMessages(resultsArr);
           } else {
             this.customerServices.setNetWorkStatus(true);
           }

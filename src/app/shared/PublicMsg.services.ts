@@ -5,8 +5,10 @@ export class PublicMsgServices {
 
     publicRandomFailMsg: PublicMsg[] = [];
     publicRandomSuccessMsg: PublicMsg[] = [];
-    successMessagesUpdated = new Subject<PublicMsg[]>();
-    failMessagesUpdated = new Subject<PublicMsg[]>();
+    successAlert = new Subject();
+    failAlert = new Subject();
+    successMessagesUpdated = new Subject();
+    failMessagesUpdated = new Subject();
 
     getAllFailMessages() {
         return this.publicRandomFailMsg;
@@ -34,5 +36,15 @@ export class PublicMsgServices {
     setSuccessMessages(publicMsg: PublicMsg[]) {
         this.publicRandomSuccessMsg = publicMsg;
         this.successMessagesUpdated.next(this.publicRandomSuccessMsg);
+    }
+    setOnAddTipMessage(tip) {
+      const ammount = tip != null ? tip : '0';
+      const numFa =  Math.floor(Math.random() * this.publicRandomFailMsg.length);
+      const numSu =  Math.floor(Math.random() * this.publicRandomSuccessMsg.length);
+       if (ammount === '0') {
+         this.failAlert.next(this.publicRandomFailMsg[numFa].message);
+       } else {
+         this.successAlert.next(this.publicRandomSuccessMsg[numSu].message);
+       }
     }
 }
