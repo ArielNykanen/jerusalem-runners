@@ -658,7 +658,7 @@ module.exports = "textarea.ng-invalid.ng-touched {\r\n    transition: 1s;\r\n   
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ng-container *ngIf='errorMessage'>\r\n    <div class=\"alert alert-danger alert-dismissible\" @translateFromL (click)=\"onDisableAlertMessage()\">\r\n      <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>\r\n        <h3 align=center>{{ errorMessage }}</h3>\r\n      </div>\r\n</ng-container>\r\n<ng-container *ngIf='successMessage'>\r\n    <div class=\"alert alert-success alert-dismissible\" @translateFromL (click)=\"onDisableAlertMessage()\">\r\n      <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>\r\n        <h3 align=center>{{ successMessage }}</h3>\r\n      </div>\r\n</ng-container>\r\n\r\n<ng-container *ngIf='!errorMessage && !successMessage'>\r\n\r\n  <div class=\"form-group\" align=right>\r\n    <h1>הוסף הודעות רנדומליות </h1>\r\n  </div>\r\n  <div class=\"messagesFomrWrapers\">\r\n    <form (ngSubmit)='onAddMessage(f)' [formGroup]='addMessageForm' #f>\r\n      \r\n      <div class=\"form-group col-md-12 col-sm-12\" align=center>\r\n        <h2>בחר באיזה נושא</h2>\r\n        <select class=\"form-control\" formControlName=\"selection\">\r\n          <option value=\"2\">הודעות קצרות על חרא לקוחות שלא מביאים טיפ</option>\r\n          <option value=\"1\">הודעות קצרות על אחלה לקוחות שכן מביאים טיפ</option>\r\n        </select>\r\n      </div>\r\n      <div class=\"form-group col-md-12 col-sm-12\" align=center>\r\n        <h2>תרשום הודעה קצרה וקולעת</h2>\r\n        <textarea formControlName=\"message\" cols=\"40\" rows=\"3\" maxlength=\"100\" placeholder=\"רשמו משהו עד 100 אותיות\"></textarea>\r\n        <ng-template [ngIf]='addMessageForm.invalid && addMessageForm.touched'>\r\n          <span>שליחוס אם אתה מעוניין לעלות הודעה אז היא לא יכולה להיות רייקה תמלא בבקשה</span>\r\n        </ng-template>\r\n      </div>\r\n      <div class=\"form-group\" align=center>\r\n        <button class='btn btn-success col-xs-12'>הוסף</button>\r\n      </div>\r\n    </form>\r\n  </div>\r\n</ng-container>"
+module.exports = "<ng-container *ngIf='failAlert'>\r\n    <div class=\"alert alert-danger alert-dismissible\" @translateFromL (click)=\"onDisableAlertMessage()\">\r\n      <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>\r\n        <h3 align=center><i class=\"far fa-frown\"></i>{{ failAlert | async }}</h3>\r\n      </div>\r\n</ng-container>\r\n<ng-container *ngIf='successAlert'>\r\n    <div class=\"alert alert-danger alert-dismissible\" @translateFromL (click)=\"onDisableAlertMessage()\">\r\n      <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>\r\n        <h3 align=center><i class=\"far fa-frown\"></i>{{ successAlert }}</h3>\r\n      </div>\r\n</ng-container>\r\n<ng-container *ngIf='successMessage'>\r\n    <div class=\"alert alert-success alert-dismissible\" @translateFromL (click)=\"onDisableAlertMessage()\">\r\n      <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>\r\n        <h3 align=center><i class=\"far fa-grin-wink\"></i>{{ successMessage }}</h3>\r\n      </div>\r\n</ng-container>\r\n\r\n<ng-container *ngIf='!errorMessage && !successMessage'>\r\n\r\n  <div class=\"form-group\" align=right>\r\n    <h1>הוסף הודעות רנדומליות </h1>\r\n  </div>\r\n  <div class=\"messagesFomrWrapers\">\r\n    <form (ngSubmit)='onAddMessage(f)' [formGroup]='addMessageForm' #f>\r\n      \r\n      <div class=\"form-group col-md-12 col-sm-12\" align=center>\r\n        <h2>בחר באיזה נושא</h2>\r\n        <select class=\"form-control\" formControlName=\"selection\">\r\n          <option value=\"2\">הודעות קצרות על חרא לקוחות שלא מביאים טיפ</option>\r\n          <option value=\"1\">הודעות קצרות על אחלה לקוחות שכן מביאים טיפ</option>\r\n        </select>\r\n      </div>\r\n      <div class=\"form-group col-md-12 col-sm-12\" align=center>\r\n        <h2>תרשום הודעה קצרה וקולעת</h2>\r\n        <textarea formControlName=\"message\" cols=\"40\" rows=\"3\" maxlength=\"150\" placeholder=\"רשמו משהו עד 150 אותיות\"></textarea>\r\n        <ng-template [ngIf]='addMessageForm.invalid && addMessageForm.touched'>\r\n          <span>שליחוס אם אתה מעוניין לעלות הודעה אז היא לא יכולה להיות רייקה תמלא בבקשה</span>\r\n        </ng-template>\r\n      </div>\r\n      <div class=\"form-group\" align=center>\r\n        <button class='btn btn-success col-xs-12'>הוסף</button>\r\n      </div>\r\n    </form>\r\n  </div>\r\n</ng-container>"
 
 /***/ }),
 
@@ -727,26 +727,24 @@ var AddRandomMessagedComponent = /** @class */ (function () {
         });
     };
     AddRandomMessagedComponent.prototype.onAddMessage = function (f) {
-        var selection = this.addMessageForm.get('selection').value;
+        var selection = Number(this.addMessageForm.get('selection').value);
         var formMsg = this.addMessageForm.get('message').value;
         if (this.addMessageForm.invalid) {
             var randomPick = Math.floor(Math.random() * this.errorMsgArr.length);
             this.errorMessage = this.errorMsgArr[randomPick];
             return;
         }
-        else if (formMsg.length > 100) {
+        else if (formMsg.length > 150) {
             this.errorMessage = 'משהו הישתבש אנא התחבר שנית';
             this.authServices.removeToken();
         }
         else {
             var message = new _models_publicMsg_model__WEBPACK_IMPORTED_MODULE_6__["PublicMsg"](formMsg);
             if (selection === 1) {
-                this.publicMsgServices.addSuccessMessage(message);
-                this.dataStoreServices.storeAlertMessages();
+                this.dataStoreServices.storeSuccessAlertMessages(message);
             }
             else if (selection === 2) {
-                this.publicMsgServices.addFailMessage(message);
-                this.dataStoreServices.storeAlertMessages();
+                this.dataStoreServices.storeFailAlertMessages(message);
             }
         }
     };
@@ -795,7 +793,7 @@ module.exports = "input.ng-invalid.ng-touched {\r\n  border: 1px solid red;\r\n}
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "      \r\n          <ng-container *ngIf='successMessage'>\r\n            <div *ngIf='successMessage' class=\"alert alert-success alert-dismissible\" @translateFromL (click)=\"onDisableAlertMessage()\">\r\n              <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>\r\n              <h3 align=center>{{ successMessage }}</h3>\r\n            </div>\r\n          </ng-container>\r\n\r\n            <div *ngIf='!alertMessage.init && alertMessage.message' class=\"alert {{alertMessage.danger}} alert-dismissible\" @translateFromL (click)=\"onDisableAlertMessage()\">\r\n              <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>\r\n      \r\n              <h3 align=center>{{ alertMessage.message }}</h3>\r\n            </div>\r\n\r\n            <div *ngIf='alertMessage.init && alertMessage.message' class=\"alert {{alertMessage.success}} alert-dismissible\" @translateFromL (click)=\"onDisableAlertMessage()\">\r\n              <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>\r\n      \r\n              <h3 align=center>{{ alertMessage.message }}</h3>\r\n            </div>\r\n\r\n\r\n          <div *ngIf='error' @translateFromL class=\"alert alert-danger\">\r\n            <a  class=\"close\" aria-label=\"close\" (click)=\"error = false\">&times;</a>\r\n            <h3 align=center>{{ error }}</h3>\r\n          </div>\r\n          <ng-container *ngIf='!successMessage'>\r\n\r\n          <div class=\"form-group\">\r\n            <p align=right [ngStyle]=\"{'color': userServices.getCurrentPauchStyle()}\">({{ currentUserPauch }}) - בפאוץ\r\n              כרגע</p>\r\n            <span class=\"help-block\" align=right *ngIf=\"currentUserPauch >= 100 && currentUserPauch < 200\">מברוק הגעת\r\n              ל100 אולי\r\n              עוד תגיע ל200</span>\r\n            <span class=\"help-block\" align=right *ngIf=\"currentUserPauch >= 200  && currentUserPauch < 220\">!עשית את זה\r\n              הגעת ל200\r\n              אלוף אתה</span>\r\n            <span class=\"help-block\" align=right *ngIf=\"currentUserPauch >= 220\">!!!ממשיך לעלות?? מטורף אתה תשלח לי\r\n              מייל איך אתה\r\n              עושה את זה בבקשה</span>\r\n          </div>\r\n\r\n          <div class=\"form-group\">\r\n            <h1 class=\"header\" align=center>הוספת טיפים ולקוח</h1>\r\n          </div>\r\n          <div class=\"row\">\r\n\r\n            <hr>\r\n            <form [formGroup]=\"addCustomerTipForm\" (ngSubmit)=\"onCustomerAdded()\">\r\n              <div class=\"row\">\r\n                <div class=\"col-xs-1\">\r\n                  \r\n                </div>\r\n                <div *ngIf='!customerSelected' class=\"col-xs-4 form-group\" >\r\n                  <input placeholder=\"שם\" formControlName=\"customerName\" type=\"text\" id=\"\" class=\"form-control\"  [(ngModel)]=\"searchName\">\r\n                  <span *ngIf=\"addCustomerTipForm.get('customerName').errors && addCustomerTipForm.get('customerName').touched\"\r\n                    class=\"help-block\">!שדה חובה</span>\r\n                </div>\r\n                <div class=\"col-xs-2\">\r\n                  <a href=\"tel:0{{ searchPhone }}\"> <button type=\"button\" class=\"btn btn-success\"><i class=\"fas fa-phone\"></i></button></a>\r\n                </div>\r\n                <div *ngIf='!customerSelected' class=\"col-xs-4 form-group\">\r\n                  <input placeholder=\"פלאפון/טלפון\" formControlName=\"customerPhone\" type=\"number\" id=\"\" class=\"form-control\"\r\n                    [(ngModel)]=\"searchPhone\">\r\n                  <span *ngIf=\"!addCustomerTipForm.get('customerPhone').valid && addCustomerTipForm.get('customerPhone').touched\"\r\n                    class=\"help-block\">!שדה חובה</span>\r\n                </div>\r\n                <div *ngIf='customerSelected' class=\"col-xs-6 form-group\" align=center>\r\n\r\n                  <ng-container *ngIf='!loading'>\r\n                    <h1>({{ selectedCustomer.name }})</h1>\r\n                  </ng-container>\r\n\r\n                </div>\r\n                <ng-container *ngIf=\"!customerSelected\">\r\n\r\n                  <div *ngIf='currentNetStatus' class=\"col-xs-12 form-group\" align=center>\r\n                    <button data-toggle=\"collapse\" data-target=\"#customerDetails\" type=\"button\" class=\"btn btn-primary form-control\">הוסף\r\n                      חדש</button>\r\n                    <div id=\"customerDetails\" class=\"collapse\">\r\n                      <ng-container>\r\n                        <div class=\"form-group btn-group btn-toggle\" style=\"float:right; clear:both;\">\r\n                          <h2>הביא טיפ</h2>\r\n                          <button type=\"button\" class=\"btn \" [ngClass]=\"!tipped ? 'btn-success':'btn-disabled'\" (click)=\"onTipped()\">כן</button>\r\n                          <button type=\"button\" class=\"btn \" [ngClass]=\"tipped ? 'btn-success':'btn-disabled'\" (click)=\"onTipped()\">לא</button>\r\n                        </div>\r\n\r\n                        <ng-container *ngIf='!tipped'>\r\n                          <div class=\"col-xs-12 form-group\" align=right>\r\n                            <h2 align=center>?כמה הביא</h2>\r\n                            <input type=\"number\" formControlName=\"customerTip\" class=\"text-center form-control\"\r\n                              [(ngModel)]=\"tipSelected\">\r\n                          </div>\r\n\r\n                        </ng-container>\r\n                        <div class=\"col-xs-12 form-group\" align=center>\r\n                          <button class='btn btn-success' [disabled]=\"addCustomerTipForm.get('customerName').invalid && !addCustomerTipForm.get('customerPhone').valid\">הוסף\r\n                            לקוח למערכת</button>\r\n                          <div *ngIf=\"addCustomerTipForm.get('customerName').invalid\" class=\"form-group\">\r\n                            <p style=\"color:red;\">!לא הוספת שם</p>\r\n                          </div>\r\n\r\n\r\n                        </div>\r\n                      </ng-container>\r\n\r\n                    </div>\r\n                  </div>\r\n                </ng-container>\r\n                <ng-container *ngIf=\"customerSelected\">\r\n                  <button type=\"button\" style=\"max-width: 100px;\" class=\"btn btn-warning form-control\" (click)=\"onUnSelect()\">חזרה</button>\r\n                </ng-container>\r\n                <div *ngIf='!customerSelected' class=\"col-xs-12 form-group\">\r\n\r\n                  <table class=\"table\">\r\n                    <thead class=\"thead-dark\">\r\n                      <tr>\r\n                        <!-- <th scope=\"col\"></th> -->\r\n                        <th scope=\"col\">הוסף</th>\r\n                        <th scope=\"col\">ממוצע טיפ</th>\r\n                        <th scope=\"col\">לא הביא</th>\r\n                        <th scope=\"col\">הביא</th>\r\n                        <th scope=\"col\">שם</th>\r\n                        <th scope=\"col\">פלאפון/טלפון</th>\r\n                      </tr>\r\n                    </thead>\r\n                    <tbody>\r\n                      <ng-container *ngFor=\"let customer of allCustomers; let i = index\">\r\n                        <ng-container *ngIf=\"customer | filter:searchPhone:searchName \">\r\n                          <tr id=\"customersTr\"  [ngClass]='onGetCustomerColor(customer)' @translateFromL >\r\n                            <!-- <td><input name=\"checkbox\" type='radio' class=\"btn btn-primary\" (click)=\"onAddExistingCustomer(customer)\"></td> -->\r\n                            <!-- <td></td> -->\r\n                            <td ><button type=\"button\" class=\"btn btn-primary\" (click)=\"onAddExistingCustomer(i)\"\r\n                                [disabled]='!currentNetStatus'>בחר</button></td>\r\n                            <td>{{ onGetCustomerAvrg(customer) }}</td>\r\n                            <td>{{ customer.notTipped }}</td>\r\n                            <td>{{ customer.tipped }}</td>\r\n                            <td>{{ customer.name }}</td>\r\n                            <td><a class=\"btn btn-success w-25\" href=\"tel:{{customer.phone}}\">{{ customer.phone }} <i\r\n                                  class=\"fas fa-phone\"></i> </a></td>\r\n                          </tr>\r\n                        </ng-container>\r\n                      </ng-container>\r\n                    </tbody>\r\n                  </table>\r\n                </div>\r\n                <div class=\"col-xs-12\" *ngIf='customerSelected'>\r\n                  <table class=\"table\">\r\n                    <thead class=\"thead-dark\">\r\n                      <tr>\r\n                        <th scope=\"col\">עדכן</th>\r\n                        <th scope=\"col\">?כמה הביא</th>\r\n                        <th scope=\"col\">?הביא טיפ</th>\r\n                        <th scope=\"col\">שם</th>\r\n                        <th scope=\"col\">פלאפון/טלפון</th>\r\n                      </tr>\r\n                    </thead>\r\n                    <tbody>\r\n                      <tr>\r\n                        <ng-container *ngIf='loading'>\r\n                          <p>...מעדכן</p>\r\n                        </ng-container>\r\n                        <ng-container *ngIf='!loading'>\r\n                          <td><button type=\"button\" class=\"btn btn-primary\" (click)=\"onCustomerUpdated(updateCustomerTip)\">עדכן</button></td>\r\n                        </ng-container>\r\n                        <td><input type=\"number\" class=\"form-control\" style=\"max-width: 100px;\" [disabled]='tipped'\r\n                            #updateCustomerTip></td>\r\n                        <td><button type=\"button\" class=\"btn \" [ngClass]=\"!tipped ? 'btn-success':'btn-disabled'\"\r\n                            (click)=\"onTipped()\">כן</button></td>\r\n                        <td>{{ selectedCustomer.name }}</td>\r\n                        <td>{{ selectedCustomer.phone }}</td>\r\n                      </tr>\r\n                    </tbody>\r\n                  </table>\r\n\r\n                  <p style=\"color:red;\">{{ tipNotSellected }}</p>\r\n                </div>\r\n                <ng-container *ngIf='!currentNetStatus'>\r\n                  <div align=center>\r\n                    <div class=\"loader\">\r\n                    </div>\r\n                  </div>\r\n                </ng-container>\r\n              </div>\r\n              <div *ngIf='!currentNetStatus' class=\"form-group\">\r\n                <p class=\"bg-danger text-danger\">אתה לא מחובר לאינטרנט אינך יכול להוסיף או לעדכן לקוחות במאגר </p>\r\n              </div>\r\n            </form>\r\n\r\n          </div>\r\n\r\n\r\n          <hr>\r\n        </ng-container>\r\n"
+module.exports = "      \r\n          <ng-container *ngIf='successMessage'>\r\n            <div *ngIf='successMessage' class=\"alert alert-success alert-dismissible\" @translateFromL (click)=\"onDisableAlertMessage()\">\r\n              <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>\r\n              <h3 align=center>{{ successMessage }}</h3>\r\n            </div>\r\n          </ng-container>\r\n\r\n            <div *ngIf='failAlert' class=\"alert alert-danger alert-dismissible\" @translateFromL (click)=\"onDisableAlertMessage()\">\r\n              <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>\r\n      \r\n              <h3 align=center>{{ failAlert }}</h3>\r\n            </div>\r\n\r\n            <div *ngIf='successAlert' class=\"alert alert-success alert-dismissible\" @translateFromL (click)=\"onDisableAlertMessage()\">\r\n              <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>\r\n      \r\n              <h3 align=center>{{ successAlert }}</h3>\r\n            </div>\r\n\r\n\r\n          <div *ngIf='error' @translateFromL class=\"alert alert-danger\">\r\n            <a  class=\"close\" aria-label=\"close\" (click)=\"error = false\">&times;</a>\r\n            <h3 align=center>{{ error }}</h3>\r\n          </div>\r\n          <ng-container *ngIf='!successMessage'>\r\n\r\n          <div class=\"form-group\">\r\n            <p align=right [ngStyle]=\"{'color': userServices.getCurrentPauchStyle()}\">({{ currentUserPauch }}) - בפאוץ\r\n              כרגע</p>\r\n            <span class=\"help-block\" align=right *ngIf=\"currentUserPauch >= 100 && currentUserPauch < 200\">מברוק הגעת\r\n              ל100 אולי\r\n              עוד תגיע ל200</span>\r\n            <span class=\"help-block\" align=right *ngIf=\"currentUserPauch >= 200  && currentUserPauch < 220\">!עשית את זה\r\n              הגעת ל200\r\n              אלוף אתה</span>\r\n            <span class=\"help-block\" align=right *ngIf=\"currentUserPauch >= 220\">!!!ממשיך לעלות?? מטורף אתה תשלח לי\r\n              מייל איך אתה\r\n              עושה את זה בבקשה</span>\r\n          </div>\r\n\r\n          <div class=\"form-group\">\r\n            <h1 class=\"header\" align=center>הוספת טיפים ולקוח</h1>\r\n          </div>\r\n          <div class=\"row\">\r\n\r\n            <hr>\r\n            <form [formGroup]=\"addCustomerTipForm\" (ngSubmit)=\"onCustomerAdded()\">\r\n              <div class=\"row\">\r\n                <div class=\"col-xs-1\">\r\n                  \r\n                </div>\r\n                <div *ngIf='!customerSelected' class=\"col-xs-4 form-group\" >\r\n                  <input placeholder=\"שם\" formControlName=\"customerName\" type=\"text\" id=\"\" class=\"form-control\"  [(ngModel)]=\"searchName\">\r\n                  <span *ngIf=\"addCustomerTipForm.get('customerName').errors && addCustomerTipForm.get('customerName').touched\"\r\n                    class=\"help-block\">!שדה חובה</span>\r\n                </div>\r\n                <div class=\"col-xs-2\">\r\n                  <a href=\"tel:0{{ searchPhone }}\"> <button type=\"button\" class=\"btn btn-success\"><i class=\"fas fa-phone\"></i></button></a>\r\n                </div>\r\n                <div *ngIf='!customerSelected' class=\"col-xs-4 form-group\">\r\n                  <input placeholder=\"פלאפון/טלפון\" formControlName=\"customerPhone\" type=\"number\" id=\"\" class=\"form-control\"\r\n                    [(ngModel)]=\"searchPhone\">\r\n                  <span *ngIf=\"!addCustomerTipForm.get('customerPhone').valid && addCustomerTipForm.get('customerPhone').touched\"\r\n                    class=\"help-block\">!שדה חובה</span>\r\n                </div>\r\n                <div *ngIf='customerSelected' class=\"col-xs-6 form-group\" align=center>\r\n\r\n                  <ng-container *ngIf='!loading'>\r\n                    <h1>({{ selectedCustomer.name }})</h1>\r\n                  </ng-container>\r\n\r\n                </div>\r\n                <ng-container *ngIf=\"!customerSelected\">\r\n\r\n                  <div *ngIf='currentNetStatus' class=\"col-xs-12 form-group\" align=center>\r\n                    <button data-toggle=\"collapse\" data-target=\"#customerDetails\" type=\"button\" class=\"btn btn-primary form-control\">הוסף\r\n                      חדש</button>\r\n                    <div id=\"customerDetails\" class=\"collapse\">\r\n                      <ng-container>\r\n                        <div class=\"form-group btn-group btn-toggle\" style=\"float:right; clear:both;\">\r\n                          <h2>הביא טיפ</h2>\r\n                          <button type=\"button\" class=\"btn \" [ngClass]=\"!tipped ? 'btn-success':'btn-disabled'\" (click)=\"onTipped()\">כן</button>\r\n                          <button type=\"button\" class=\"btn \" [ngClass]=\"tipped ? 'btn-success':'btn-disabled'\" (click)=\"onTipped()\">לא</button>\r\n                        </div>\r\n\r\n                        <ng-container *ngIf='!tipped'>\r\n                          <div class=\"col-xs-12 form-group\" align=right>\r\n                            <h2 align=center>?כמה הביא</h2>\r\n                            <input type=\"number\" formControlName=\"customerTip\" class=\"text-center form-control\"\r\n                              [(ngModel)]=\"tipSelected\">\r\n                          </div>\r\n\r\n                        </ng-container>\r\n                        <div class=\"col-xs-12 form-group\" align=center>\r\n                          <button class='btn btn-success' [disabled]=\"addCustomerTipForm.get('customerName').invalid && !addCustomerTipForm.get('customerPhone').valid\">הוסף\r\n                            לקוח למערכת</button>\r\n                          <div *ngIf=\"addCustomerTipForm.get('customerName').invalid\" class=\"form-group\">\r\n                            <p style=\"color:red;\">!לא הוספת שם</p>\r\n                          </div>\r\n\r\n\r\n                        </div>\r\n                      </ng-container>\r\n\r\n                    </div>\r\n                  </div>\r\n                </ng-container>\r\n                <ng-container *ngIf=\"customerSelected\">\r\n                  <button type=\"button\" style=\"max-width: 100px;\" class=\"btn btn-warning form-control\" (click)=\"onUnSelect()\">חזרה</button>\r\n                </ng-container>\r\n                <div *ngIf='!customerSelected' class=\"col-xs-12 form-group\">\r\n\r\n                  <table class=\"table\">\r\n                    <thead class=\"thead-dark\">\r\n                      <tr>\r\n                        <!-- <th scope=\"col\"></th> -->\r\n                        <th scope=\"col\">הוסף</th>\r\n                        <th scope=\"col\">ממוצע טיפ</th>\r\n                        <th scope=\"col\">לא הביא</th>\r\n                        <th scope=\"col\">הביא</th>\r\n                        <th scope=\"col\">שם</th>\r\n                        <th scope=\"col\">פלאפון/טלפון</th>\r\n                      </tr>\r\n                    </thead>\r\n                    <tbody>\r\n                      <ng-container *ngFor=\"let customer of allCustomers; let i = index\">\r\n                        <ng-container *ngIf=\"customer | filter:searchPhone:searchName \">\r\n                          <tr id=\"customersTr\"  [ngClass]='onGetCustomerColor(customer)' @translateFromL >\r\n                            <!-- <td><input name=\"checkbox\" type='radio' class=\"btn btn-primary\" (click)=\"onAddExistingCustomer(customer)\"></td> -->\r\n                            <!-- <td></td> -->\r\n                            <td ><button type=\"button\" class=\"btn btn-primary\" (click)=\"onAddExistingCustomer(i)\"\r\n                                [disabled]='!currentNetStatus'>בחר</button></td>\r\n                            <td>{{ onGetCustomerAvrg(customer) }}</td>\r\n                            <td>{{ customer.notTipped }}</td>\r\n                            <td>{{ customer.tipped }}</td>\r\n                            <td>{{ customer.name }}</td>\r\n                            <td><a class=\"btn btn-success w-25\" href=\"tel:{{customer.phone}}\">{{ customer.phone }} <i\r\n                                  class=\"fas fa-phone\"></i> </a></td>\r\n                          </tr>\r\n                        </ng-container>\r\n                      </ng-container>\r\n                    </tbody>\r\n                  </table>\r\n                </div>\r\n                <div class=\"col-xs-12\" *ngIf='customerSelected'>\r\n                  <table class=\"table\">\r\n                    <thead class=\"thead-dark\">\r\n                      <tr>\r\n                        <th scope=\"col\">עדכן</th>\r\n                        <th scope=\"col\">?כמה הביא</th>\r\n                        <th scope=\"col\">?הביא טיפ</th>\r\n                        <th scope=\"col\">שם</th>\r\n                        <th scope=\"col\">פלאפון/טלפון</th>\r\n                      </tr>\r\n                    </thead>\r\n                    <tbody>\r\n                      <tr>\r\n                        <ng-container *ngIf='loading'>\r\n                          <p>...מעדכן</p>\r\n                        </ng-container>\r\n                        <ng-container *ngIf='!loading'>\r\n                          <td><button type=\"button\" class=\"btn btn-primary\" (click)=\"onCustomerUpdated(updateCustomerTip)\">עדכן</button></td>\r\n                        </ng-container>\r\n                        <td><input type=\"number\" class=\"form-control\" style=\"max-width: 100px;\" [disabled]='tipped'\r\n                            #updateCustomerTip></td>\r\n                        <td><button type=\"button\" class=\"btn \" [ngClass]=\"!tipped ? 'btn-success':'btn-disabled'\"\r\n                            (click)=\"onTipped()\">כן</button></td>\r\n                        <td>{{ selectedCustomer.name }}</td>\r\n                        <td>{{ selectedCustomer.phone }}</td>\r\n                      </tr>\r\n                    </tbody>\r\n                  </table>\r\n\r\n                  <p style=\"color:red;\">{{ tipNotSellected }}</p>\r\n                </div>\r\n                <ng-container *ngIf='!currentNetStatus'>\r\n                  <div align=center>\r\n                    <div class=\"loader\">\r\n                    </div>\r\n                  </div>\r\n                </ng-container>\r\n              </div>\r\n              <div *ngIf='!currentNetStatus' class=\"form-group\">\r\n                <p class=\"bg-danger text-danger\">אתה לא מחובר לאינטרנט אינך יכול להוסיף או לעדכן לקוחות במאגר </p>\r\n              </div>\r\n            </form>\r\n\r\n          </div>\r\n\r\n\r\n          <hr>\r\n        </ng-container>\r\n"
 
 /***/ }),
 
@@ -844,12 +842,8 @@ var AddTipComponent = /** @class */ (function () {
         this.dataSotrageServices = dataSotrageServices;
         this.publicMsgService = publicMsgService;
         this.successMessage = '';
-        this.alertMessage = {
-            message: '',
-            danger: 'alert-danger',
-            success: 'alert-success',
-            init: false
-        };
+        this.failAlert = null;
+        this.successAlert = null;
         this.error = '';
         this.loading = false;
         this.tipNotSellected = '';
@@ -871,11 +865,14 @@ var AddTipComponent = /** @class */ (function () {
         });
         this.currentUserPauch = this.userServices.getCurrentPauch();
         this.tipStatusStyles = this.userServices.getTipStatusStyles();
+        this.publicMsgService.successAlert.subscribe(function (message) { return _this.successAlert = message; });
+        this.publicMsgService.failAlert.subscribe(function (message) { return _this.failAlert = message; });
         this.publicMsgService.failMessagesUpdated.subscribe(function (allMessages) {
             _this.randomFaliureMessages = allMessages;
         });
         this.publicMsgService.successMessagesUpdated.subscribe(function (allMessages) {
             _this.randomSuccessMessages = allMessages;
+            console.log(allMessages);
         });
         // todo this.dataSotrageServices.storeFailAlertMessages().
         // subscribe(
@@ -898,9 +895,6 @@ var AddTipComponent = /** @class */ (function () {
         });
         this.customerServices.successMessage.subscribe(function (successMessage) {
             _this.successMessage = successMessage;
-            setTimeout(function () {
-                _this.setOnAddTipMessage(_this.addCustomerTipForm.get('customerTip').value);
-            }, 1000);
         });
         this.customerServices.errorMessage.subscribe(function (message) {
             _this.successMessage = null;
@@ -1007,11 +1001,12 @@ var AddTipComponent = /** @class */ (function () {
     };
     AddTipComponent.prototype.onCustomerAdded = function () {
         // todo make the tip and customer add
+        var tip = this.addCustomerTipForm.get('customerTip').value;
         this.customerServices.addSuccessMsg('...טוען נתונים');
         if (!this.customerServices.checkIfCustomerExists(this.addCustomerTipForm.get('customerPhone').value)) {
             var customer = new _models_customer_model__WEBPACK_IMPORTED_MODULE_4__["Customer"](this.addCustomerTipForm.get('customerName').value, '0' + this.addCustomerTipForm.get('customerPhone').value.toString(), !this.tipped ? '1' : '0', this.tipped ? '1' : '0', '23', this.addCustomerTipForm.get('customerTip').value > 0 ? this.addCustomerTipForm.get('customerTip').value : '0');
-            this.dataSotrageServices.storeCustomers(customer);
-            this.userServices.onAddIncome(this.addCustomerTipForm.get('customerTip').value);
+            this.dataSotrageServices.storeCustomers(customer, tip);
+            this.userServices.onAddIncome(tip);
             this.currentUserPauch = this.userServices.getCurrentPauch();
         }
         else {
@@ -1021,23 +1016,11 @@ var AddTipComponent = /** @class */ (function () {
     };
     AddTipComponent.prototype.onDisableAlertMessage = function () {
         this.successMessage = null;
-        this.alertMessage.message = null;
+        // this.alertMessage.message = null;
         this.router.navigate(['./']);
     };
     AddTipComponent.prototype.ngOnDestroy = function () {
         console.log('ngOnDestroy Was Fired! In add-tip');
-    };
-    AddTipComponent.prototype.setOnAddTipMessage = function (tip) {
-        var ammount = tip > 0 ? tip : '0';
-        var numSu = Math.floor(Math.random() * this.randomSuccessMessages.length);
-        var numFa = Math.floor(Math.random() * this.randomFaliureMessages.length);
-        if (ammount < 5) {
-            this.alertMessage.message = this.randomFaliureMessages[numFa].message;
-        }
-        else {
-            this.alertMessage.message = ' נוסף לך' + ammount + this.randomSuccessMessages[numSu].message;
-            this.alertMessage.init = true;
-        }
     };
     AddTipComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -1527,6 +1510,10 @@ __webpack_require__.r(__webpack_exports__);
 
 var PublicMsgServices = /** @class */ (function () {
     function PublicMsgServices() {
+        this.publicRandomFailMsg = [];
+        this.publicRandomSuccessMsg = [];
+        this.successAlert = new rxjs__WEBPACK_IMPORTED_MODULE_0__["Subject"]();
+        this.failAlert = new rxjs__WEBPACK_IMPORTED_MODULE_0__["Subject"]();
         this.successMessagesUpdated = new rxjs__WEBPACK_IMPORTED_MODULE_0__["Subject"]();
         this.failMessagesUpdated = new rxjs__WEBPACK_IMPORTED_MODULE_0__["Subject"]();
     }
@@ -1541,17 +1528,27 @@ var PublicMsgServices = /** @class */ (function () {
         this.failMessagesUpdated.next(this.publicRandomFailMsg);
     };
     PublicMsgServices.prototype.addSuccessMessage = function (message) {
-        this.publicRandomFailMsg.push(message);
+        this.publicRandomSuccessMsg.push(message);
         this.successMessagesUpdated.next(this.publicRandomSuccessMsg);
     };
     PublicMsgServices.prototype.setFailMessages = function (publicMsg) {
-        console.log(publicMsg[1]);
         this.publicRandomFailMsg = publicMsg;
         this.failMessagesUpdated.next(this.publicRandomFailMsg);
     };
     PublicMsgServices.prototype.setSuccessMessages = function (publicMsg) {
         this.publicRandomSuccessMsg = publicMsg;
         this.successMessagesUpdated.next(this.publicRandomSuccessMsg);
+    };
+    PublicMsgServices.prototype.setOnAddTipMessage = function (tip) {
+        var ammount = tip != null ? tip : '0';
+        var numFa = Math.floor(Math.random() * this.publicRandomFailMsg.length);
+        var numSu = Math.floor(Math.random() * this.publicRandomSuccessMsg.length);
+        if (ammount === '0') {
+            this.failAlert.next(this.publicRandomFailMsg[numFa].message);
+        }
+        else {
+            this.successAlert.next(this.publicRandomSuccessMsg[numSu].message);
+        }
     };
     return PublicMsgServices;
 }());
@@ -1576,7 +1573,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _auth_auth_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../auth/auth.service */ "./src/app/auth/auth.service.ts");
 /* harmony import */ var _PublicMsg_services__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./PublicMsg.services */ "./src/app/shared/PublicMsg.services.ts");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
-/* harmony import */ var _user_alert_services__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./user-alert.services */ "./src/app/shared/user-alert.services.ts");
+/* harmony import */ var _main_page_models_publicMsg_model__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../main-page/models/publicMsg.model */ "./src/app/main-page/models/publicMsg.model.ts");
+/* harmony import */ var _user_alert_services__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./user-alert.services */ "./src/app/shared/user-alert.services.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1593,6 +1591,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var DataStoreServices = /** @class */ (function () {
     function DataStoreServices(http, customerServices, publicMsgServices, authServices, userAlertServices) {
         this.http = http;
@@ -1601,7 +1600,7 @@ var DataStoreServices = /** @class */ (function () {
         this.authServices = authServices;
         this.userAlertServices = userAlertServices;
     }
-    DataStoreServices.prototype.storeCustomers = function (customer) {
+    DataStoreServices.prototype.storeCustomers = function (customer, tip) {
         var _this = this;
         this.tempCustomersDownloaded = new rxjs__WEBPACK_IMPORTED_MODULE_5__["Subject"]();
         var token = this.authServices.getToken();
@@ -1610,12 +1609,12 @@ var DataStoreServices = /** @class */ (function () {
             _this.customerServices.setCustomers(dbCustomers);
             _this.getSubscription = _this.http.put('https://jerusalem-runners.firebaseio.com/customers.json?auth=' + token, dbCustomers).subscribe(function (response) {
                 // todo fix the some kind of subscription there!
-                console.log('i was here trying to upload!!!!');
             }, function (error) {
                 _this.customerServices.addErrorMsg('הסנכרון לא הוצלח בהצלחה :( אנא נסה שנית תודה');
                 _this.ngOnDestroy();
             }, function () {
                 _this.customerServices.addSuccessMsg('!הלקוח הועלה למאגר בהצלחה');
+                _this.publicMsgServices.setOnAddTipMessage(tip);
                 _this.ngOnDestroy();
             });
         });
@@ -1646,20 +1645,25 @@ var DataStoreServices = /** @class */ (function () {
             _this.customerServices.setNetWorkStatus(false);
         });
     };
-    DataStoreServices.prototype.storeAlertMessages = function () {
+    DataStoreServices.prototype.storeSuccessAlertMessages = function (message) {
         var _this = this;
         this.userAlertServices.addSuccessMsg('...טוען');
         var token = this.authServices.getToken();
-        var failMessage = this.publicMsgServices.getAllFailMessages();
-        var successMsg = this.publicMsgServices.getAllSuccessMessages();
-        var request1 = this.http.
-            put('https://jerusalem-runners.firebaseio.com/publicFailAlertMessages.json?auth=' + token, successMsg);
-        request1.subscribe(function (response) {
+        this.http.
+            post('https://jerusalem-runners.firebaseio.com/publicSuccessAlertMessages.json?auth=' + token, message)
+            .subscribe(function (response) {
+            _this.publicMsgServices.addSuccessMessage(message);
             _this.userAlertServices.addSuccessMsg('נשלח ונשמר בהצלחה תודה');
         }, function (error) { return _this.userAlertServices.addErrorMsg('אופסי דייזי משהו השתבש לנו '); });
-        var request2 = this.http.
-            put('https://jerusalem-runners.firebaseio.com/publicSuccessAlertMessages.json?auth=' + token, failMessage);
-        request2.subscribe(function (response) {
+    };
+    DataStoreServices.prototype.storeFailAlertMessages = function (message) {
+        var _this = this;
+        this.userAlertServices.addSuccessMsg('...טוען');
+        var token = this.authServices.getToken();
+        this.http.
+            post('https://jerusalem-runners.firebaseio.com/publicFailAlertMessages.json?auth=' + token, message)
+            .subscribe(function (response) {
+            _this.publicMsgServices.addFailMessage(message);
             _this.userAlertServices.addSuccessMsg('נשלח ונשמר בהצלחה תודה');
         }, function (error) { return _this.userAlertServices.addErrorMsg('אופסי דייזי משהו השתבש לנו '); });
     };
@@ -1669,8 +1673,12 @@ var DataStoreServices = /** @class */ (function () {
         return this.http.get('https://jerusalem-runners.firebaseio.com/publicFailAlertMessages.json?auth=' + token).
             subscribe(function (response) {
             if (response.json() !== null) {
-                var publicMsg = response.json();
-                _this.publicMsgServices.setFailMessages(publicMsg);
+                var publicMsg_1 = response.json();
+                var resultsArr_1 = [];
+                Object.keys(publicMsg_1).map(function (key) {
+                    resultsArr_1.push(new _main_page_models_publicMsg_model__WEBPACK_IMPORTED_MODULE_6__["PublicMsg"](publicMsg_1[key].message));
+                });
+                _this.publicMsgServices.setFailMessages(resultsArr_1);
             }
             else {
                 _this.customerServices.setNetWorkStatus(true);
@@ -1686,8 +1694,12 @@ var DataStoreServices = /** @class */ (function () {
         return this.http.get('https://jerusalem-runners.firebaseio.com/publicSuccessAlertMessages.json?auth=' + token).
             subscribe(function (response) {
             if (response.json() !== null) {
-                var publicMsg = response.json();
-                _this.publicMsgServices.setSuccessMessages(publicMsg);
+                var publicMsg_2 = response.json();
+                var resultsArr_2 = [];
+                Object.keys(publicMsg_2).map(function (key) {
+                    resultsArr_2.push(new _main_page_models_publicMsg_model__WEBPACK_IMPORTED_MODULE_6__["PublicMsg"](publicMsg_2[key].message));
+                });
+                _this.publicMsgServices.setSuccessMessages(resultsArr_2);
             }
             else {
                 _this.customerServices.setNetWorkStatus(true);
@@ -1708,7 +1720,7 @@ var DataStoreServices = /** @class */ (function () {
             _main_page_customers_services__WEBPACK_IMPORTED_MODULE_1__["CustomerServices"],
             _PublicMsg_services__WEBPACK_IMPORTED_MODULE_4__["PublicMsgServices"],
             _auth_auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"],
-            _user_alert_services__WEBPACK_IMPORTED_MODULE_6__["UserAlertServices"]])
+            _user_alert_services__WEBPACK_IMPORTED_MODULE_7__["UserAlertServices"]])
     ], DataStoreServices);
     return DataStoreServices;
 }());
