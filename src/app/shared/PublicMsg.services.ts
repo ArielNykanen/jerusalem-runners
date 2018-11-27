@@ -41,7 +41,7 @@ export class PublicMsgServices {
       const ammount = tip != null ? tip : '0';
       const numFa =  Math.floor(Math.random() * this.publicRandomFailMsg.length);
       const numSu =  Math.floor(Math.random() * this.publicRandomSuccessMsg.length);
-       if (ammount === '0') {
+       if (ammount === '0' || ammount === null || ammount === '' || ammount === 0) {
          this.failAlert.next(this.publicRandomFailMsg[numFa]);
        } else {
          this.successAlert.next(this.publicRandomSuccessMsg[numSu]);

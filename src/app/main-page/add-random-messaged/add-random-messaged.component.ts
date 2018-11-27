@@ -75,9 +75,14 @@ export class AddRandomMessagedComponent implements OnInit {
     }
   }
   onDisableAlertMessage() {
-    this.errorMessage = null;
-    this.successMessage = null;
-    this.router.navigate(['./']);
+    if (!this.successMessage) {
+      this.errorMessage = null;
+    } else {
+      this.errorMessage = null;
+      this.successMessage = null;
+      this.router.navigate(['./']);
+
+    }
   }
 
 }

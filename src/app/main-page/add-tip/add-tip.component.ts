@@ -49,8 +49,8 @@ export class AddTipComponent implements OnInit, OnDestroy {
   searchPhone = '';
   searchName = '';
   customerSelected = false;
-  selectedCustomer;
-  selectedCustomerId;
+  selectedCustomer: Customer;
+  selectedCustomerId: number;
   customerExists = false;
   allCustomers: Customer[];
   addCustomerTipForm: FormGroup;
@@ -85,15 +85,8 @@ export class AddTipComponent implements OnInit, OnDestroy {
     this.publicMsgService.successMessagesUpdated.subscribe(
       (allMessages: PublicMsg[]) => {
         this.randomSuccessMessages = allMessages;
-        console.log(allMessages);
       }
       );
-      // todo this.dataSotrageServices.storeFailAlertMessages().
-      // subscribe(
-      //   (response: Response) => {
-      //    this.successMessage = '!עודכן בהצלחה';
-      //    // todo make the response create success message!
-      //   });
       this.dataSotrageServices.fetchFailAlertMessages();
       this.dataSotrageServices.fetchSuccessAlertMessages();
     this.customerServices.customersUpdated.subscribe((customers: Customer[]) => {
@@ -149,80 +142,31 @@ export class AddTipComponent implements OnInit, OnDestroy {
     }
   }
 
-  onAddExistingCustomer(index: number) {
+  onSelectCustomer(index: number, customer: Customer, tip: any) {
+    this.selectedCustomer = customer;
     this.selectedCustomerId = index;
-    this.selectedCustomer = this.allCustomers[index];
+    this.customerSelected = true;
     this.addCustomerTipForm.get('customerName').setValue(this.selectedCustomer.name);
     this.addCustomerTipForm.get('customerPhone').setValue(this.selectedCustomer.phone);
-    this.customerSelected = true;
+    // todo make it work on maybe other component or else
   }
 
-  // onCustomerUpdated(tip) {
-  //   this.loading = true;
-  //   if (this.tipped && confirm('?אתה בטוח שאתה רוצה לעדכן שהלקוח לא הביא טיפ')) { // it will fire if tipped is not sellected
-  //     // todo make it submit customer update without tip
-  //     const editableCustomer = this.selectedCustomer;
-  //     const currentCustomerTotalNotTipped =  Number(editableCustomer.notTipped) + 1;
-  //     editableCustomer.notTipped = currentCustomerTotalNotTipped;
-  //     this.allCustomers[this.selectedCustomerId] = editableCustomer;
-  //     this.customerServices.updateCustomers(this.allCustomers);
-  //     this.dataSotrageServices.storeCustomers().
-  //     subscribe(
-  //       (response: Response) => {
-  //         if (response.json != null) {
-
-  //           this.successMessage = '!עודכן בהצלחה';
-  //           setTimeout(() => {
-  //             this.setMessage(tip.value);
-  //           }, 400);
-  //         } else {
-  //           this.error = 'ואללק איש יקר. סליחה אבל יש איזה תקלה';
-  //         }
-  //        // todo make the response create success message!
-  //       });
-  //   } else {
-  //   this.loading = false;
-  //   }
-  //   // it will fire if tipped is sellected
-  //   if (!this.tipped && confirm('אתה בטוח שאתה רוצה לעדכן שהלקוח הביא לך טיפ של' + tip.value)) {
-  //     this.loading = true;
-  //     if (tip.value == '') {
-  //       // todo make it return error that tip is empty
-  //       this.tipNotSellected = 'You Need To Add Tip If You Choosed Customer Tipped!';
-  //       return;
-  //     } else {
-  //       this.tipNotSellected = '';
-  //       const editableCustomer = this.selectedCustomer;
-  //       const currentCustomerTipped =  Number(editableCustomer.tipped) + 1;
-  //       const currentCustomerTotal =    Number(editableCustomer.totalTip) + Number(tip.value);
-  //       editableCustomer.tipped = currentCustomerTipped;
-  //       editableCustomer.totalTip = currentCustomerTotal;
-  //       this.allCustomers[this.selectedCustomerId] = editableCustomer;
-  //       this.customerServices.updateCustomers(this.allCustomers);
-  //       this.userServices.onAddIncome(Number(tip.value));
-  //       this.currentUserPauch = this.userServices.getCurrentPauch();
-  //       this.dataSotrageServices.storeCustomers().
-  //       subscribe(
-  //         (response: Response) => {
-  //           this.successMessage = '!עודכן בהצלחה';
-  //           setTimeout(() => {
-  //             console.log(tip.value);
-              
-  //             this.setMessage(tip.value);
-  //           }, 400);
-  //           // todo make the response create success message!
-  //         }
-  //         );
-  //       }
-  //         // todo make it submit the update
-  //       }
-  //     }
-  //     // let editableCustomer = this.selectedCustomer;
-  //     // console.log(editableCustomer.name);
-  //   // this.customerServices.addUpdateToCustomer();
-  // onUnSelect() {
-  //   this.customerSelected = false;
-  // }
+  onUpdateCustomer(tip) {
+    const customer = this.selectedCustomer;
+    const customerTip = Number(tip.value);
+    const customerId = this.selectedCustomerId;
+    if (customerTip === 0) {
+      let totalNotTipped = Number(customer.notTipped);
+      customer.notTipped = Number(totalNotTipped += 1).toString();
+    } else {
+      let totalTipped = Number(customer.tipped);
+      let totalTip = Number(customer.totalTip);
+      customer.tipped = Number(totalTipped += 1).toString();
+      customer.totalTip = Number(totalTip += customerTip).toString();
+    }
+    this.dataSotrageServices
+    .updateCustomer(customerId, customer, customerTip);
+  }
 
   onGetCustomerAvrg(customer: Customer) {
   const totalTipTimes = Number(customer.tipped) + Number(customer.notTipped);
@@ -237,6 +181,10 @@ export class AddTipComponent implements OnInit, OnDestroy {
 
   onCustomerAdded() {
     // todo make the tip and customer add
+    if (this.addCustomerTipForm.get('customerPhone').value !== Number) {
+      this.customerServices.errorMessage.next('בבקשה השתמש למספר פלאפון רק במספרים תודה');
+      return;
+    }
     const tip = this.addCustomerTipForm.get('customerTip').value;
     this.customerServices.addSuccessMsg('...טוען נתונים');
     if (!this.customerServices.checkIfCustomerExists(this.addCustomerTipForm.get('customerPhone').value)) {

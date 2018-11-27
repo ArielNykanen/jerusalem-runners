@@ -92,7 +92,7 @@
                 </div>
                 <div *ngIf='customerSelected' class="col-xs-6 form-group" align=center>
 
-                  <ng-container *ngIf='!loading'>
+                  <ng-container >
                     <h1>({{ selectedCustomer.name }})</h1>
                   </ng-container>
 
@@ -155,7 +155,7 @@
                           <tr id="customersTr"  [ngClass]='onGetCustomerColor(customer)' @translateFromL >
                             <!-- <td><input name="checkbox" type='radio' class="btn btn-primary" (click)="onAddExistingCustomer(customer)"></td> -->
                             <!-- <td></td> -->
-                            <td ><button type="button" class="btn btn-primary" (click)="onAddExistingCustomer(i)"
+                            <td ><button type="button" class="btn btn-primary" (click)="onSelectCustomer(i, customer)"
                                 [disabled]='!currentNetStatus'>בחר</button></td>
                             <td>{{ onGetCustomerAvrg(customer) }}</td>
                             <td>{{ customer.notTipped }}</td>
@@ -181,19 +181,16 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <ng-container *ngIf='loading'>
-                          <p>...מעדכן</p>
-                        </ng-container>
-                        <ng-container *ngIf='!loading'>
-                          <td><button type="button" class="btn btn-primary" (click)="onCustomerUpdated(updateCustomerTip)">עדכן</button></td>
+                      <tr class="bg-info"> 
+                        <ng-container >
+                          <td><button type="button" class="btn btn-primary" (click)="onUpdateCustomer(updateCustomerTip)">עדכן</button></td>
                         </ng-container>
                         <td><input type="number" class="form-control" style="max-width: 100px;" [disabled]='tipped'
                             #updateCustomerTip></td>
                         <td><button type="button" class="btn " [ngClass]="!tipped ? 'btn-success':'btn-disabled'"
                             (click)="onTipped()">כן</button></td>
                         <td>{{ selectedCustomer.name }}</td>
-                        <td>{{ selectedCustomer.phone }}</td>
+                        <td><a class="btn btn-success w-25" href="tel:{{selectedCustomer.phone}}">{{ selectedCustomer.phone }}</a></td>
                       </tr>
                     </tbody>
                   </table>

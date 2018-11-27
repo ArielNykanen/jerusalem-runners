@@ -78,6 +78,29 @@ export class DataStoreServices implements OnDestroy {
       });
     }
 
+    updateCustomer(customerId: number, customer: Customer, tip: any) {
+      this.userAlertServices.addSuccessMsg('...טוען');
+      const token =  this.authServices.getToken();
+      const updateCustomer = this.http.put(
+        'https://jerusalem-runners.firebaseio.com/customers/'
+        + customerId + '.json?auth=' + token, customer).subscribe(
+        (response: Response) => {
+          // todo fix the some kind of subscription there!
+      },
+      (error: ErrorHandler) => {
+        this.customerServices.addErrorMsg('הסנכרון לא הוצלח בהצלחה :(');
+        this.ngOnDestroy();
+      },
+      () => {
+        this.customerServices.addSuccessMsg('הלקוח עודכן בהצלחה');
+        setTimeout(() => {
+          this.publicMsgServices.setOnAddTipMessage(tip);
+          updateCustomer.unsubscribe();
+        }, 300);
+      }
+    );
+    }
+
     storeSuccessAlertMessages(message: PublicMsg) {
       this.userAlertServices.addSuccessMsg('...טוען');
       const token = this.authServices.getToken();
@@ -162,8 +185,8 @@ export class DataStoreServices implements OnDestroy {
           'https://jerusalem-runners.firebaseio.com/publicFailAlertMessages/'
            + selectedMsg.id + '.json?auth=' + token).subscribe(
              (response: Response) => {
-              this.publicMsgServices.successAlert.
-              next('ההודעה נמחקה מהמאגר תודה על ההצבעה והמשך יום של טיפים מפנקים');
+              this.customerServices.addSuccessMsg
+              ('ההודעה נמחקה מהמאגר תודה על ההצבעה והמשך יום של טיפים מפנקים');
              }
            );
       } else {
@@ -184,7 +207,7 @@ export class DataStoreServices implements OnDestroy {
         this.ngOnDestroy();
       },
       () => {
-        this.customerServices.addSuccessMsg('תודה על ההצבעה ברגע שזה מגיע ל-3 זה עף מהמאגר');
+        this.customerServices.addSuccessMsg('תודה על ההצבעה המשך יום נעים');
         this.ngOnDestroy();
         updateMessages.unsubscribe();
       }
@@ -199,7 +222,7 @@ export class DataStoreServices implements OnDestroy {
           'https://jerusalem-runners.firebaseio.com/publicSuccessAlertMessages/'
            + selectedMsg.id + '.json?auth=' + token).subscribe(
              (response: Response) => {
-              this.customerServices.addSuccessMsg('תודה על ההצבעה ברגע שזה מגיע למינוס 3 זה עף מהמאגר');
+              this.customerServices.addSuccessMsg('תודה על ההצבעה המשך יום נעים');
              }
            );
       } else {
@@ -220,7 +243,7 @@ export class DataStoreServices implements OnDestroy {
         this.ngOnDestroy();
       },
       () => {
-        this.customerServices.addSuccessMsg('תודה על ההצבעה ברגע שזה מגיע למינוס 3 זה עף מהמאגר');
+        this.customerServices.addSuccessMsg('תודה על ההצבעה המשך יום נעים');
         this.ngOnDestroy();
         updateMessages.unsubscribe();
       }
