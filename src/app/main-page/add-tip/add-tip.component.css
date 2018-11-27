@@ -34,4 +34,15 @@ h1 {
   color: white;
   text-shadow: 2px 2px 5px rgb(0, 0, 0);
 }
+.fa-thumbs-down {
+  color: red;
+  font-size: 40px;
 
+}
+.fa-thumbs-up {
+  color: green;
+  font-size: 40px;
+}
+.form-group h4, .form-group p {
+  color: orange;
+}

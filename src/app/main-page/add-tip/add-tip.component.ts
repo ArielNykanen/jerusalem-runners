@@ -37,8 +37,8 @@ export class AddTipComponent implements OnInit, OnDestroy {
 
   tipStatusStyles;
   successMessage = '';
-  failAlert = null;
-  successAlert = null;
+  failAlert: object;
+  successAlert: object;
   error = '';
   loading = false;
   tipSelected: number;
@@ -72,9 +72,9 @@ export class AddTipComponent implements OnInit, OnDestroy {
     });
     this.currentUserPauch = this.userServices.getCurrentPauch();
     this.tipStatusStyles = this.userServices.getTipStatusStyles();
-  
-    this.publicMsgService.successAlert.subscribe((message) => this.successAlert = message);
-    this.publicMsgService.failAlert.subscribe((message) => this.failAlert = message);
+    this.publicMsgService.successAlert.subscribe((newMsg) => this.successAlert = newMsg);
+    this.publicMsgService.failAlert.subscribe((newMsg) => this.failAlert = newMsg);
+
 
     this.publicMsgService.failMessagesUpdated.subscribe(
       (allMessages: PublicMsg[]) => {
@@ -121,6 +121,18 @@ export class AddTipComponent implements OnInit, OnDestroy {
         }
       );
   }
+
+  onSuccessMsgVote(vote: boolean, msgId: object) {
+    this.dataSotrageServices.updateSuccessMsg(msgId, vote);
+    this.successAlert = null;
+  }
+
+  onFailMsgVote(vote: boolean, msgId: object) {
+    this.dataSotrageServices.updateFailMsg(msgId, vote);
+    this.failAlert = null;
+  }
+
+
   onTipped() {
     this.tipped = !this.tipped;
   }

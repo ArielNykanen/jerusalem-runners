@@ -66,7 +66,7 @@ export class AddRandomMessagedComponent implements OnInit {
       this.errorMessage = 'משהו הישתבש אנא התחבר שנית';
       this.authServices.removeToken();
     } else {
-      const message = new PublicMsg(formMsg);
+      const message = new PublicMsg(formMsg, '0', '0');
       if (selection === 1) {
         this.dataStoreServices.storeSuccessAlertMessages(message);
       } else if (selection === 2) {

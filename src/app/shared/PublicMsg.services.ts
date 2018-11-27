@@ -42,9 +42,9 @@ export class PublicMsgServices {
       const numFa =  Math.floor(Math.random() * this.publicRandomFailMsg.length);
       const numSu =  Math.floor(Math.random() * this.publicRandomSuccessMsg.length);
        if (ammount === '0') {
-         this.failAlert.next(this.publicRandomFailMsg[numFa].message);
+         this.failAlert.next(this.publicRandomFailMsg[numFa]);
        } else {
-         this.successAlert.next(this.publicRandomSuccessMsg[numSu].message);
+         this.successAlert.next(this.publicRandomSuccessMsg[numSu]);
        }
     }
 }

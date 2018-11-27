@@ -117,7 +117,8 @@ export class DataStoreServices implements OnDestroy {
             const resultsArr: PublicMsg[] = [];
             Object.keys(publicMsg).map(
               (key) => {
-                resultsArr.push(new PublicMsg(publicMsg[key].message));
+                publicMsg[key].id = key;
+                resultsArr.push(new PublicMsg(publicMsg[key].message, publicMsg[key].rating, publicMsg[key].id));
               });
             this.publicMsgServices.setFailMessages(resultsArr);
           } else {
@@ -140,7 +141,8 @@ export class DataStoreServices implements OnDestroy {
             const resultsArr: PublicMsg[] = [];
             Object.keys(publicMsg).map(
               (key) => {
-                resultsArr.push(new PublicMsg(publicMsg[key].message));
+                publicMsg[key].id = key;
+                resultsArr.push(new PublicMsg(publicMsg[key].message, publicMsg[key].rating, publicMsg[key].id));
               });
             this.publicMsgServices.setSuccessMessages(resultsArr);
           } else {
@@ -152,6 +154,82 @@ export class DataStoreServices implements OnDestroy {
         this.customerServices.setNetWorkStatus(false);
       });
     }
+
+    updateFailMsg(selectedMsg, msgRating) {
+      const token =  this.authServices.getToken();
+      if (selectedMsg.rating == '-1') {
+        this.http.delete(
+          'https://jerusalem-runners.firebaseio.com/publicFailAlertMessages/'
+           + selectedMsg.id + '.json?auth=' + token).subscribe(
+             (response: Response) => {
+              this.publicMsgServices.successAlert.
+              next('ההודעה נמחקה מהמאגר תודה על ההצבעה והמשך יום של טיפים מפנקים');
+             }
+           );
+      } else {
+      if (msgRating) {
+        selectedMsg.rating += 1;
+      } else {
+        selectedMsg.rating -= 1;
+      }
+      const updatedMsg = new PublicMsg(selectedMsg.message, selectedMsg.rating, selectedMsg.id);
+      const updateMessages = this.http.put(
+        'https://jerusalem-runners.firebaseio.com/publicFailAlertMessages/'
+        + selectedMsg.id + '.json?auth=' + token, updatedMsg).subscribe(
+        (response: Response) => {
+          // todo fix the some kind of subscription there!
+      },
+      (error: ErrorHandler) => {
+        this.customerServices.addErrorMsg('הסנכרון לא הוצלח בהצלחה :(');
+        this.ngOnDestroy();
+      },
+      () => {
+        this.customerServices.addSuccessMsg('תודה על ההצבעה ברגע שזה מגיע ל-3 זה עף מהמאגר');
+        this.ngOnDestroy();
+        updateMessages.unsubscribe();
+      }
+    );
+  }
+
+    }
+    updateSuccessMsg(selectedMsg, msgRating) {
+      const token =  this.authServices.getToken();
+      if (selectedMsg.rating == '-1') {
+        this.http.delete(
+          'https://jerusalem-runners.firebaseio.com/publicSuccessAlertMessages/'
+           + selectedMsg.id + '.json?auth=' + token).subscribe(
+             (response: Response) => {
+              this.customerServices.addSuccessMsg('תודה על ההצבעה ברגע שזה מגיע למינוס 3 זה עף מהמאגר');
+             }
+           );
+      } else {
+      if (msgRating) {
+        Number(selectedMsg.rating += 1).toFixed(1).toString();
+      } else {
+        Number(selectedMsg.rating -= 1).toFixed(1).toString();
+      }
+      const updatedMsg = new PublicMsg(selectedMsg.message, selectedMsg.rating, selectedMsg.id);
+      const updateMessages = this.http.put(
+        'https://jerusalem-runners.firebaseio.com/publicSuccessAlertMessages/'
+        + selectedMsg.id + '.json?auth=' + token, updatedMsg).subscribe(
+        (response: Response) => {
+          // todo fix the some kind of subscription there!
+      },
+      (error: ErrorHandler) => {
+        this.customerServices.addErrorMsg('הסנכרון לא הוצלח בהצלחה :(');
+        this.ngOnDestroy();
+      },
+      () => {
+        this.customerServices.addSuccessMsg('תודה על ההצבעה ברגע שזה מגיע למינוס 3 זה עף מהמאגר');
+        this.ngOnDestroy();
+        updateMessages.unsubscribe();
+      }
+    );
+  }
+
+    }
+
+
     ngOnDestroy() {
       this.subscription.unsubscribe();
       this.getSubscription.unsubscribe();

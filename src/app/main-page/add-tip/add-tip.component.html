@@ -6,16 +6,42 @@
             </div>
           </ng-container>
 
-            <div *ngIf='failAlert' class="alert alert-danger alert-dismissible" @translateFromL (click)="onDisableAlertMessage()">
-              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-      
-              <h3 align=center>{{ failAlert }}</h3>
+            <div *ngIf='failAlert' class="alert alert-danger alert-dismissible" @translateFromL>
+              <h3 align=center>{{ failAlert.message }}</h3>
+              <div class="row form-group">
+                <div align=center class="col-xs-12">
+                  <p>({{ failAlert.rating }})</p>
+                </div>
+                <div class="col-xs-2">
+                  <i class="far fa-thumbs-down" (click)="onFailMsgVote(false, failAlert)"></i>
+                  <p>לא אהבתי</p>
+                </div>
+                <div class="col-xs-8">
+                </div>
+                <div class="col-xs-2">
+                  <i class="far fa-thumbs-up" (click)="onFailMsgVote(true, failAlert)"></i>
+                  <p>אהבתי</p>
+                </div>
+              </div>
             </div>
 
             <div *ngIf='successAlert' class="alert alert-success alert-dismissible" @translateFromL (click)="onDisableAlertMessage()">
-              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-      
-              <h3 align=center>{{ successAlert }}</h3>
+              <h3 align=center>{{ successAlert.message }}</h3>
+              <div class="row form-group">
+                  <div align=center class="col-xs-12">
+                    <p>({{ successAlert.rating }})</p>
+                  </div>
+                  <div class="col-xs-2">
+                    <i class="far fa-thumbs-down" (click)="onSuccessMsgVote(false, successAlert)"></i>
+                    <p>לא אהבתי</p>
+                  </div>
+                  <div class="col-xs-8">
+                  </div>
+                  <div class="col-xs-2">
+                    <i class="far fa-thumbs-up" (click)="onSuccessMsgVote(true, successAlert)"></i>
+                    <p>אהבתי</p>
+                  </div>
+                </div>
             </div>
 
 
